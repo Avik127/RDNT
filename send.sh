@@ -6,7 +6,7 @@ git add .
 
 # git commit repository
 
-git commit -m "{$1}"
+git commit -m "$1"
 
 # pushing to remote repo
 
