@@ -7,4 +7,5 @@ git pull
 password="=yXEnU%a"
 
 # copy file to server using sshpass
-sshpass -p $password scp /mnt/c/Users/kahaa/Documents/Github/RDNT/website/* ece477grp18@shay.ecn.purdue.edu:/test/
+# chnage the source path /mnt/c/Users/kahaa/Documents/Github/RDNT/website/* according to your soruce file path
+sshpass -p =yXEnU%a scp -r /mnt/c/Users/kahaa/Documents/Github/RDNT/website/* 477grp18@shay.ecn.purdue.edu:~/web/
