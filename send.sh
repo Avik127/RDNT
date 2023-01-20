@@ -2,15 +2,15 @@
 
 # add to repo
 
-git add . 
+#git add . 
 
 # git commit repository
 
-git commit -m "$1"
+#git commit -m "$1"
 
 # pushing to remote repo
 
-git push
+#git push
 # git pull repository
 git pull
 
