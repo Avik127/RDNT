@@ -12,7 +12,7 @@
 
 #git push
 # git pull repository
-git pull
+#git pull
 
 # Store the password in a variable
 
