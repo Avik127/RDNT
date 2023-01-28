@@ -68,7 +68,7 @@ contact course staff.
 			an analog input to the circuit, which we then sent an wave generator output from an AD2 into the microcontroller. We built an amplifier circuit that would allow us to get 
 			visible values from an electret microphone, which we also were able to wire into the ADC pin of our microcontroller and read values the same way we read the AD2 wave gen. 
 			<div id="microphone circuit"> 
-				<img src="Team/img/mic_circuit.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/mic_circuit.jpg" width="500" height="500"></img>
 			</div>
 		</br>
 
@@ -76,11 +76,29 @@ contact course staff.
             <br>
 
             <h4>Week 3:</h4>
-            <b>Date:</b> -Enter today's date here (the date you posted)-<br>
-            <b>Total hours:</b> -Enter the number of hours you worked this week here-<br>
+            <b>Date:</b> 27 January 2023 <br>
+            <b>Total hours:</b> 7 <br>
             <b>Description of project design efforts:</b><br>
-            -Discuss your project design efforts here. Remember to follow the guidelines presented in the Progress Report Policy that is posted on Brightspace.  This is a template entry; simply copy/paste this entry when doing progress reports each week.</br>
-                      
+			This week's time was spent dedicated to learning about and implementing Fast Fourier Transforms to our design, since our implementation of the electret microphone from last week
+			was fairly successful, as well as the addition of our 3.5 mm TRRS jack to our design by Avik. My first attempt at utilizing an FFT <a href="https://github.com/kosme/arduinoFFT">library</a><br>
+			was admittedly a bit ambitious; I tried to get an analog input from music playing through the 3.5 mm AUX and trying to perform FFT's on that signal. This obviously did not go smoothly,
+			but the issues that I ran into forced me to take a step back and try to figure out each moving part in a more methodical manner, building up from what I know (or thought I knew). 
+			<div id="what is the dog ACTUALLY doing"> 
+				<img src="Team/progress/progress2pics/freq_association.jpg" width="500" height="500"></img>
+			</div>
+			My first challenge was trying to interpret what the FFT was actually doing under the hood, so with some example code that had a working implementation of the library, 
+			and the .cpp file of the library itself, I tried to associate different frequency with the indices of the array that my audio was being sampled into. However, the values were still
+			too erratic and were not easily understandable. My second attempt was to send a known signal into the ADC pin, since we had already proven this worked last week. Using the AD2,
+			I sent in a 1kHz singal into the ADC, and attempted to make sense of the values that was being outputted. Me and Avik spent a good portion of the day trying to understand why the FFT was
+			returning a peak value at a frequency that was nowhere close to the frequency of the AD2's wave. 
+			<div id="wave_gen"> 
+				<img src="Team/progress/progress2pics/AD2_wavegen.jpg" width="500" height="500"></img>
+			</div>
+			<div id="wave_to_ADC"> 
+				<img src="Team/progress/progress2pics/AD2_wavegen.jpg" width="500" height="500"></img>
+			</div>
+			My current attempt is sending in a wave that is offset by 1.15V, to avoid the ESP32's ADC pins' limitation of being able to read voltage values of 150mV-2450mV, as well as 
+		    getting negative values all together. I feel like I am on the right track, but the only real way to confirm my understanding is to just keep on trying.
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
