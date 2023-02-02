@@ -92,16 +92,26 @@ contact course staff.
 			
 			<h4>Week 4:</h4>
             <b>Date:</b> 2/3/23 <br>
-            <b>Total hours:</b> 2<br>
+            <b>Total hours:</b> 3<br>
             <b>Description of project design efforts:</b><br>
-            Started researching Neopixel and FastLED libraries. Discovered FastLED uses neopixel to drive LEDs. Used FastLED to
-		start the basis of our final displays with the LEDs. Got a system working with a customizable amount of LED devices. Our program
-	will map 5 bins of frequencies to 5 "bins" of LEDs. We will customize internal bins inside our main 5 bins. Then, depending on the frequency
-returned by FFT, we will illuminate the subbins of the bin that the frequency corresponds to. As our FFT was not completed yet, I used randomly
-generated numbers. I have attached a .gif of this subtest. Note there are 4 LEDs in the gif, but the program will probably end up using multiples of 5.
-At some point, we will likely not use the library and instead use the old PWM signals I was working on. But right now, we are trying to get
-as much possible working as fast as possible.</br>
-https://github.com/FastLED/FastLED/wiki/Rgb-calibration
+            Tuesday, started researching Neopixel and FastLED libraries. Discovered FastLED uses neopixel to drive LEDs. Used FastLED to
+			start the basis of our final displays with the LEDs. Got a system working for a series LED configuration with a customizable amount of LED devices. 
+			My first idea is to map 5 bins of frequencies to 5 "bins" of LEDs. We will customize internal bins inside our main 5 bins. Then, depending on the frequency
+			returned by FFT, we will illuminate the "sub-bins" of the bin that the frequency corresponds to. I did a first mockup of this idea without the 
+			changing colors for sub-bins as I have not calculated that yet. As our FFT was not completed yet, I used randomly generated numbers for frequency.
+			I have attached a .gif of this test. Note there are 4 LEDs in the gif, but the program will probably end up using multiples of 5.
+			At some point, we will likely not use the library and instead use the old PWM signals I was working on. But right now, we are trying to get
+			as much possible working as fast as possible.
+		
+			Wednesday, I realized that I had not considered the cases in which users have less than 5 LEDs connected. I made some changes to my algorihm.
+			 I am still working to create the seperation of colors inside of "sub-bins". Note for the second test, I removed the randomly generated frequencies and instead
+			put one frequency for each bin for bins 1-5. You cannot see the 5th bin as there are only 4 connected (proof of &#605 working). 
+		
+			Thursday, came into lab. Started realizing we need a beat detection algorithm. Researched this instead of continuing the different output modes.
+		Different output modes for prototyping are still useful, but only 1 is required for full prototyping. The next output modes I will build will be for parallel configurations
+	and one in which there are no 5 LED "bins" and instead ALL the LEDs flash the corresponding frequency color.
+</br>
+			https://github.com/FastLED/FastLED/wiki/Rgb-calibration
                       
         </div>
 	
