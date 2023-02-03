@@ -111,7 +111,11 @@ contact course staff.
 		Different output modes for prototyping are still useful, but only 1 is required for full prototyping. The next output modes I will build will be for parallel configurations
 	and one in which there are no 5 LED "bins" and instead ALL the LEDs flash the corresponding frequency color. Had a long conversation with Avik about the usefulness of noise minimization.
 	Made it clear that the next goal after a rudimentary beat detection algo is to work on a software solution for noise control. 
-</br>
+
+	Talked to Prof. Cormer to figure out a good direction for noise reduction algorithm. Described problem and intended goal and she reccomended Gaussian Blur.
+	Did some research into the properties of Gaussian Blur and decideded it would be useful. This is because it acts like a software low pass filter but doesn't
+fully filter the high frequencies that will be useful (hi-hats). Built a basic 1-D gaussian Kernel and started working on a program to display results of ADC readings
+and the gaussian blur on ADC readings. </br>
 			https://github.com/FastLED/FastLED/wiki/Rgb-calibration
                       
         </div>
