@@ -53,26 +53,35 @@ contact course staff.
 		-->
 		<div id="content">
             <h2>Progress Report for Graeme Usman</h2>
-            
-            <h4>Weeks 1-2:</h4>
-            <b>Date:</b> 20 January 2023 -<br>
-            <b>Total hours:</b> 16 <br>
+
+			<h4>Week 4:</h4>
+            <b>Date:</b> 3 February 2023 <br>
+            <b>Total hours:</b> 7 <br>
             <b>Description of project design efforts:</b><br>
-			The past two weeks were mainly used to gather our thoughts and put them in a comprehesible manner. I spent much of the first week researching the plausibility of our
-			project and what approach we should take to make it work as smoothly as possible. 
-			Much of my contribution for the first week was organizational and research, organizing our Discord server that serves as the main point of communication to be more 
-			easily accessible and navigable. For research, I spent time (re-)learning about Fourier Transforms, which will be our main process that allows us to synchronize lights to music,
-			as well as looking into the different parts of our design and how we should approach integrating them step by step. 
-			As a team we began to paint a clearer picture of our project and aligned on a lot of design ideas, as well as splitting up our goals each day.  
-			During the second week, we took a much more hands-on approach: we were able to setup the environment to write code to our microcontroller. We set up some very basic code to read 
-			an analog input to the circuit, which we then sent an wave generator output from an AD2 into the microcontroller. We built an amplifier circuit that would allow us to get 
-			visible values from an electret microphone, which we also were able to wire into the ADC pin of our microcontroller and read values the same way we read the AD2 wave gen. 
-			<div id="microphone circuit"> 
-				<img src="Team/progress/progress2pics/mic_circuit.jpg" width="500" height="500"></img>
+			This week's efforts was effectively a continuation from last week, which consisted of me solely working on our FFT function which was behaving strangely. I figured out the seemingly
+			random behavior of the peak frequency output was actually consistently incorrect, which just means it is correct, but with an asterisk.
+			<div id="correct* frequencies"> 
+				<img src="Team/progress/progress2pics/weird_freqs.png" width="500" height="500"></img>
 			</div>
-		</br>
-
-
+			By sending a sine wave from the AD2 with a known frequency, I saw that the values returned were off by a factor of about 3.26. This was fine if it stay consistently incorrect, because 
+			we know that is doing what it is supposed to, however, it does effectively reduce our usable frequency range down by about a third. This is unfortunate, but workable. I spent a good
+			amount of time trying to figure out where this seemingly arbitrary 3.26 value came from, but to no avail.
+			<div id="pepe silvia"> 
+				<img src="Team/progress/progress2pics/pepe_silvia.jpg" width="500" height="500"></img>
+			</div> 
+			With a small change to my code, I was able to put together a rudimentary frequency beat detector. This is the basis for putting together the FFT proccess with the reactive LED process,
+			but that is for another day.
+			<div id="3.263.263.263.263.263.263.263.26"> 
+				<img src="Team/progress/progress2pics/code_3.26.png" width="500" height="500"></img>
+			</div> 
+			<div id="beat_detector.mp4"> 
+				<img src="Team/progress/progress2pics/beat_detect.png" width="500" height="500"></img>
+			</div> 
+			Frustrated with this 3.26 fiasco, I decided to try and implement a different FFT library, citing the original arduinoFFT library as its motivation. This new library was built on 
+			another library originally coded for the ESP-IDF and modified for arduino, so my thought process was "learn this one and transition easily into the ESP-IDF". I am currently in the midst
+			of writing more code around this new library. Even if this comes with similar issues as the previous library, I hope that coding around similarly functioning libraries allows me to 
+			understand what is going on under the hood more. I have already spent a decent amount of time trying to learn arduinoFFT, so hopefully that gives me a head-start when trying to learn this 
+			new one as well.
             <br>
 
             <h4>Week 3:</h4>
@@ -99,6 +108,24 @@ contact course staff.
 			</div>
 			My current attempt is sending in a wave that is offset by 1.15V, to avoid the ESP32's ADC pins' limitation of being able to read voltage values of 150mV-2450mV, as well as 
 		    getting negative values all together. I feel like I am on the right track, but the only real way to confirm my understanding is to just keep on trying.
+
+            <h4>Weeks 1-2:</h4>
+            <b>Date:</b> 20 January 2023 -<br>
+            <b>Total hours:</b> 16 <br>
+            <b>Description of project design efforts:</b><br>
+			The past two weeks were mainly used to gather our thoughts and put them in a comprehesible manner. I spent much of the first week researching the plausibility of our
+			project and what approach we should take to make it work as smoothly as possible. 
+			Much of my contribution for the first week was organizational and research, organizing our Discord server that serves as the main point of communication to be more 
+			easily accessible and navigable. For research, I spent time (re-)learning about Fourier Transforms, which will be our main process that allows us to synchronize lights to music,
+			as well as looking into the different parts of our design and how we should approach integrating them step by step. 
+			As a team we began to paint a clearer picture of our project and aligned on a lot of design ideas, as well as splitting up our goals each day.  
+			During the second week, we took a much more hands-on approach: we were able to setup the environment to write code to our microcontroller. We set up some very basic code to read 
+			an analog input to the circuit, which we then sent an wave generator output from an AD2 into the microcontroller. We built an amplifier circuit that would allow us to get 
+			visible values from an electret microphone, which we also were able to wire into the ADC pin of our microcontroller and read values the same way we read the AD2 wave gen. 
+			<div id="microphone circuit"> 
+				<img src="Team/progress/progress2pics/mic_circuit.jpg" width="500" height="500"></img>
+			</div>
+		</br>
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
