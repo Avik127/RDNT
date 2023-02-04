@@ -92,31 +92,43 @@ contact course staff.
 			
 			<h4>Week 4:</h4>
             <b>Date:</b> 2/3/23 <br>
-            <b>Total hours:</b> 7<br>
+            <b>Total hours:</b> 11<br>
             <b>Description of project design efforts:</b><br>
             Tuesday, started researching Neopixel and FastLED libraries. Discovered FastLED uses neopixel to drive LEDs. Used FastLED to
 			start the basis of our final displays with the LEDs. Got a system working for a series LED configuration with a customizable amount of LED devices. 
 			My first idea is to map 5 bins of frequencies to 5 "bins" of LEDs. We will customize internal bins inside our main 5 bins. Then, depending on the frequency
 			returned by FFT, we will illuminate the "sub-bins" of the bin that the frequency corresponds to. I did a first mockup of this idea without the 
 			changing colors for sub-bins as I have not calculated that yet. As our FFT was not completed yet, I used randomly generated numbers for frequency.
-			I have attached a .gif of this test. Note there are 4 LEDs in the gif, but the program will probably end up using multiples of 5.
-			At some point, we will likely not use the library and instead use the old PWM signals I was working on. But right now, we are trying to get
-			as much possible working as fast as possible.
+			The program will probably end up using multiples of 5.At some point, we will likely not use the library and instead use the old PWM signals I was working on. 
+			But right now, we are trying to get as much possible working as fast as possible. I attached a link to the documentation I was using below.
 		
 			Wednesday, I realized that I had not considered the cases in which users have less than 5 LEDs connected. I made some changes to my algorihm.
-			 I am still working to create the seperation of colors inside of "sub-bins". Note for the second test, I removed the randomly generated frequencies and instead
-			put one frequency for each bin for bins 1-5. You cannot see the 5th bin as there are only 4 connected (proof of &#605 working). 
+			I am still working to create the seperation of colors inside of "sub-bins". Note for the second test, I removed the randomly generated frequencies and instead
+			put one frequency for each bin for bins 1-5. You cannot see the 5th bin as there are only 4 connected (proof of &#605 working).
 		
 			Thursday, came into lab. Started realizing we need a beat detection algorithm. Researched this instead of continuing the different output modes.
-		Different output modes for prototyping are still useful, but only 1 is required for full prototyping. The next output modes I will build will be for parallel configurations
-	and one in which there are no 5 LED "bins" and instead ALL the LEDs flash the corresponding frequency color. Had a long conversation with Avik about the usefulness of noise minimization.
-	Made it clear that the next goal after a rudimentary beat detection algo is to work on a software solution for noise control. 
+			Different output modes for prototyping are still useful, but only 1 is required for full prototyping. The next output modes I will build will be for parallel configurations
+			and one in which there are no 5 LED "bins" and instead ALL the LEDs flash the corresponding frequency color. Had a long conversation with Avik about the usefulness of noise minimization.
+			Made it clear that the next goal after a rudimentary beat detection algo is to work on a software solution for noise control. 
 
-	Talked to Prof. Cormer to figure out a good direction for noise reduction algorithm. Described problem and intended goal and she reccomended Gaussian Blur.
-	Did some research into the properties of Gaussian Blur and decideded it would be useful. This is because it acts like a software low pass filter but doesn't
-fully filter the high frequencies that will be useful (hi-hats). Built a basic 1-D gaussian Kernel and started working on a program to display results of ADC readings
-and the gaussian blur on ADC readings. </br>
-			https://github.com/FastLED/FastLED/wiki/Rgb-calibration
+			Talked to Prof. Cormer to figure out a good direction for noise reduction algorithm. Described problem and intended goal and she reccomended Gaussian Blur.
+			Did some research into the properties of Gaussian Blur and decideded it would be useful. This is because it acts like a software low pass filter but doesn't
+			fully filter the high frequencies that will be useful (hi-hats). 
+
+			Friday, I got to lab and got to work on build a basic 1-D gaussian noise reduction program that will display results of ADC readings
+			and the gaussian blur on ADC readings. I attached my main source of information below. It has been a long time since I worked with statistics so it took a long amount of time to correctly use and calculate
+			the standard deviation and variance for the Gaussian distribution. I used a graphing application to check the correctness of my values. I have attached a screenshot of
+			it below. I was successful in the end and have attached my text file below that demonstrates the Gaussian distribution being built for an signal input through the AUX-in.
+			 The next step in the noise reduction program is to combine the outputted Gaussian distribution with a convolution function that will return the input signal with noise
+			reduction on it.  </br>
+			
+			Documents:
+			<a href="https://github.com/FastLED/FastLED/wiki/Rgb-calibration">FastLED Documentation</a> <br>
+			<a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/gsmooth.htm">Information on Gaussian Distribution</a> <br>
+			<a href="website/Team/progress/progress1pics/gaussian.txt"> Results of building a Gaussian </a><br>
+			<img src="Team/progress/progress1pics/GaussianDistribution.png" style="width:200px;height:200px;">
+			<img src="Team/progress/progress1pics/flashing.gif" style="width:200px;height:200px;">
+			<br>
                       
         </div>
 	
