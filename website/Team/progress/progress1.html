@@ -52,6 +52,37 @@ contact course staff.
 			and include things such as a file lister (for listing out homework assignments or tutorials)
 		-->
 		<div id="content">
+
+
+			<h4>Week 5:</h4>
+            <b>Date:</b> 2/10/23 <br>
+            <b>Total hours:</b> 4<br>
+            <b>Description of project design efforts:</b><br>
+            Tuesday, after in-lab conversation with Graeme, I started integrating a few components together into one program. These being the Graeme's almost-done FFT program,
+			my LED basic lightup program, and the half-completed Gaussian filter I was building. First thing I did was look at Graeme's FFT program which was returning incorrect
+			frequncies. The frequencies returned were consistently off by a factor or 3.26 or 4.12 depending on setup. I looked at some online tutorials and start removing dead code 
+			that was making the code run slower. After a while, I was able to get reproducibly correct values for frequency ranges (500,1500). I realized that the program was working correctly,
+			but had the wrong values for total samples per loop and the frequency in which ADC samples are taken. I had gotten (500,1500) frequency ranged correctly isolated working with 
+			Samples,SamplesFreq = 64,1000. I realized that the total samples would need to be raised to get the low frequencies correctly isolated. I implemented a test with Samples=128 then 256 then 512.
+			I started getting more and more correct values for the low frequency values. At 512 samples, I was getting a value within 0.1% for values 20Hz to 50Hz. This was very promising so I started to 
+			try to figure out why the high frequencies were still off. I started experimented with a constant sample value = 512 and changing the sample frequency up and down. After many tests, I 
+			I was unable to realize I could not isolate frequencies above or equal to half my sampling frequency. I had a quick conversation with Graeme and he explained that this was due to
+			the Nyquist Sample Rate which states that you cannot sample a signal with a frequency less than double the original frequency, which matched my experiments exactly. 
+			<br>
+			I changed my focus and attended Prof. Comer's office hours. I had watched a few videos and read the textbook for Convolution. Convolution is the basis of the Gaussian Filter that
+			I was building for noise reduction. But I was unsure how exactly convolving an original sample with its guassian distribution would result a smoothed sample. She explained to me that
+			I had misunderstood the gaussian distribution that was to be used for convolution. She explained that I had to implement a Gaussian distribution independent of my original sample. Therefore,
+			my work last week building the Gaussian of our sample was useless. But that is okay, it is part of learning. 
+			<br>
+			Had some conversations with Graeme where we talked more about the audible frequencies. Came to the conclusion the range (20,16000) is most useless. Therefore, our ADC must
+			sample at a rate of at least 320000. I showed him my work and we started to figure out to get the ADC to sample at that rate. For some reason, we get useless data at any sample frequencies
+			above 10k. 
+			
+			<br>
+			Wednesday, came into lab and made changes to the FFT and LED light up integrated program to correctly split up the frequencies (20,16000) into 6 bins (Graeme's input).
+			<br>
+
+
             <h2>Progress Report for Anurag Numboori</h2>
 			<h4>Week 4:</h4>
             <b>Date:</b> 2/3/23 <br>
