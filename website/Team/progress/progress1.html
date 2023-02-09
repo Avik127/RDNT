@@ -56,7 +56,7 @@ contact course staff.
 
 			<h4>Week 5:</h4>
             <b>Date:</b> 2/10/23 <br>
-            <b>Total hours:</b> 4<br>
+            <b>Total hours:</b> 7.5<br>
             <b>Description of project design efforts:</b><br>
             Tuesday, after in-lab conversation with Graeme, I started integrating a few components together into one program. These being the Graeme's almost-done FFT program,
 			my LED basic lightup program, and the half-completed Gaussian filter I was building. First thing I did was look at Graeme's FFT program which was returning incorrect
@@ -74,12 +74,24 @@ contact course staff.
 			I had misunderstood the gaussian distribution that was to be used for convolution. She explained that I had to implement a Gaussian distribution independent of my original sample. Therefore,
 			my work last week building the Gaussian of our sample was useless. But that is okay, it is part of learning. 
 			<br>
-			Had some conversations with Graeme where we talked more about the audible frequencies. Came to the conclusion the range (20,16000) is most useless. Therefore, our ADC must
+			Had some conversations with Graeme where we talked more about the audible frequencies. Came to the conclusion the range (20,16000) is most useful. Therefore, our ADC must
 			sample at a rate of at least 320000. I showed him my work and we started to figure out to get the ADC to sample at that rate. For some reason, we get useless data at any sample frequencies
 			above 10k. 
 			
 			<br>
-			Wednesday, came into lab and made changes to the FFT and LED light up integrated program to correctly split up the frequencies (20,16000) into 6 bins (Graeme's input).
+			Wednesday, came into lab and made changes to the FFT and LED light up integrated program to correctly split up the frequencies (20,16000) into 6 bins (Graeme's input). I started implemented
+			noise reduction with a Gaussian filter. I was/am unsure of the correct window size and sigma value to make an appropriately smoothed input. I took readings from a 1Hz pure sinusoidal wave
+			and made sigma a function of the window. I have included the relevant spreadsheet below. The larger the window, the more smoothed the wave is. For now, the smoothing is fine but we will have to 
+			find out the perfect value from continuing experiments. Then, I worked with Graeme to diagnose the problem. We came to the conclusion that we need to test ADC's max sampling capacity. I was not present
+			for Graeme and Avik's test of the capability of the ADC.
+
+			<br>
+			I arrived after they were getting the conclusion of the test and talked with Avik to evaluate the cause of this problem. They came to the conclusion that our currentsampling system has a large
+			computing load. This load does not allow the ADC to correctly sample when we want it to sample above 10k Hz. The solution to this problem is to drive the sampling with a timer of 40 kHz frequency.
+			This value is from the Nyquist Sample Rate, which needs to be double our goal frequency. I talked to Avik about this and he gave me a good gameplan how to rework our program. It means that we will have
+			to abandon the Arduino framework and use espressif32. This is a large undertaking that we will be doing. It essentially means recoding everything to get away from the loop() and setup() system and 
+			be able to use a main() function that will be change to control flow off timers.
+			
 			<br>
 
 
