@@ -53,6 +53,259 @@ contact course staff.
 		-->
 		<div id="content">
 
+      <p class=MsoNormal>WEEK 5:</p>
+
+      <p class=MsoNormal>Date: 02/10/2023</p>
+
+      <p class=MsoNormal>Total Hours: 9</p>
+
+      <p class=MsoNormal>Description of Design Efforts:</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>This week involved fast-paced conversion of our prototyping
+      efforts into concrete designs. Therefore, it involved significant discussions
+      about the design of our final prototype. To further this process, I also began
+      the creation of a CAD model for the final prototype. We also discussed
+      milestones that would help track our software progress as we moved toward a
+      final prototype. Finally, I worked on creating footprints to progress from
+      schematic to PCB layout on KiCAD.</p>
+
+      <p class=MsoNormal><img width=171 height=228
+      src="Team/progress/progress3pics/image001.jpg" align=left hspace=12
+      alt="A white board with writing on it&#10;&#10;Description automatically generated with low confidence"></p>
+
+      <p class=MsoNormal>To begin, we discussed the design of our final prototype.
+      Throughout this discussion, I found that Graeme and I had different prototype
+      designs in mind. Graeme was focused on developing an audio visualizer. This
+      would involve having a histogram-like set of led strips that represent
+      different bands of frequencies. Thereon, categorization of FFT outputs would
+      simply be mapped to the frequencies on this fixture. However, my idea was to
+      take this further and develop a design of our own fixture, which categorizes
+      the FFT outputs in a creative and aesthetic way that is not as apparent as a
+      direct mapping of the frequencies. We concluded that we could set the direct
+      mapping as a milestone to verify the functionality of our software. Then, we
+      can simply customize the mapping depending on the amount of time that we have
+      left and the design effort that we put in each week. </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Since I have some experience with building CAD models, I
+      downloaded Fusion 360 so that we can create a prototype fixture. I will be
+      working on this fixture over the weekend. However, a major requirement of this
+      model would be estimating the size of our circuitry. Therefore, we will plan to
+      leave some room for adjustment in this model. Since the product must be
+      aesthetic for its use-case, we will also need to consider a method to secure
+      and hide the wired connections from our microcontroller to the LED strips.
+      Currently, we are planning to maintain a wooden casing for the circuitry and
+      have internal connections to the lights. This would become more apparent and
+      concrete as we design a basic CAD model over the weekend. </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal><img width=149 height=132
+      src="Team/progress/progress3pics/image002.png" align=left hspace=12
+      alt="Text, whiteboard&#10;&#10;Description automatically generated">I also
+      discussed the conversion of our test code into software for our final
+      prototype. The code structure that we have followed so far is too slow for
+      valid results through FFT. Since we are using Arduino framework on PlatformIO,
+      the loop function is not only difficult to design around for the complexity of
+      functions in our software, but it also imposes a huge overhead cost, which
+      causes the results of our <a href="https:/github.com/kosme/arduinoFFT">FFT
+      algorithm</a> to be useless. Therefore, I suggested that we rapidly shift to
+      the Espressif framework and design our code within timer blocks. Anurag and I
+      had a detailed discussion on how this software should work. I plan to loop in
+      Kahaan for the development of this software this week. The algorithm is still
+      in rudimentary stages, but we should be able to pick up speed soon. The next
+      steps would involve multithreading considerations and evaluating timing
+      diagrams. We would also want to understand and categorize the raw music output,
+      for which I will be building test circuitry to evaluate music input to the ADC
+      pin through a speaker.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Lastly, I have been working on creating footprints for the
+      schematic that we have so far. I ran into a roadblock during the creation of
+      footprints, where I found KiCAD footprint models of our components in libraries
+      online, but I am not sure if they will be accurate. I will be discussing this
+      course staff either on Monday or after our MANLAB on Tuesday. As we build or
+      modify circuitry, I plan to keep the schematic and footprints updated with out
+      breadboard prototype. I am also studying the circuitry of a <a
+      href="https://vlsiuniverse.blogspot.com/search/label/3%20inputs%20mux?m=0#:~:text=3%2Dinput%20mux%3A%20A%203,input%20mux%20is%20given%20below.">3-1
+      mux</a>. I am planning to build the circuit and schematic of this component
+      next week.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>WEEK 4:</p>
+
+      <p class=MsoNormal>Date: 02/03/2023</p>
+
+      <p class=MsoNormal>Total Hours: 5</p>
+
+      <p class=MsoNormal>Description of Design Efforts:</p>
+
+      <p class=MsoNormal>This week was more about completing all the structural
+      elements of our design. I focused on mainly having conceptual discussions of
+      the final concept with Anurag, Graeme, and&nbsp;Kahaan. Our discussions
+      involved the prioritization of work such as FFT and I conducted fundamental
+      research to support that.&nbsp;Kahaan&nbsp;and I also discussed the
+      implications of our product and talked about the expansion of our device into a
+      full-fledged smart LED system. Thereon, I worked on developing the schematics
+      of our circuits on&nbsp;KiCAD&nbsp;and verifying functionality of hardware.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Links for research:</p>
+
+      <p class=MsoNormal>FFT Video:&nbsp;<a
+      href="https://www.youtube.com/watch?v=8YaeUYZ_Ex8"><span style='font-size:13.5pt;
+      color:#0563C1'>https://www.youtube.com/watch?v=8YaeUYZ_Ex8</span></a></p>
+
+      <p class=MsoNormal>LED FFT Device:&nbsp;<a
+      href="https://hackaday.com/2020/12/10/esp32-spectrum-analyzer-taps-into-both-cores/#comments"><span
+      style='font-size:13.5pt;color:#0563C1'>https://hackaday.com/2020/12/10/esp32-spectrum-analyzer-taps-into-both-cores/#comments</span></a></p>
+
+      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
+
+      <p class=MsoNormal>My next steps would be to add footprints to the schematic
+      and verify functionality of the circuit using SPICE. I also will work with
+      Graeme to figure out software for FFT, since that task has been pending
+      throughout the week. I would also want to further discuss the mechanical aspect
+      of our device so that we can work towards the visual imagery of our device and
+      plan our PCB accordingly. The PCB schematic will be demonstrated in the
+      upcoming MANLAB, since there are some git issues with accessing the files as of
+      now.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>WEEK 3: </p>
+
+      <p class=MsoNormal>Date: 01/20/2023 </p>
+
+      <p class=MsoNormal>Total Hours: 18 </p>
+
+      <p class=MsoNormal>Description of Design Efforts:</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>• What did the student work on? </p>
+
+      <p class=MsoNormal>• How did the student work on it? (Tools? Programs? Test
+      rig? Etc.) </p>
+
+      <p class=MsoNormal>• What was the result, and how does this affect the project?
+      </p>
+
+      <p class=MsoNormal>• What did the student learn? </p>
+
+      <p class=MsoNormal>• What are the next steps that must be taken?</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>This week I prototyped a lot of our components. I developed
+      a DC-DC 12V to 5V voltage regulator, an AUX input for music, and a high-pass
+      hardware filter for microphone input. Moreover, I developed code for software
+      filtering of microphone input. I also worked with Kahaan on developing code for
+      LED output. I worked with Anurag for determining LED input signals and
+      understanding bitwise operations. Lastly, I worked with Graeme for exploring
+      fast Fourier transform of our audio signal. </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>To develop the 50Hz high pass filter, I implemented a
+      modified version of a <a
+      href="https://www.electronics-tutorials.ws/filter/filter_6.html">standard
+      design</a>. I used the existing LM324 IC that we used for amplification on the
+      microphone and modified the gain so that we have a peak-to-peak voltage of 1V.
+      The hardware filter was beneficial to filter our environmental noise which
+      resulted from no sound input. Therefore, the resulting ADC input involved
+      clearly distinguishable values when there was no sound versus when there was
+      sound being played into the microphone. The resulting waves will be
+      demonstrated during our next MANLAB, but it is simply a filtered variation of
+      our previous result (from Week 2). The software filtering fundamentally picks
+      up ADC values when the resulting wave presents a voltage level within a certain
+      threshold, thereby filtering out higher voltages that are generated from noise.
+      </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Thereon, I implemented the AUX input. There is close to no
+      noise since it is a wired connection. This would be a good benchmark for our
+      microphone input. This was simply a matter of smoothing the raw aux input and
+      reading it from an ADC pin. I developed a simple RC circuit to smoothen the
+      values and used these to explore the types of signals that we would encounter.
+      I also implemented a potentiometer to adjust the ‘volume’, or voltage level, of
+      our signal. The RC circuit also ensures that this circuit also has a
+      peak-to-peak voltage of 1V so that it is directly comparable to the microphone
+      values.  The resulting wave can be seen in the figures below and will also be
+      demonstrated in the next MANLAB.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal><img border=0 width=128 height=122 id="Picture 7"
+      src="Team/progress/progress3pics/image003.png"
+      alt="A picture containing text, indoor, electronics, computer&#10;&#10;Description automatically generated"><img
+      border=0 width=173 height=122 id="Picture 8"
+      src="Team/progress/progress3pics/image004.png"
+      alt="A picture containing text, indoor&#10;&#10;Description automatically generated"><img
+      border=0 width=162 height=121 id="Picture 9"
+      src="Team/progress/progress3pics/image005.jpg"
+      alt="A picture containing text, electronics, circuit&#10;&#10;Description automatically generated"></p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>The DC-DC voltage regulator is similar to what Kahaan has
+      demonstrated on his Progress Report. However, we have not tested it with a
+      current driver. Our next step would be to use the AD2 to test the power
+      regulator circuit. I implemented the circuit from the LM1117 datasheet and modified
+      the resistance values to regulate the voltage output. I added a capacitor for
+      ripple rejection, based on testing different values from the DC power source. I
+      also plan to add a Zener  diode to the circuit to smoothen the voltage output
+      for higher current values. The circuit is demonstrated in the figure below.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal><img border=0 width=192 height=144 id="Picture 10"
+      src="Team/progress/progress3pics/image006.jpg"
+      alt="A close-up of a circuit board&#10;&#10;Description automatically generated with low confidence"><img
+      border=0 width=268 height=144 id="Picture 6"
+      src="Team/progress/progress3pics/image007.png"
+      alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>I learned about prototyping with circuit components to
+      achieve the required signal. I used the oscilloscope, DC power supply, and
+      multimeter, comprehensively to select the right components and produce useful
+      signals. Moreover, I gained integral knowledge about the sound waves that we
+      receive from different instruments in music. This would be beneficial as we are
+      developing an algorithm that reacts to different sections and instruments in music
+      inputs. </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>The next steps would be to integrate the circuitry and code
+      to develop a fully functional breadboard prototype. We would also work on
+      fine-tuning the circuitry to receive optimal data. Concurrently, I am working
+      with Graeme on writing code for Fast Fourier Transform to generate useful data,
+      and I am working with Kahaan on writing code to use this data to generate LED
+      output patterns. </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
       <p class=MsoNormal>WEEK 2: </p>
 
       <p class=MsoNormal>Date: 01/20/2023 </p>
@@ -60,6 +313,20 @@ contact course staff.
       <p class=MsoNormal>Total Hours: 12 </p>
 
       <p class=MsoNormal>Description of Design Efforts:</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>• What did the student work on? </p>
+
+      <p class=MsoNormal>• How did the student work on it? (Tools? Programs? Test
+      rig? Etc.) </p>
+
+      <p class=MsoNormal>• What was the result, and how does this affect the project?
+      </p>
+
+      <p class=MsoNormal>• What did the student learn? </p>
+
+      <p class=MsoNormal>• What are the next steps that must be taken?</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -85,11 +352,12 @@ contact course staff.
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal><img width=157 height=251 id="Picture 5"
-      src="Team/progress/progress3pics/image001.png"><img width=155 height=251 id="Picture 4"
-      src="Team/progress/progress3pics/image002.png"
+      <p class=MsoNormal><img border=0 width=157 height=251 id="Picture 5"
+      src="Team/progress/progress3pics/image008.png"><img border=0 width=155 height=251
+      id="Picture 4" src="Team/progress/progress3pics/image009.png"
       alt="A picture containing text, indoor, display&#10;&#10;Description automatically generated"><img
-      width=153 height=251 id="Picture 3" src="Team/progress/progress3pics/image003.png"></p>
+      border=0 width=153 height=251 id="Picture 3"
+      src="Team/progress/progress3pics/image010.png"></p>
 
       <p class=MsoNormal>I contributed to building and testing the first prototype of
       our microphone circuitry with Graeme. This was a big success as it maps out to
@@ -111,12 +379,12 @@ contact course staff.
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal><img width=376 height=286 id="Picture 1"
-      src="Team/progress/progress3pics/image004.png"
+      <p class=MsoNormal><img border=0 width=376 height=286 id="Picture 1"
+      src="Team/progress/progress3pics/image011.png"
       alt="Diagram&#10;&#10;Description automatically generated"></p>
 
-      <p class=MsoNormal><img width=153 height=330 src="Team/progress/progress3pics/image005.jpg"
-      align=left hspace=12
+      <p class=MsoNormal><img width=153 height=330
+      src="Team/progress/progress3pics/image012.jpg" align=left hspace=12
       alt="A picture containing text, indoor, monitor, computer&#10;&#10;Description automatically generated">I
       also focused on several team tasks such as team discussions and the development
       of a top-level system flowchart with Kahaan.  This allowed us to rethink our
@@ -127,8 +395,8 @@ contact course staff.
       would distinguish our device from similar product which can be developed in the
       timeframe of our project. Kahaan and I also worked on prototyping bluetooth
       connection between our microcontroller and a phone app. Secifically, I helped
-      him establish a connection with the microcontroller through PlatformIO. While
-      this is just a basic test, we will attempt to send data packets for our next
+      him establish a connection with the microcontroller through PlatformIO. While this
+      is just a basic test, we will attempt to send data packets for our next
       prototype.</p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -150,149 +418,22 @@ contact course staff.
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal>WEEK 3: </p>
-
-      <p class=MsoNormal>Date: 01/20/2023 </p>
-
-      <p class=MsoNormal>Total Hours: 18 </p>
-
-      <p class=MsoNormal>Description of Design Efforts:</p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal>This week I prototyped a lot of our components. I developed a
-      DC-DC 12V to 5V voltage regulator, an AUX input for music, and a high-pass
-      hardware filter for microphone input. Moreover, I developed code for software
-      filtering of microphone input. I also worked with Kahaan on developing code for
-      LED output. I worked with Anurag for determining LED input signals and
-      understanding bitwise operations. Lastly, I worked with Graeme for exploring
-      fast Fourier transform of our audio signal. </p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal>To develop the 50Hz high pass filter, I implemented a
-      modified version of a <a
-      href="https://www.electronics-tutorials.ws/filter/filter_6.html">standard design</a>.
-      I used the existing LM324 IC that we used for amplification on the microphone
-      and modified the gain so that we have a peak-to-peak voltage of 1V. The hardware
-      filter was beneficial to filter our environmental noise which resulted from no
-      sound input. Therefore, the resulting ADC input involved clearly distinguishable
-      values when there was no sound versus when there was sound being played into
-      the microphone. The resulting waves will be demonstrated during our next MANLAB,
-      but it is simply a filtered variation of our previous result (from Week 2). The
-      software filtering fundamentally picks up ADC values when the resulting wave
-      presents a voltage level within a certain threshold, thereby filtering out
-      higher voltages that are generated from noise. </p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal>Thereon, I implemented the AUX input. There is close to no noise
-      since it is a wired connection. This would be a good benchmark for our
-      microphone input. This was simply a matter of smoothing the raw aux input and
-      reading it from an ADC pin. I developed a simple RC circuit to smoothen the values
-      and used these to explore the types of signals that we would encounter. I also
-      implemented a potentiometer to adjust the ‘volume’, or voltage level, of our
-      signal. The RC circuit also ensures that this circuit also has a peak-to-peak
-      voltage of 1V so that it is directly comparable to the microphone values.  The
-      resulting wave can be seen in the figures below and will also be demonstrated
-      in the next MANLAB.</p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal><img border=0 width=128 height=122 id="Picture 7"
-      src="Team/progress/progress3pics/image006.png"
-      alt="A picture containing text, indoor, electronics, computer&#10;&#10;Description automatically generated"><img
-      border=0 width=173 height=122 id="Picture 8" src="Team/progress/progress3pics/image007.png"><img
-      border=0 width=162 height=121 id="Picture 9" src="Team/progress/progress3pics/image008.jpg"
-      alt="A picture containing text, electronics, circuit&#10;&#10;Description automatically generated"></p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal>The DC-DC voltage regulator is similar to what Kahaan has
-      demonstrated on his Progress Report. However, we have not tested it with a
-      current driver. Our next step would be to use the AD2 to test the power
-      regulator circuit. I implemented the circuit from the LM1117 datasheet and
-      modified the resistance values to regulate the voltage output. I added a capacitor
-      for ripple rejection, based on testing different values from the DC power
-      source. I also plan to add a Zener  diode to the circuit to smoothen the
-      voltage output for higher current values. The circuit is demonstrated in the figure
-      below.</p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal><img border=0 width=192 height=144 id="Picture 10"
-      src="Team/progress/progress3pics/image009.jpg"><img border=0 width=268 height=144
-      id="Picture 6" src="Team/progress/progress3pics/image010.png"
-      alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal>I learned about prototyping with circuit components to
-      achieve the required signal. I used the oscilloscope, DC power supply, and multimeter,
-      comprehensively to select the right components and produce useful signals.
-      Moreover, I gained integral knowledge about the sound waves that we receive
-      from different instruments in music. This would be beneficial as we are
-      developing an algorithm that reacts to different sections and instruments in music
-      inputs. </p>
-
-      <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal>The next steps would be to integrate the circuitry and code
-      to develop a fully functional breadboard prototype. We would also work on fine-tuning
-      the circuitry to receive optimal data. Concurrently, I am working with Graeme
-      on writing code for Fast Fourier Transform to generate useful data, and I am
-      working with Kahaan on writing code to use this data to generate LED output
-      patterns. </p>
-
-      <p class=MsoNormal>&nbsp;</p>
+      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
       <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>Week 4:</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>Date: 02/03/2023</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>Total Hours: 5</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>Description of
-      Design Efforts:</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>This week was
-      more about completing all the structural elements of our design. I focused on
-      mainly having conceptual discussions of the final concept with Anurag, Graeme,
-      and&nbsp;Kahaan. Our discussions involved the prioritization of work such as
-      FFT and I conducted fundamental research to support that.&nbsp;Kahaan&nbsp;and
-      I also discussed the implications of our product and talked about the expansion
-      of our device into a full-fledged smart LED system. Thereon, I worked on
-      developing the schematics of our circuits on&nbsp;KiCAD&nbsp;and verifying functionality
-      of hardware.</span></p>
+      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
       <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>Links for
-      research:</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>FFT Video:&nbsp;</span><a
-      href="https://www.youtube.com/watch?v=8YaeUYZ_Ex8"><span style='font-size:13.5pt;
-      color:#0563C1'>https://www.youtube.com/watch?v=8YaeUYZ_Ex8</span></a></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>LED FFT
-      Device:&nbsp;</span><a
-      href="https://hackaday.com/2020/12/10/esp32-spectrum-analyzer-taps-into-both-cores/#comments"><span
-      style='font-size:13.5pt;color:#0563C1'>https://hackaday.com/2020/12/10/esp32-spectrum-analyzer-taps-into-both-cores/#comments</span></a></p>
+      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
       <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>My next steps
-      would be to add footprints to the schematic and verify functionality of the
-      circuit using SPICE. I also will work with Graeme to figure out software for
-      FFT, since that task has been pending throughout the week. I would also want to
-      further discuss the mechanical aspect of our device so that we can work towards
-      the visual imagery of our device and plan our PCB accordingly. The PCB
-      schematic will be demonstrated in the upcoming MANLAB, since there are some git
-      issues with accessing the files as of now.</span></p>
+      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
-      <p class=MsoNormal>&nbsp;</p>
+      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
+
 
     </div>
 
