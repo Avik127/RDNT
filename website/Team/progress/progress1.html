@@ -56,7 +56,7 @@ contact course staff.
 
 			<h4>Week 5:</h4>
             <b>Date:</b> 2/10/23 <br>
-            <b>Total hours:</b> 7.5<br>
+            <b>Total hours:</b> 12.5<br>
             <b>Description of project design efforts:</b><br>
             Tuesday, after in-lab conversation with Graeme, I started integrating a few components together into one program. These being the Graeme's almost-done FFT program,
 			my LED basic lightup program, and the half-completed Gaussian filter I was building. First thing I did was look at Graeme's FFT program which was returning incorrect
@@ -72,14 +72,14 @@ contact course staff.
 			I changed my focus and attended Prof. Comer's office hours. I had watched a few videos and read the textbook for Convolution. Convolution is the basis of the Gaussian Filter that
 			I was building for noise reduction. But I was unsure how exactly convolving an original sample with its guassian distribution would result a smoothed sample. She explained to me that
 			I had misunderstood the gaussian distribution that was to be used for convolution. She explained that I had to implement a Gaussian distribution independent of my original sample. Therefore,
-			my work last week building the Gaussian of our sample was useless. But that is okay, it is part of learning. 
+			my work last week building the Gaussian distribution of our sample was useless. I have attached a photo of the paper Prof. Comer explained the concept to me on. 
 			<br>
 			Had some conversations with Graeme where we talked more about the audible frequencies. Came to the conclusion the range (20,16000) is most useful. Therefore, our ADC must
 			sample at a rate of at least 320000. I showed him my work and we started to figure out to get the ADC to sample at that rate. For some reason, we get useless data at any sample frequencies
-			above 10k. 
+			above 10k. We think this is related to the true sampling rate of our onboard ADC.
 			
 			<br>
-			Wednesday, came into lab and made changes to the FFT and LED light up integrated program to correctly split up the frequencies (20,16000) into 6 bins (Graeme's input). I started implemented
+			Wednesday, came into lab and made changes to the FFT and LED light up integrated program to correctly split up the frequencies (20,16000) into 6 bins (Graeme's input). I started implementing
 			noise reduction with a Gaussian filter. I was/am unsure of the correct window size and sigma value to make an appropriately smoothed input. I took readings from a 1Hz pure sinusoidal wave
 			and made sigma a function of the window. I have included the relevant spreadsheet below. The larger the window, the more smoothed the wave is. For now, the smoothing is fine but we will have to 
 			find out the perfect value from continuing experiments. Then, I worked with Graeme to diagnose the problem. We came to the conclusion that we need to test ADC's max sampling capacity. I was not present
@@ -93,6 +93,15 @@ contact course staff.
 			be able to use a main() function that will be change to control flow off timers.
 			
 			<br>
+			Friday, I got to work on the new program in Espressif32-IDF framework. I built a Hello World program and started working on timers and ADC sampling. I got basic ADC sampling not driven off a timer. 
+			This was useful but the library was deprecated so I started converted it to the new ADC library, which allows for continuous samples. This essentially calls an interrupt after our sample array is filled.
+			It is exactly what we are looking for. I couldnt get it to call a basic function in the handler but the progress was still useful. When Graeme got to lab, we started considering the display for our 
+			project. We  talked with Joe and looked at different materials. I have attached a photo of our drawing below. We will plan to get materials for this next week.
+			<br>
+			Documents:<br>
+			<img src="Team/progress/progress1pics/gausspaper.jpg" style="width:200px;height:200px;">
+			<img src="Team/progress/progress1pics/display.jpg" style="width:200px;height:200px;">
+
 
 
             <h2>Progress Report for Anurag Numboori</h2>
