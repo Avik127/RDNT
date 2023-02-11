@@ -53,38 +53,55 @@ contact course staff.
 		-->
 		<div id="content">
             <h2>Progress Report for Kahaan Patel</h2>
-            
-            <h4>Weeks 1-2: Brainstorming for High Voltage DC-DC Converter Circuit and Bluetooth</h4>
-            <b>Date: 1/20/2023 </b> <br>
-            <b>Total hours: 8 </b> <br>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Description: This week was a brainstorming week. I spend time reading about voltage regulator circuit and thinking about ICs that could be used for making the following circuit for the project. I spent time going through the BluetoothSerial.h for the ESP32. This basically involved going through the current functions available for the code that can be utilized for setting a Bluetooth connection with an app. Additionally, figured the use cases for Classic Bluetooth vs Bluetooth Low Energy. Finally, was able to develop a flowchart on Lucid Chart to put the project possibilities on a piece of paper.</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>During this process I learned about Voltage Regulator, Dividers and Buck Converters. The use cases and applications and hence was able to conclude that a regulator is a better use case for our project. In the coming week, I will be devoting time on development of hardware circuit for voltage regulator by ordering the correct components needed. Additionally, I will be performing power calculations with the team based on power requirements based on our sub modules. For Bluetooth connections, I figured that a classic mechanism is higher preferable use case as our device is powered through Wall Plug, Moreover BLE on ESP has tend shown issues with disconnecting with androids. The goal for the coming week is to get hand off Android Studio and start app development, for current prototyping I utilized the MIT app Inventor to get the basic idea. It was achieved using block with the end goal of have a rough estimate over the Bluetooth functionality between android and embedded systems. Finally working on the flowchart gave me well rounded idea about the next few potential places to work on and especially a rough estimate about the time we have to achieve these functionalities.</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Voltage regulator: I went through multiple resources online and had a discussion with the team about it , finally the goal set was to read more about creating a step-down voltage regulator for our circuit, as we are planning to utilize this for converting 10V/12V to 5V for our ESP32 and even 10V/12V to 5V for our programmable Led. We are currently keeping them on two different power lines, so the ESP32 is operatable even when the user chooses the turn off the LEDs analogous. I took the liberty of researching and pitching of choosing a voltage regulator instead of a divider because, using voltage divider will involve using large value resistors and is 80% less efficient under load. We are not considering a buck converter because we are planning on choosing a wall plug that converts ac to dc.</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf">https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf</a></p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.youtube.com/watch?v=giGRrODKJSE&ab_channel=ElectronFun.com">https://www.youtube.com/watch?v=giGRrODKJSE&amp;ab_channel=ElectronFun.com</a></p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="shorturl.at/aT058"></p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Potential ICs: LM2678 ,LM7805</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Bluetooth Functionality: So, for the following we will be utilizing references module below to check if we were able to connect to the device using android mobile and control the led device. We had a success with this, we made a basic code that sends 6-bit message from mobile to the esp32 and we used modulus of 10 to separate the 6-bit group to 2 bits where each group corresponds to three buttons on the app. The basic app Interface had three buttons on it and ability to connect and disconnect with the ESP32 and finally the status. We used MIT app inventor for the prototype now we will start coding with Android Studio as our app was operable and able to communicate with the device.</p>
-			<ol style="list-style-type: circle;">
-				<li><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h">https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h</a></li>
-				<li><a href="http://ai2.appinventor.mit.edu/#6307288898732032">http://ai2.appinventor.mit.edu/#6307288898732032</a></li>
-			</ol>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.5in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Lucid Chart : For getting a better perspective of the design process &nbsp;of the entire project. Avik and I took the liberty of making a flow chart that displays the possible routes we can take with the project. This workflow gives us a better understanding of the project and comprehend the requirements. We have added the Finally, to get started with the voltage regulator circuit I had designed a small layout that I would be want to test the following week. &nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p><br></p>
-			<img src="Team/progress/resources4/appWorking.jpg" alt="App prototype" width="400" height="500">
-			<br>
-			<img src="Team/progress/resources4/RDNT - DC_DC Regulator.jpg" alt="Lucid DC-DC" width="400" height="500">
-			<br>
-			<img src="Team/progress/resources4/RDNT - Full Diagram.jpg" alt="Lucid RDNT" width="400" height="500">
-            <br>
 
-            <h4>Week 3:</h4>
+			<h4>Week 5:</h4>
+            <b>Date:</b> 02/10/2023<br>
+            <b>Total hours:</b>8<br>
+            <b>Description of project design efforts:</b><br>
+				The folloiwng week was utilized in creating a basic UML Diagram for the application used with our final prototype. Spend some additional time on 
+				understanding Beat Tracking mechanism and curating a plan for pattern generation based on sound profile.
+				<br>
+				The program requried minimal knowledge about android , hence I completed few basic tutorials . That involves the first Unit 1 to Unit 3 which convers
+				android studio , building a basic layout , Kotlin fundamentals , Adding Button , Interacting with UI , some advacned Kotlin fundamental. The further focus was to 
+				find resources and libraries that would be useful for the app , one such example is the color pallette tool that we would offer our users to pick color for the LEDs.
+				<a href="https://www.geeksforgeeks.org/how-to-create-a-color-picker-tool-in-android-using-color-wheel-and-slider/">Color Pallete</a>
+				<br>
+				The basic design for the app :-
+				<img src="Team/progress/resources4/AppDesign.drawio.png" alt="App Design Diagram" width="300" height="300">
+
+				<br>
+				The team is currently utilizing FFT to generate a better sound profile of the current playable audio delivered to the device. Although other 
+				then FFT , would be using conecpts of machine learning recurrent neural networks and then joining outputs using Bayesian network. The reason to pursue using machine
+				learning is for having an alternate concept to FFT , thats a four step process involving 1) Preprocessing Audio Signals 2) Training and fine tuning RNN model
+				3) Model of best fit 4) Applying Dynamic Bayesian Network. 
+				<a href="https://www.youtube.com/watch?v=lecy8kEjC3Q&ab_channel=MachineLearningTV">Resource to understand Dynamic Bayesian</a>
+				<a href="https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/">Audio Data Analysis</a>
+				Post getting the sound profile , its important to generate thr right visual output , hence I spent sometime figuring at what sound frequency or profile , 
+				which kind of light pattern should be generated. I wasn't able to find a lot out of it and will probably give some more time towards this next week.
+
+
+
+			<h4>Week 4:</h4>
+            <b>Date:</b> 02/03/2023<br>
+            <b>Total hours:</b>4<br>
+            <b>Description of project design efforts:</b><br>
+				The following week I made progress on app development and working with the LEDs.
+				<br>
+				So I spent most of my time learning App development in Android Studio as its a new concept. I have followed the labs on the android Studio
+				devloper course. The course was referred in previous weeks progress report. Moreover , I went through a current project that uses Bluetooth Low Energy (BLE) 
+				on esp32 and an adroid application for it's control.<a href="https://github.com/kakopappa/bluetooth_android_esp32_example">ESP32 Arduino Android BLE Example</a>
+				<br>
+				I spent most of my time in the lab working on multiple parts for setting up LEDs. Firstly , we needed to cut the strips in the group of 5s and 
+				as we wanted to test them in small batch , we spent few moments soldering the LEDs. I developed code for multiple LED functions for LED Bounce , LED Flashing Change.
+				After setting up the LEDs , I spent some time setting up the schematics of KiCad with Avik . Developing the schematics for voltage circuit on KiCad and for the coming week I would be
+				focusing on working with Avik for PCB Design and starting the implemenation for the App.
+
+				I havent doucmented pictures as , previous progress reports displayed the preliminary parts used for this weeks work Will have a more conclusive update next week wit more documentation.
+
+
+
+
+			<h4>Week 3:</h4>
             <b>Date:</b> 01/27/2023<br>
             <b>Total hours:</b>8<br>
             <b>Description of project design efforts:</b><br>
@@ -117,24 +134,36 @@ contact course staff.
   			Your browser does not support the video tag.
 			</video>
 
-			<h4>Week 4:</h4>
-            <b>Date:</b> 02/03/2023<br>
-            <b>Total hours:</b>4<br>
-            <b>Description of project design efforts:</b><br>
-				The following week I made progress on app development and working with the LEDs.
-				<br>
-				So I spent most of my time learning App development in Android Studio as its a new concept. I have followed the labs on the android Studio
-				devloper course. The course was referred in previous weeks progress report. Moreover , I went through a current project that uses Bluetooth Low Energy (BLE) 
-				on esp32 and an adroid application for it's control.<a href="https://github.com/kakopappa/bluetooth_android_esp32_example">ESP32 Arduino Android BLE Example</a>
-				<br>
-				I spent most of my time in the lab working on multiple parts for setting up LEDs. Firstly , we needed to cut the strips in the group of 5s and 
-				as we wanted to test them in small batch , we spent few moments soldering the LEDs. I developed code for multiple LED functions for LED Bounce , LED Flashing Change.
-				After setting up the LEDs , I spent some time setting up the schematics of KiCad with Avik . Developing the schematics for voltage circuit on KiCad and for the coming week I would be
-				focusing on working with Avik for PCB Design and starting the implemenation for the App.
-
-				I havent doucmented pictures as , previous progress reports displayed the preliminary parts used for this weeks work Will have a more conclusive update next week wit more documentation.
-
-
+            
+            <h4>Weeks 1-2: Brainstorming for High Voltage DC-DC Converter Circuit and Bluetooth</h4>
+            <b>Date: 1/20/2023 </b> <br>
+            <b>Total hours: 8 </b> <br>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Description: This week was a brainstorming week. I spend time reading about voltage regulator circuit and thinking about ICs that could be used for making the following circuit for the project. I spent time going through the BluetoothSerial.h for the ESP32. This basically involved going through the current functions available for the code that can be utilized for setting a Bluetooth connection with an app. Additionally, figured the use cases for Classic Bluetooth vs Bluetooth Low Energy. Finally, was able to develop a flowchart on Lucid Chart to put the project possibilities on a piece of paper.</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>During this process I learned about Voltage Regulator, Dividers and Buck Converters. The use cases and applications and hence was able to conclude that a regulator is a better use case for our project. In the coming week, I will be devoting time on development of hardware circuit for voltage regulator by ordering the correct components needed. Additionally, I will be performing power calculations with the team based on power requirements based on our sub modules. For Bluetooth connections, I figured that a classic mechanism is higher preferable use case as our device is powered through Wall Plug, Moreover BLE on ESP has tend shown issues with disconnecting with androids. The goal for the coming week is to get hand off Android Studio and start app development, for current prototyping I utilized the MIT app Inventor to get the basic idea. It was achieved using block with the end goal of have a rough estimate over the Bluetooth functionality between android and embedded systems. Finally working on the flowchart gave me well rounded idea about the next few potential places to work on and especially a rough estimate about the time we have to achieve these functionalities.</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Voltage regulator: I went through multiple resources online and had a discussion with the team about it , finally the goal set was to read more about creating a step-down voltage regulator for our circuit, as we are planning to utilize this for converting 10V/12V to 5V for our ESP32 and even 10V/12V to 5V for our programmable Led. We are currently keeping them on two different power lines, so the ESP32 is operatable even when the user chooses the turn off the LEDs analogous. I took the liberty of researching and pitching of choosing a voltage regulator instead of a divider because, using voltage divider will involve using large value resistors and is 80% less efficient under load. We are not considering a buck converter because we are planning on choosing a wall plug that converts ac to dc.</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf">https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf</a></p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.youtube.com/watch?v=giGRrODKJSE&ab_channel=ElectronFun.com">https://www.youtube.com/watch?v=giGRrODKJSE&amp;ab_channel=ElectronFun.com</a></p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="shorturl.at/aT058"></p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Potential ICs: LM2678 ,LM7805</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Bluetooth Functionality: So, for the following we will be utilizing references module below to check if we were able to connect to the device using android mobile and control the led device. We had a success with this, we made a basic code that sends 6-bit message from mobile to the esp32 and we used modulus of 10 to separate the 6-bit group to 2 bits where each group corresponds to three buttons on the app. The basic app Interface had three buttons on it and ability to connect and disconnect with the ESP32 and finally the status. We used MIT app inventor for the prototype now we will start coding with Android Studio as our app was operable and able to communicate with the device.</p>
+			<ol style="list-style-type: circle;">
+				<li><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h">https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h</a></li>
+				<li><a href="http://ai2.appinventor.mit.edu/#6307288898732032">http://ai2.appinventor.mit.edu/#6307288898732032</a></li>
+			</ol>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.5in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Lucid Chart : For getting a better perspective of the design process &nbsp;of the entire project. Avik and I took the liberty of making a flow chart that displays the possible routes we can take with the project. This workflow gives us a better understanding of the project and comprehend the requirements. We have added the Finally, to get started with the voltage regulator circuit I had designed a small layout that I would be want to test the following week. &nbsp;</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+			<p><br></p>
+			<img src="Team/progress/resources4/appWorking.jpg" alt="App prototype" width="400" height="500">
+			<br>
+			<img src="Team/progress/resources4/RDNT - DC_DC Regulator.jpg" alt="Lucid DC-DC" width="400" height="500">
+			<br>
+			<img src="Team/progress/resources4/RDNT - Full Diagram.jpg" alt="Lucid RDNT" width="400" height="500">
+            <br>
 
                       
         </div>
