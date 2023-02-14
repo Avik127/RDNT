@@ -57,99 +57,106 @@ contact course staff.
             <b>Date:</b> 2/10/23 <br>
             <b>Total hours:</b> 4<br>
             <b>Description of project design efforts:</b><br>
-			Saturday, came into lab and worked with Avik on the CAD models required for the Mechanical Overview. Talked about the final design and got some valuable input on 
-			me and Graeme's mockup. Went home and finished up all the remaining documentation. Spent a decent amount of time considering parts and location in the PCB housing.
+			<p>
+				Saturday, came into lab and worked with Avik on the CAD models required for the Mechanical Overview. Talked about the final design and got some valuable input on 
+				me and Graeme's mockup. Went home and finished up all the remaining documentation. Spent a decent amount of time considering parts and location in the PCB housing.
+			</p>
+
+			<br>			
 
 			<h4>Week 5:</h4>
             <b>Date:</b> 2/10/23 <br>
             <b>Total hours:</b> 12.5<br>
             <b>Description of project design efforts:</b><br>
-            Tuesday, after in-lab conversation with Graeme, I started integrating a few components together into one program. These being the Graeme's almost-done FFT program,
-			my LED basic lightup program, and the half-completed Gaussian filter I was building. First thing I did was look at Graeme's FFT program which was returning incorrect
-			frequncies. The frequencies returned were consistently off by a factor or 3.26 or 4.12 depending on setup. I looked at some online tutorials and start removing dead code 
-			that was making the code run slower. After a while, I was able to get reproducibly correct values for frequency ranges (500,1500). I realized that the program was working correctly,
-			but had the wrong values for total samples per loop and the frequency in which ADC samples are taken. I had gotten (500,1500) frequency ranged correctly isolated working with 
-			Samples,SamplesFreq = 64,1000. I realized that the total samples would need to be raised to get the low frequencies correctly isolated. I implemented a test with Samples=128 then 256 then 512.
-			I started getting more and more correct values for the low frequency values. At 512 samples, I was getting a value within 0.1% for values 20Hz to 50Hz. This was very promising so I started to 
-			try to figure out why the high frequencies were still off. I started experimented with a constant sample value = 512 and changing the sample frequency up and down. After many tests, I 
-			I was unable to realize I could not isolate frequencies above or equal to half my sampling frequency. I had a quick conversation with Graeme and he explained that this was due to
-			the Nyquist Sample Rate which states that you cannot sample a signal with a frequency less than double the original frequency, which matched my experiments exactly. 
-			<br>
-			I changed my focus and attended Prof. Comer's office hours. I had watched a few videos and read the textbook for Convolution. Convolution is the basis of the Gaussian Filter that
-			I was building for noise reduction. But I was unsure how exactly convolving an original sample with its guassian distribution would result a smoothed sample. She explained to me that
-			I had misunderstood the gaussian distribution that was to be used for convolution. She explained that I had to implement a Gaussian distribution independent of my original sample. Therefore,
-			my work last week building the Gaussian distribution of our sample was useless. I have attached a photo of the paper Prof. Comer explained the concept to me on. 
-			<br>
-			Had some conversations with Graeme where we talked more about the audible frequencies. Came to the conclusion the range (20,16000) is most useful. Therefore, our ADC must
-			sample at a rate of at least 320000. I showed him my work and we started to figure out to get the ADC to sample at that rate. For some reason, we get useless data at any sample frequencies
-			above 10k. We think this is related to the true sampling rate of our onboard ADC.
-			
-			<br>
-			Wednesday, came into lab and made changes to the FFT and LED light up integrated program to correctly split up the frequencies (20,16000) into 6 bins (Graeme's input). I started implementing
-			noise reduction with a Gaussian filter. I was/am unsure of the correct window size and sigma value to make an appropriately smoothed input. I took readings from a 1Hz pure sinusoidal wave
-			and made sigma a function of the window. I have included the relevant spreadsheet below. The larger the window, the more smoothed the wave is. For now, the smoothing is fine but we will have to 
-			find out the perfect value from continuing experiments. Then, I worked with Graeme to diagnose the problem. We came to the conclusion that we need to test ADC's max sampling capacity. I was not present
-			for Graeme and Avik's test of the capability of the ADC.
+            <p>
+				Tuesday, after in-lab conversation with Graeme, I started integrating a few components together into one program. These being the Graeme's almost-done FFT program,
+				my LED basic lightup program, and the half-completed Gaussian filter I was building. First thing I did was look at Graeme's FFT program which was returning incorrect
+				frequncies. The frequencies returned were consistently off by a factor or 3.26 or 4.12 depending on setup. I looked at some online tutorials and start removing dead code 
+				that was making the code run slower. After a while, I was able to get reproducibly correct values for frequency ranges (500,1500). I realized that the program was working correctly,
+				but had the wrong values for total samples per loop and the frequency in which ADC samples are taken. I had gotten (500,1500) frequency ranged correctly isolated working with 
+				Samples,SamplesFreq = 64,1000. I realized that the total samples would need to be raised to get the low frequencies correctly isolated. I implemented a test with Samples=128 then 256 then 512.
+				I started getting more and more correct values for the low frequency values. At 512 samples, I was getting a value within 0.1% for values 20Hz to 50Hz. This was very promising so I started to 
+				try to figure out why the high frequencies were still off. I started experimented with a constant sample value = 512 and changing the sample frequency up and down. After many tests, I 
+				I was unable to realize I could not isolate frequencies above or equal to half my sampling frequency. I had a quick conversation with Graeme and he explained that this was due to
+				the Nyquist Sample Rate which states that you cannot sample a signal with a frequency less than double the original frequency, which matched my experiments exactly. 
+				<br>
+				I changed my focus and attended Prof. Comer's office hours. I had watched a few videos and read the textbook for Convolution. Convolution is the basis of the Gaussian Filter that
+				I was building for noise reduction. But I was unsure how exactly convolving an original sample with its guassian distribution would result a smoothed sample. She explained to me that
+				I had misunderstood the gaussian distribution that was to be used for convolution. She explained that I had to implement a Gaussian distribution independent of my original sample. Therefore,
+				my work last week building the Gaussian distribution of our sample was useless. I have attached a photo of the paper Prof. Comer explained the concept to me on. 
+				<br>
+				Had some conversations with Graeme where we talked more about the audible frequencies. Came to the conclusion the range (20,16000) is most useful. Therefore, our ADC must
+				sample at a rate of at least 320000. I showed him my work and we started to figure out to get the ADC to sample at that rate. For some reason, we get useless data at any sample frequencies
+				above 10k. We think this is related to the true sampling rate of our onboard ADC.
+				
+				<br>
+				Wednesday, came into lab and made changes to the FFT and LED light up integrated program to correctly split up the frequencies (20,16000) into 6 bins (Graeme's input). I started implementing
+				noise reduction with a Gaussian filter. I was/am unsure of the correct window size and sigma value to make an appropriately smoothed input. I took readings from a 1Hz pure sinusoidal wave
+				and made sigma a function of the window. I have included the relevant spreadsheet below. The larger the window, the more smoothed the wave is. For now, the smoothing is fine but we will have to 
+				find out the perfect value from continuing experiments. Then, I worked with Graeme to diagnose the problem. We came to the conclusion that we need to test ADC's max sampling capacity. I was not present
+				for Graeme and Avik's test of the capability of the ADC.
+
+				<br>
+				I arrived after they were getting the conclusion of the test and talked with Avik to evaluate the cause of this problem. They came to the conclusion that our currentsampling system has a large
+				computing load. This load does not allow the ADC to correctly sample when we want it to sample above 10k Hz. The solution to this problem is to drive the sampling with a timer of 40 kHz frequency.
+				This value is from the Nyquist Sample Rate, which needs to be double our goal frequency. I talked to Avik about this and he gave me a good gameplan how to rework our program. It means that we will have
+				to abandon the Arduino framework and use espressif32. This is a large undertaking that we will be doing. It essentially means recoding everything to get away from the loop() and setup() system and 
+				be able to use a main() function that will be change to control flow off timers.
+				
+				<br>
+				Friday, I got to work on the new program in Espressif32-IDF framework. I built a Hello World program and started working on timers and ADC sampling. I got basic ADC sampling not driven off a timer. 
+				This was useful but the library was deprecated so I started converted it to the new ADC library, which allows for continuous samples. This essentially calls an interrupt after our sample array is filled.
+				It is exactly what we are looking for. I couldnt get it to call a basic function in the handler but the progress was still useful. When Graeme got to lab, we started considering the display for our 
+				project. We  talked with Joe and looked at different materials. I have attached a photo of our drawing below. We will plan to get materials for this next week.
+				<br>
+				Documents:<br>
+				<img src="Team/progress/progress1pics/gausspaper.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/display.jpg" style="width:200px;height:200px;">
+			</p>
 
 			<br>
-			I arrived after they were getting the conclusion of the test and talked with Avik to evaluate the cause of this problem. They came to the conclusion that our currentsampling system has a large
-			computing load. This load does not allow the ADC to correctly sample when we want it to sample above 10k Hz. The solution to this problem is to drive the sampling with a timer of 40 kHz frequency.
-			This value is from the Nyquist Sample Rate, which needs to be double our goal frequency. I talked to Avik about this and he gave me a good gameplan how to rework our program. It means that we will have
-			to abandon the Arduino framework and use espressif32. This is a large undertaking that we will be doing. It essentially means recoding everything to get away from the loop() and setup() system and 
-			be able to use a main() function that will be change to control flow off timers.
-			
-			<br>
-			Friday, I got to work on the new program in Espressif32-IDF framework. I built a Hello World program and started working on timers and ADC sampling. I got basic ADC sampling not driven off a timer. 
-			This was useful but the library was deprecated so I started converted it to the new ADC library, which allows for continuous samples. This essentially calls an interrupt after our sample array is filled.
-			It is exactly what we are looking for. I couldnt get it to call a basic function in the handler but the progress was still useful. When Graeme got to lab, we started considering the display for our 
-			project. We  talked with Joe and looked at different materials. I have attached a photo of our drawing below. We will plan to get materials for this next week.
-			<br>
-			Documents:<br>
-			<img src="Team/progress/progress1pics/gausspaper.jpg" style="width:200px;height:200px;">
-			<img src="Team/progress/progress1pics/display.jpg" style="width:200px;height:200px;">
-
-
 
             <h2>Progress Report for Anurag Numboori</h2>
 			<h4>Week 4:</h4>
             <b>Date:</b> 2/3/23 <br>
             <b>Total hours:</b> 11<br>
             <b>Description of project design efforts:</b><br>
-            Tuesday, started researching Neopixel and FastLED libraries. Discovered FastLED uses neopixel to drive LEDs. Used FastLED to
-			start the basis of our final displays with the LEDs. Got a system working for a series LED configuration with a customizable amount of LED devices. 
-			My first idea is to map 5 bins of frequencies to 5 "bins" of LEDs. We will customize internal bins inside our main 5 bins. Then, depending on the frequency
-			returned by FFT, we will illuminate the "sub-bins" of the bin that the frequency corresponds to. I did a first mockup of this idea without the 
-			changing colors for sub-bins as I have not calculated that yet. As our FFT was not completed yet, I used randomly generated numbers for frequency.
-			The program will probably end up using multiples of 5.At some point, we will likely not use the library and instead use the old PWM signals I was working on. 
-			But right now, we are trying to get as much possible working as fast as possible. I attached a link to the documentation I was using below.
-		<br>
-			Wednesday, I realized that I had not considered the cases in which users have less than 5 LEDs connected. I made some changes to my algorihm.
-			I am still working to create the seperation of colors inside of "sub-bins". Note for the second test, I removed the randomly generated frequencies and instead
-			put one frequency for each bin for bins 1-5. You cannot see the 5th bin as there are only 4 connected (proof of &#605 working).
-		<br>
-			Thursday, came into lab. Started realizing we need a beat detection algorithm. Researched this instead of continuing the different output modes.
-			Different output modes for prototyping are still useful, but only 1 is required for full prototyping. The next output modes I will build will be for parallel configurations
-			and one in which there are no 5 LED "bins" and instead ALL the LEDs flash the corresponding frequency color. Had a long conversation with Avik about the usefulness of noise minimization.
-			Made it clear that the next goal after a rudimentary beat detection algo is to work on a software solution for noise control. 
-<br>
-			Talked to Prof. Cormer to figure out a good direction for noise reduction algorithm. Described problem and intended goal and she reccomended Gaussian Blur.
-			Did some research into the properties of Gaussian Blur and decideded it would be useful. This is because it acts like a software low pass filter but doesn't
-			fully filter the high frequencies that will be useful (hi-hats). 
-<br>
-			Friday, I got to lab and got to work on build a basic 1-D gaussian noise reduction program that will display results of ADC readings
-			and the gaussian blur on ADC readings. I attached my main source of information below. It has been a long time since I worked with statistics so it took a long amount of time to correctly use and calculate
-			the standard deviation and variance for the Gaussian distribution. I used a graphing application to check the correctness of my values. I have attached a screenshot of
-			it below. I was successful in the end and have attached my text file below that demonstrates the Gaussian distribution being built for an signal input through the AUX-in.
-			 The next step in the noise reduction program is to combine the outputted Gaussian distribution with a convolution function that will return the input signal with noise
-			reduction on it.  </br>
-			
-			Documents:<br>
-			<a href="https://github.com/FastLED/FastLED/wiki/Rgb-calibration">FastLED Documentation</a> <br>
-			<a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/gsmooth.htm">Information on Gaussian Distribution</a> <br>
-			<a href="Team/progress/progress1pics/gaussian.txt"> Results of building a Gaussian </a><br>
-			<img src="Team/progress/progress1pics/GaussianDistribution.png" style="width:200px;height:200px;">
-			<img src="Team/progress/progress1pics/flashing.gif" style="width:200px;height:200px;">
-			<br>
+            <p>
+				Tuesday, started researching Neopixel and FastLED libraries. Discovered FastLED uses neopixel to drive LEDs. Used FastLED to
+				start the basis of our final displays with the LEDs. Got a system working for a series LED configuration with a customizable amount of LED devices. 
+				My first idea is to map 5 bins of frequencies to 5 "bins" of LEDs. We will customize internal bins inside our main 5 bins. Then, depending on the frequency
+				returned by FFT, we will illuminate the "sub-bins" of the bin that the frequency corresponds to. I did a first mockup of this idea without the 
+				changing colors for sub-bins as I have not calculated that yet. As our FFT was not completed yet, I used randomly generated numbers for frequency.
+				The program will probably end up using multiples of 5.At some point, we will likely not use the library and instead use the old PWM signals I was working on. 
+				But right now, we are trying to get as much possible working as fast as possible. I attached a link to the documentation I was using below.
+				<br>
+				Wednesday, I realized that I had not considered the cases in which users have less than 5 LEDs connected. I made some changes to my algorihm.
+				I am still working to create the seperation of colors inside of "sub-bins". Note for the second test, I removed the randomly generated frequencies and instead
+				put one frequency for each bin for bins 1-5. You cannot see the 5th bin as there are only 4 connected (proof of &#605 working).
+				<br>
+				Thursday, came into lab. Started realizing we need a beat detection algorithm. Researched this instead of continuing the different output modes.
+				Different output modes for prototyping are still useful, but only 1 is required for full prototyping. The next output modes I will build will be for parallel configurations
+				and one in which there are no 5 LED "bins" and instead ALL the LEDs flash the corresponding frequency color. Had a long conversation with Avik about the usefulness of noise minimization.
+				Made it clear that the next goal after a rudimentary beat detection algo is to work on a software solution for noise control. 
+				<br>
+				Talked to Prof. Cormer to figure out a good direction for noise reduction algorithm. Described problem and intended goal and she reccomended Gaussian Blur.
+				Did some research into the properties of Gaussian Blur and decideded it would be useful. This is because it acts like a software low pass filter but doesn't
+				fully filter the high frequencies that will be useful (hi-hats). 
+				<br>
+				Friday, I got to lab and got to work on build a basic 1-D gaussian noise reduction program that will display results of ADC readings
+				and the gaussian blur on ADC readings. I attached my main source of information below. It has been a long time since I worked with statistics so it took a long amount of time to correctly use and calculate
+				the standard deviation and variance for the Gaussian distribution. I used a graphing application to check the correctness of my values. I have attached a screenshot of
+				it below. I was successful in the end and have attached my text file below that demonstrates the Gaussian distribution being built for an signal input through the AUX-in.
+				The next step in the noise reduction program is to combine the outputted Gaussian distribution with a convolution function that will return the input signal with noise
+				reduction on it.  
+				<br>
+				Documents:<br>
+				<a href="https://github.com/FastLED/FastLED/wiki/Rgb-calibration">FastLED Documentation</a> <br>
+				<a href="https://homepages.inf.ed.ac.uk/rbf/HIPR2/gsmooth.htm">Information on Gaussian Distribution</a> <br>
+				<a href="Team/progress/progress1pics/gaussian.txt"> Results of building a Gaussian </a><br>
+				<img src="Team/progress/progress1pics/GaussianDistribution.png" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/flashing.gif" style="width:200px;height:200px;">
+			</p>
 
 			<br>
 
@@ -157,23 +164,29 @@ contact course staff.
             <b>Date:</b> 1/27/23 <br>
             <b>Total hours:</b> 7<br>
             <b>Description of project design efforts:</b><br>
-            Tried getting bluetooth basic connection working. Got it working. Worked out the duty cycle for DATA control for LEDs.
-			Worked with PWM outputs to build duty cycle on protype circuit. On Thursday, I got duty cycles working from PWN outputs.
-			This allows us to build 0 and 1 inputs to our data pin on the LED.
-			On friday, I built some control flows for the 0,1 duty cycle inputs to our data pin. We also got the LED strip in the mail.
-			I tried testing the inputs but could not get anything productive to work. I accidentally destroyed 3 LEDs but thankfully I had disconnected
-			them from the rest of the strip so everything else is fine. The team was able to use a library for changing the colors of the LEDs, so we will probably not 
-			use the duty cycle with PWM for the data pin. Worked on documents with the team.
-			<img src="Team/progress/progress1pics/IMG_4288.jpg" style="width:200px;height:200px;">
-			<img src="Team/progress/progress1pics/IMG_4299.jpg" style="width:200px;height:200px;">
-			<img src="Team/progress/progress1pics/IMG_4301.jpg" style="width:200px;height:200px;">
+            <p>
+				Tried getting bluetooth basic connection working. Got it working. Worked out the duty cycle for DATA control for LEDs.
+				Worked with PWM outputs to build duty cycle on protype circuit. On Thursday, I got duty cycles working from PWN outputs.
+				This allows us to build 0 and 1 inputs to our data pin on the LED.
+				On friday, I built some control flows for the 0,1 duty cycle inputs to our data pin. We also got the LED strip in the mail.
+				I tried testing the inputs but could not get anything productive to work. I accidentally destroyed 3 LEDs but thankfully I had disconnected
+				them from the rest of the strip so everything else is fine. The team was able to use a library for changing the colors of the LEDs, so we will probably not 
+				use the duty cycle with PWM for the data pin. Worked on documents with the team.
+				<br>
+				Documents:<br>
+				<img src="Team/progress/progress1pics/IMG_4288.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/IMG_4299.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/IMG_4301.jpg" style="width:200px;height:200px;">
+			</p>
+
 			<br>
 
             <h4>Weeks 1-2:</h4>
             <b>Date:</b> 1/20/23 <br>
             <b>Total hours:</b> 13 <br>
             <b>Description of project design efforts:</b>
-			<p>This week was mostly spent researching, fleshing out the design, and getting hardware to prototype with.
+			<p>
+				This week was mostly spent researching, fleshing out the design, and getting hardware to prototype with.
 				First thing I did was get the website hosted and customized for our team. I then reached out to some friends and procured addressable LED strips for prototyping.
 				Worked with the team to figure out how to bias the strip for different colors. The ones I was able to get had 4 pins: one each for RGB and 1 for 12V. This proved useful for testing but
 				unusable for the final design. I kept looking for hardware we could use for prototyping (microphone, TRRS jack) and worked with Graeme to test out our microphone without amplification.
@@ -184,13 +197,11 @@ contact course staff.
 				This tool will tell us if we need to depend on a seperate module for the ADC or we can use the onboard ADC. Spent some time with the other members thinking about how to consolidate the final functionality
 				and we settled on the 3 Modes switching from external controls. I did some research into the FFT algorithm that we will need to start working with after we have audio input from the ADC. I also did some research
 				on how diodes work to see how useful a Zener Diode will be for stepping power down and to brush up on general operations for driving the LEDs. Finally, worked with the team to finish up documentation required for the course.
-
+				<br>
 				Note: I forgot to take photos this week but I will try to have many for the next weeks.
 			</p>
 
 			<br>
-
-
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
