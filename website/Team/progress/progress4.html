@@ -53,6 +53,37 @@ contact course staff.
 		-->
 		<div id="content">
             <h2>Progress Report for Kahaan Patel</h2>
+			<h4>Week 6:</h4>
+            <b>Date:</b> 02/17/2023<br>
+            <b>Total hours:</b>8<br>
+            <b>Description of project design efforts:</b><br>
+
+			The following week was dedicated towards making sure our project has all the hardware requirnments and start working on android studio.<br>
+
+			For ensuring the Hardware requirements and procuring the needful parts , first we verified all the desings and thne articulates the ones that need replacement.
+			There were two components of the entire project that needed to be changed. The first and foremost was the powering capabiliteis for ESP32 , we need to redo our calculations and work 
+			according to the need of the project. We identified from the datasheet of <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">ws2812b</a> that each color pixel requires approximately 20 mA current. Hence for one single Led that value of current
+			comes upto 60 mA. So when we have 2 strips of 12 on each plank of wood, we are using 144 leds , that roughly appoximates to 9A. Hence we will be going for adapter thats able to convert wall supply
+			to 5V with atleast 9A. This over esimtation is to consider other current draw in the system. Then we moved ahead and Avik and I , worked on choosing the ICs required for power conversion of 5V , 9A to 3.3V,0.5A . To power
+			the ESP32. For doing this we utilized the TI workbench and came up with the following design. <a
+			href="https://www.ti.com/design-resources/design-tools-simulation/webench-power-designer.html?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=app-null-null-58700006320820903_webenchhtml5-cpc-pp-google-wwe&amp;utm_content=TI_Webench&amp;ds_k=ti+webench&amp;DCM=yes&amp;gclid=Cj0KCQiA6LyfBhC3ARIsAG4gkF8M3Y3uZtUszYcQ7rAoGKO9LfFryGWbG3NkEEvzY0SKZ41GqCg1au4aAvXEEALw_wcB&amp;gclsrc=aw.ds">TI
+			Webench</a><br>
+			
+			Then we made the BOM and added the footprints and created the following desing on our KiCAD.<br>
+
+
+			<img src="Team/progress/resources4/img002.png" alt="LM1117 Circuit Diagram" width="500" height="500"><br>
+
+			The second component that we identified was the audio multiplexer that needed a little change. We are currently choosing the following component <a href="https://www.analog.com/en/products/adg3257.html#product-overview">ADG3257</a>.
+			The following could change during team dicussion over the weekedn.
+
+			Other then the power requirnments for the module I started working on the code for both android and esp that focuses on the Blueetooth Connectivity feature to idenify protocls needed I came 
+			across Blueetoh GaTT profile. <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGatt">Blueetoh Documentation for Android Studio. </a> For ESP32 points I figured 
+			the following useuful docuementation by espressif : <a href="https://github.com/espressif/esp-idf/tree/045163a2ec/examples/bluetooth/bluedroid/ble/gatt_client">ESP 32 Blueetoh</a>
+
+			The goal for the coming week would be to start implementing the blueetoh functionality and able to communicate and on the other hand prototype the hardware for power. Finalize the audio mux and 
+			prototype it for 3 chanels of input.
+
 
 			<h4>Week 5:</h4>
             <b>Date:</b> 02/10/2023<br>
