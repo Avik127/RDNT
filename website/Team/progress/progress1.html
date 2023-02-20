@@ -53,6 +53,25 @@ contact course staff.
 		-->
 		<div id="content">
 
+			<h4>Week 7:</h4>
+            <b>Date:</b> 2/24/23 <br>
+            <b>Total hours:</b> 4<br>
+            <b>Description of project design efforts:</b><br>
+			<p>
+				Saturday, I spent 4 hours working on the FFT library that Graeme and I were trying to get working. After some fiddling with the example programs and careful
+				testing of the functions (a few functions were completely useless/incorrect), I was able to get the FFT evaulation to work. I was at my apartment so I didn't have
+				a way to connect to the ADC readings, so I came into lab and merged my program with the ADC sampling program from last week. As of right now, the program samples continuously,
+				then computes FFT on the sample. It does not send messages to the message sender as I realized we could not use FastLED library for this. This is because in the new ADC sampling
+				library, we are already using I2S to drive the ADC sampling. Therefore, we must use a non-I2S library to drive our LEDs. We will probably have to use RMT but I was very
+				happy with the progress I stopped for the day.
+
+				Monday, I came in for an hour and updated the website and some documents.  
+				
+				<br>
+				Documents:<br>
+
+			</p>
+
 			<h4>Week 6:</h4>
             <b>Date:</b> 2/17/23 <br>
             <b>Total hours:</b> 8.5<br>
