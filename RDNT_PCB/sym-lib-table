@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "RDNT_PCB-altium-import")(type "KiCad")(uri "${KIPRJMOD}/RDNT_PCB-altium-import.kicad_sym")(options "")(descr ""))
+  (lib (name "RDNT_PCB-eagle-import")(type "KiCad")(uri "${KIPRJMOD}/RDNT_PCB-eagle-import.kicad_sym")(options "")(descr ""))
+)

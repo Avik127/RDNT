@@ -1,4 +1,4 @@
-20950486472171672
+20968931671972645
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -80429,6 +80429,20 @@ rotary encoder
 0
 7
 6
+SamacSys_Parts
+NE555DR
+D (R-PDSO-G8)
+Integrated Circuit
+0
+8
+8
+SamacSys_Parts
+SOIC127P600X175-16N
+D (R-PDSO-G16)
+Integrated Circuit
+0
+16
+16
 Sensor
 Aosong_DHT11_5.5x12.0_P2.54mm
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/DHT11.pdf
@@ -81976,6 +81990,62 @@ Logo WEEE
 0
 0
 0
+TMUX1309QDYYRQ1
+TMUX1309QDYYRQ1
+
+
+0
+16
+16
+TPS563300_Power_Circuit
+C_Boot_CAPC1005X55N
+
+
+0
+2
+2
+TPS563300_Power_Circuit
+C_IN_CAPC3216X180N
+
+
+0
+2
+2
+TPS563300_Power_Circuit
+C_OUT_CAPC3225X270N
+GRM32 L=3.2mm W=2.5mm T=2.5mm
+Capacitor
+0
+2
+2
+TPS563300_Power_Circuit
+L1_HCM0703-4R7-R
+
+
+0
+2
+2
+TPS563300_Power_Circuit
+R_FBB_RESC1005X40N
+
+
+0
+2
+2
+TPS563300_Power_Circuit
+R_FBT_RESC1508X50N
+
+
+0
+2
+2
+TPS563300_Power_Circuit
+TPS563300DRLR
+DRL0008A
+Integrated Circuit
+0
+8
+8
 TerminalBlock
 TerminalBlock_Altech_AK300-2_P5.00mm
 Altech AK300 terminal block, pitch 5.0mm, 45 degree angled, see http://www.mouser.com/ds/2/16/PCBMETRC-24178.pdf
@@ -87566,6 +87636,13 @@ Varistor
 RV_Rect_V25S440P_L26.5mm_W8.2mm_P12.7mm
 Varistor, V25S440P, https://www.littelfuse.com/media?resourcetype=datasheets&itemid=b410c42c-51d1-460e-b1d9-d105d93c9679&filename=littelfuse-varistor-ultramov25s-datasheet
 varistor
+0
+2
+2
+electret_mic
+MIC_CMA-4544PF-W
+
+
 0
 2
 2
