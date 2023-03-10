@@ -53,6 +53,37 @@ contact course staff.
 		-->
 		<div id="content">
 
+			<h4>Week 8-9:</h4>
+            <b>Date:</b> 3/10/23 <br>
+            <b>Total hours:</b>50<br>
+            <b>Description of project design efforts:</b><br>
+			<p>
+			I verified all major components for the PCB design by checking each component's data sheet and comparing it to the footprint associated to each part.
+			I spent about 6 hours working on the presentation with the rest of team. This included updating the packaging specifications to match new information from the PCB design.
+			After the presentation, I spent 40 hours in lab from Sunday to Friday. This included working with the team to prototype different microphones. All of my work was concerning the 
+			amplifier that Joe gave us the design for. It was very important that this part was prototyped and completed ASAP so we could finalize our design. I isolated every section of the amplifier circuit
+			and tested everything individually. This gave me the conclusion that we had not been supplying our LM324 with enough voltage. I rebuilt the circuit and got very good results with 
+			the correct power to the LM324. I have attached photos of oscilloscope readings with Gain (A_v) = 10. However, this is not acceptable for our ADC as it can only read 0V-3.3V.
+			Graeme and I worked together to modify this circuit and continuously recalculate values to lower the Gain and Input voltage to an acceptable range that would not damage our microcontroller.
+			I have attached photos that demonstrate our formulas.
+			<br>
+			After this was complete, we prototyped the entire circuit on a breadboard, often needing to recalculate different voltage offsets. This was a sizable task to ensure our final design would work.
+			Afterwards, me and Graeme made sizable changes to our schematic, redesigning every major analog component with prototyped and confirmed values. We also did lots of research and planned the 
+			use of every microcontroller pin that would be important for our design. We found backups for every pin in case of a problem in prototyping. We also spent a lot of time figuring out where
+			decoupling capacitors would go, as this was a new concept to both of us.
+			<br>
+			On Friday, the rest of the group met and we fixed all errors on the schematic and analyzed every pin of every component. This included creating global headers for DGND, AGND,5V,Vcc and creating headers where
+			LED pins could be connected. We spent a few hours working on the PCB layout, essentially starting from scratch. I left after a few hours as I was feeling very tired.
+			<br>
+				Documents:<br>
+				<img src="Team/progress/progress1pics/formulas.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/AUX_circuit.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/amp_voltage.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/gpio.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/gain10.jpg" style="width:200px;height:200px;">
+				
+			</p>
+
 			<h4>Week 7:</h4>
             <b>Date:</b> 2/24/23 <br>
             <b>Total hours:</b> 12<br>
