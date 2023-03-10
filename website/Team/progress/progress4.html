@@ -55,6 +55,60 @@ contact course staff.
             <h2>Progress Report for Kahaan Patel</h2>
 
 			<p><br></p>
+			<h4>Week 8 and Week 9:</h4>
+            <b>Date:</b> 03/10/2023<br>
+            <b>Total hours:</b>40<br>
+            <b>Description of project design efforts:</b><br>
+
+			The following two weeks I had focues on the following set of tasks:- 
+			<ol style="list-style-type: decimal;">
+				<li>Midterm Presentation</li>
+				<li>Inverting OP-AMP reffered from Texas Instruments</li>
+				<li>Non-Inverting OP AMP </li>
+				<li>Blueetooth implemenation</li>
+			</ol>
+			<br>
+			
+			<h5>Midterm Presentation</h5>
+			For the midterm week , the focues was on developing the Midterm Presentation, I had to complete the major components slide section and the software 
+			slide for the app development. Additionally for the project timeline , developed the initial gantt chart which Anurag later on changed as per need.
+			During making this presentation , got an opportunity to review our designs and prototyping progress , post presentation , we decided we need immediate
+			work for our amplifier circuit on the Microphone.
+
+			<h6>Inverting OP-AMP reffered from Texas Instruments</h6>
+
+			The next step as mentioned was focusing on the microphone amplifer circuit , we initially started with Inverting OP AMP circuit using 
+			LM324. The design was inspired from Texas Instruments design for <a href="https://www.ti.com/lit/ug/tidu765/tidu765.pdf?ts=1677731739021">Singel Supply , Electret Microphone Pre-Amplifierf Reference Desing</a>
+			Using the following desing template I was able to calculate the respected values and fine tune for simulating a similar design with LM324 on LTspice with the following circuit design :- 
+			<br>
+			<img src="Team/progress/resources4/SimulationLM324.png" alt="App Design" width="500" height="500"><br>
+			Due to a Inverting signal , I needed to shift the signal , made use of the voltage divider at the output point for being able to shift the signal at the origing range of 1.65V
+			<br>
+			The output signal for the following circuit looks like following :- 
+			<img src="Team/progress/resources4/InvertingLM324.png" alt="App Design" width="500" height="500"><br>
+			After simulating the following , worked on implementing the following circuit on the circuit , we were able to get the audio signal amplified although there 
+			was a potential issue of the audio signal clipping , althought the achieved a high clarity sound output after the amplification when tested using a TRRS jack to headphone out.Althought the voltage 
+			difference achieved between the signals wasn't upto mark.
+			
+			<h6>Non-Inverting OP AMP</h6>
+
+			After not getting the results needed the team went ahead with implementing a Non-inverting OP AMP , for this attempt we used a basic RC circuit with high pass and low pass implemented on input and output 
+			respectively. The result we achieved with the following had issues with sound clarity but had good amplification. Although Anurag and Graeme pulled a clutch on the following desing and fine tuned modded 
+			the desing to perfection for our project.
+
+			<h6>Bluetooth implemenation</h6>
+			The bluetooth functionalities have issues on different sdk version of android , additionally the BLE and Classic Bluetooth implemenation have changed with the newwer android version 
+			although the past sdk have depreceated function. Found multiple resources that will be utilized this moment onwards for bluetooth implementation. We are done with other 
+			functionalities of the app and will be done when done implemenating bluetooth after navigating from poor docuementation of bluetooth for low energy on android's guide.
+			The resources identifed are :
+			<li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-2-47a3cdaade07">Medium Android BLE Part 1</a></li>
+			<li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-2-47a3cdaade07">Medium Android BLE Part 2</a></li>
+			<li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-3-117d3a8aee23">Medium Android BLE Part 3</a></li>
+			<li><a href="https://devzone.nordicsemi.com/cfs-file/__key/communityserver-blogs-components-weblogfiles/00-00-00-00-04-DZ-1046/2604.BLE_5F00_on_5F00_Android_5F00_v1.0.1.pdf">Nordic Semi BLE</a></li>
+
+
+
+
 <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Week 7: PCB Design and App design</p>
 <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Date: 2/24/2023</p>
 <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Total hours: - 3</p>
@@ -112,10 +166,10 @@ contact course staff.
 			The following could change during team dicussion over the weekedn.
 
 			Other then the power requirnments for the module I started working on the code for both android and esp that focuses on the Blueetooth Connectivity feature to idenify protocls needed I came 
-			across Blueetoh GaTT profile. <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGatt">Blueetoh Documentation for Android Studio. </a> For ESP32 points I figured 
-			the following useuful docuementation by espressif : <a href="https://github.com/espressif/esp-idf/tree/045163a2ec/examples/bluetooth/bluedroid/ble/gatt_client">ESP 32 Blueetoh</a>
+			across bluetooth GaTT profile. <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGatt">bluetooth Documentation for Android Studio. </a> For ESP32 points I figured 
+			the following useuful docuementation by espressif : <a href="https://github.com/espressif/esp-idf/tree/045163a2ec/examples/bluetooth/bluedroid/ble/gatt_client">ESP 32 bluetooth</a>
 
-			The goal for the coming week would be to start implementing the blueetoh functionality and able to communicate and on the other hand prototype the hardware for power. Finalize the audio mux and 
+			The goal for the coming week would be to start implementing the bluetooth functionality and able to communicate and on the other hand prototype the hardware for power. Finalize the audio mux and 
 			prototype it for 3 chanels of input.
 
 
