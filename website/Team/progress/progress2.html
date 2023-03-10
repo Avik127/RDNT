@@ -53,8 +53,49 @@ contact course staff.
 		-->
 		<div id="content">
 			<h2>Progress Report for Graeme Usman</h2>
-			<h4>Week 6:</h4>
-            <b>Date:</b> 17 February 2023 <br>
+			<h4>Week 8-9:</h4>
+            <b>Date:</b> 10 March 2023 <br>
+            <b>Total hours:</b> 25 <br>
+            <b>Description of project design efforts:</b><br>
+			Our presentation during Week 8 was on Thursday, so much of my effort for this class was spent working on the presentation up until Thursday. I worked on the slides for project overview, 
+			component choice, designed the block diagram and refined it with Anurag, prototyping, and schematic. 
+			
+			After the presentation, we took the feedback of our design and began fixing, adding, or completely redesigning almost every part of our cricuit. Over Friday and Saturday, I was able to 
+			solder the correct TMUX that we will be using for our design. From there, I was able to confirm that I did not burn it out during the soldering process, and prove its functionality 
+			by sending in an analog signal from the AD2, a song through our AUX jack, and the third input was just grounded (but this is where the Bluetooth-DAC output will be going through). 
+			By sending a high voltage through the select lines in different combinations, I was able to see that the inputs were changing depending on what select lines where high or low. 
+			<div id=""> 
+				<img src="Team/progress/progress2pics/TMUX_circuit.jpg" width="500" height="500"></img>
+			</div>
+			On Monday, the team decided that the multiple iterations of our op amp circuit was too cumbersome to keep changing layouts and resistor/capacitor values, so we decided to (try to) use 
+			LTSpice to try and simulate what is best. On Tuesday, Anurag and I began prototyping a new microphone circuit, testing it with our MUX, and I kept updating our scehmatic. I wired together a
+			debouced button circuit we could use for our input mode select, and added a JTAG Programming header to our schematic. 
+			<div id="main_div"> 
+				<div id="that's the power of the home depot">
+					<img src="Team/progress/progress2pics/anu_work.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/button_debounced.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/aux_in_out.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/aux_into_mux.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/voltage_divider.jpg" width="200" height="200"></img>
+				</div>
+			</div>
+			On Thursday, Anurag had finished building a microphone circuit, and when I came in we verified the circuit and the equations he used to find values. He and I then went and 
+			revised some resistor and capacitor values by reading the oscilliscope so it would be readable by the ADC while also being safe for the pins to take in. With the microphone 
+			finally decided on and tested, we added it to our schematic, as well as some more needed changes. 
+			<div id="main_div"> 
+				<div id="that's the power of the home depot">
+					<img src="Team/progress/progress2pics/mic_final.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/mic_output.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/mic_output2.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/thursday_schem.jpg" width="200" height="200"></img>
+				</div>
+			</div>
+			On Friday, I came in just as another voice in order to make some final checks and input on the final schematic and PCB design decisions. 
+
+		<div id="content">
+			<h2>Progress Report for Graeme Usman</h2>
+			<h4>Week 7:</h4>
+            <b>Date:</b> 24 February 2023 <br>
             <b>Total hours:</b> 3 <br>
             <b>Description of project design efforts:</b><br>
 			I was not able to work as much as I planned to this week due to some assignments and exams for other classes. However, I was able to learn from Joe to solder very small ICs that we
