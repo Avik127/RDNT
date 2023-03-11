@@ -53,6 +53,100 @@ contact course staff.
 		-->
 		<div id="content">
 
+      <p class=MsoNormal>WEEK 9:</p>
+
+      <p class=MsoNormal>Date: 03/10/2023</p>
+
+      <p class=MsoNormal>Total Hours: 23</p>
+
+      <p class=MsoNormal>Description of Design Efforts:</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>We learned, over the design review, that our schematic was
+      lacking in several areas. To begin, we were told that our microphone amplifier
+      circuit would not work. While we had prototyped this circuit, we had not tested
+      the audio signal with a connection to a speaker. Therefore, our initial
+      response was to create a different microphone amplifier circuit and test it
+      with an AUX-out connection. I personally created several different circuits
+      based on research from various sources:</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoListParagraphCxSpFirst style='text-indent:-.25in'>1.<span
+      style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+      href="https://www.homemade-circuits.com/how-to-build-microphone-amplifier/">https://www.homemade-circuits.com/how-to-build-microphone-amplifier/</a></p>
+
+      <p class=MsoListParagraphCxSpMiddle style='text-indent:-.25in'>2.<span
+      style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+      href="https://www.youtube.com/watch?v=VspakFxznms&amp;ab_channel=YouLikeElectronic">https://www.youtube.com/watch?v=VspakFxznms&amp;ab_channel=YouLikeElectronic</a></p>
+
+      <p class=MsoListParagraphCxSpLast style='text-indent:-.25in'>3.<span
+      style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+      href="https://www.ti.com/lit/ug/tidu765/tidu765.pdf?ts=1677731739021">https://www.ti.com/lit/ug/tidu765/tidu765.pdf?ts=1677731739021</a></p>
+
+      <p class=MsoNormal>I found that the single-supply electret microphone
+      pre-amplifier circuitry methodology made the most sense to me because it
+      described, in detail, how the signal is passed and amplified through the LM324
+      circuit. This circuit provided us with high quality audio, but very limited
+      gain. I was unable to raise the gain by a significant enough amount due to high
+      parasitic capacitance that causes instability in the output audio signal.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>We thereon consulted lab staff about the amplifier circuit.
+      They helped us design an initial circuit that I prototyped on LTSpice. </p>
+
+      <p class=MsoNormal><img border=0 width=244 height=153 id="Picture 15"
+      src="Team/progress/progress3pics/image001.png"
+      alt="Chart, histogram&#10;&#10;Description automatically generated"><img
+      border=0 width=217 height=165 id="Picture 16"
+      src="Team/progress/progress3pics/image002.png"
+      alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>This circuit provided us with sufficient gain to produce a
+      reliable audio signal in simulation. However, we learned that due to the high
+      sensitivity of our amplifier, the range of the input signal can vary over small
+      changes in volume. Therefore, we found that at certain volumes, the
+      amplification was too high, causing the signal to be distorted and,
+      unfortunately, destroying Anurag’s very expensive personal headphones. We
+      thereon realized that we must simply modify this circuit to provide reliable
+      output levels for the maximum range of volumes that are generally expected in
+      the use-case. Anurag and Graeme worked together on modifying this circuit based
+      on my initial simulation and testing.</p>
+
+      <p class=MsoNormal>I also worked heavily on ensuring that several other parts
+      of the circuit were corrected. For instance, we found out in the design review,
+      that we were missing several decoupling capacitors, and pull-up and pull-down
+      on various pins. We were also missing a JTAG programmer, reset and boot logic,
+      and had incorrectly routed AUX-In and AUX-out signals. We distributed the work
+      in a manner where I worked with Kahaan extensively on the amplifier circuit,
+      while Anurag and Graeme worked on the AUX circuitry. Thereon, Anurag and Graeme
+      joined our efforts after correcting the AUX circuitry and also referenced
+      various documentation to ensure that several parts of the schematic were
+      corrected. I worked with them to ensure that the ERC on KiCAD was complete and
+      that we followed power and ground specification.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Due to the extensive amount of work to be done, we were
+      unable to order the PCB today, and would likely only be able to order it on
+      Monday. We have reported this to Joe, who would be helping us on Monday to
+      ensure that our PCB design is complete. I worked for a long period of time
+      today on completing the schematic and also starting the PCB design. I have
+      completed the PCB layout and have started adding traces. I have also mapped out
+      the various power and ground zones, which we are able to do before putting in traces
+      since they are in their designated two layers of our now four-layer PCB design.
+      I hope to complete an iteration of our design and upload it by the end of the
+      weekend. We would thereon work with lab staff on Monday to make any amendments
+      and order our PCB.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
       <p class=MsoNormal>WEEK 7:</p>
 
       <p class=MsoNormal>Date: 02/24/2023</p>
@@ -123,12 +217,12 @@ contact course staff.
       and manufacturing. I learned about the conventions to keep in mind during
       design, and also a few techniques that can be used for simpler layouts that
       would help during debugging. There are a lot of fine details that I learned
-      about the types of layers and the various factors affecting traces. My key takeaway,
-      in simple terms, was that once I have set the footprints, setting up the PCB
-      layout for the extent of this class would simply be a matter of following
-      convention and paying attention to the detail of functionality that we have
-      already learned about through the lectures. Therefore, I am confident that I
-      would be able to create an effective design.</p>
+      about the types of layers and the various factors affecting traces. My key
+      takeaway, in simple terms, was that once I have set the footprints, setting up
+      the PCB layout for the extent of this class would simply be a matter of
+      following convention and paying attention to the detail of functionality that
+      we have already learned about through the lectures. Therefore, I am confident
+      that I would be able to create an effective design.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -138,6 +232,7 @@ contact course staff.
       or to the lab instructors on Monday.</p>
 
       <p class=MsoNormal>&nbsp;</p>
+
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal>WEEK 6:</p>
@@ -161,8 +256,8 @@ contact course staff.
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal><img width=468 height=322 id="Picture 13"
-      src="Team/progress/progress3pics/image001.png"
+      <p class=MsoNormal><img border=0 width=468 height=322 id="Picture 13"
+      src="Team/progress/progress3pics/image003.png"
       alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal><br>
@@ -187,7 +282,7 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=297 height=131 id="Picture 14"
-      src="Team/progress/progress3pics/image002.png"
+      src="Team/progress/progress3pics/image004.png"
       alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -224,21 +319,21 @@ contact course staff.
       schematic to PCB layout on KiCAD.</p>
 
       <p class=MsoNormal><img width=171 height=228
-      src="Team/progress/progress3pics/image003.jpg" align=left hspace=12
+      src="Team/progress/progress3pics/image005.jpg" align=left hspace=12
       alt="A white board with writing on it&#10;&#10;Description automatically generated with low confidence"></p>
 
       <p class=MsoNormal>To begin, we discussed the design of our final prototype.
       Throughout this discussion, I found that Graeme and I had different prototype
       designs in mind. Graeme was focused on developing an audio visualizer. This
-      would involve having a histogram-like set of led strips that represent
-      different bands of frequencies. Thereon, categorization of FFT outputs would
-      simply be mapped to the frequencies on this fixture. However, my idea was to
-      take this further and develop a design of our own fixture, which categorizes
-      the FFT outputs in a creative and aesthetic way that is not as apparent as a
-      direct mapping of the frequencies. We concluded that we could set the direct
-      mapping as a milestone to verify the functionality of our software. Then, we
-      can simply customize the mapping depending on the amount of time that we have
-      left and the design effort that we put in each week.</p>
+      would involve having a histogram-like set of led strips that represent different
+      bands of frequencies. Thereon, categorization of FFT outputs would simply be
+      mapped to the frequencies on this fixture. However, my idea was to take this
+      further and develop a design of our own fixture, which categorizes the FFT
+      outputs in a creative and aesthetic way that is not as apparent as a direct
+      mapping of the frequencies. We concluded that we could set the direct mapping
+      as a milestone to verify the functionality of our software. Then, we can simply
+      customize the mapping depending on the amount of time that we have left and the
+      design effort that we put in each week.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -247,8 +342,8 @@ contact course staff.
       working on this fixture over the weekend. However, a major requirement of this
       model would be estimating the size of our circuitry. Therefore, we will plan to
       leave some room for adjustment in this model. Since the product must be
-      aesthetic for its use-case, we will also need to consider a method to secure
-      and hide the wired connections from our microcontroller to the LED strips.
+      aesthetic for its use-case, we will also need to consider a method to secure and
+      hide the wired connections from our microcontroller to the LED strips.
       Currently, we are planning to maintain a wooden casing for the circuitry and
       have internal connections to the lights. This would become more apparent and
       concrete as we design a basic CAD model over the weekend. </p>
@@ -256,7 +351,7 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img width=149 height=132
-      src="Team/progress/progress3pics/image004.png" align=left hspace=12
+      src="Team/progress/progress3pics/image006.png" align=left hspace=12
       alt="Text, whiteboard&#10;&#10;Description automatically generated">I also
       discussed the conversion of our test code into software for our final
       prototype. The code structure that we have followed so far is too slow for
@@ -404,13 +499,13 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=128 height=122 id="Picture 7"
-      src="Team/progress/progress3pics/image005.png"
+      src="Team/progress/progress3pics/image007.png"
       alt="A picture containing text, indoor, electronics, computer&#10;&#10;Description automatically generated"><img
       border=0 width=173 height=122 id="Picture 8"
-      src="Team/progress/progress3pics/image006.png"
+      src="Team/progress/progress3pics/image008.png"
       alt="A picture containing text, indoor&#10;&#10;Description automatically generated"><img
       border=0 width=162 height=121 id="Picture 9"
-      src="Team/progress/progress3pics/image007.jpg"
+      src="Team/progress/progress3pics/image009.jpg"
       alt="A picture containing text, electronics, circuit&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -428,10 +523,10 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=192 height=144 id="Picture 10"
-      src="Team/progress/progress3pics/image008.jpg"
+      src="Team/progress/progress3pics/image010.jpg"
       alt="A close-up of a circuit board&#10;&#10;Description automatically generated with low confidence"><img
       border=0 width=268 height=144 id="Picture 6"
-      src="Team/progress/progress3pics/image009.png"
+      src="Team/progress/progress3pics/image011.png"
       alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -483,10 +578,10 @@ contact course staff.
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal>This week, I worked on several initial functions for the
-      project. This includes setting up the hardware interface, generating ideas for
-      the functional specifications, prototyping these ideas, and starting the
-      initial discussion of the final design concept.</p>
+      <p class=MsoNormal>This week, I worked on several initial functions for the project.
+      This includes setting up the hardware interface, generating ideas for the
+      functional specifications, prototyping these ideas, and starting the initial
+      discussion of the final design concept.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -506,11 +601,11 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=157 height=251 id="Picture 5"
-      src="Team/progress/progress3pics/image010.png"><img border=0 width=155 height=251
-      id="Picture 4" src="Team/progress/progress3pics/image011.png"
+      src="Team/progress/progress3pics/image012.png"><img border=0 width=155 height=251
+      id="Picture 4" src="Team/progress/progress3pics/image013.png"
       alt="A picture containing text, indoor, display&#10;&#10;Description automatically generated"><img
       border=0 width=153 height=251 id="Picture 3"
-      src="Team/progress/progress3pics/image012.png"></p>
+      src="Team/progress/progress3pics/image014.png"></p>
 
       <p class=MsoNormal>I contributed to building and testing the first prototype of
       our microphone circuitry with Graeme. This was a big success as it maps out to
@@ -533,11 +628,11 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=376 height=286 id="Picture 1"
-      src="Team/progress/progress3pics/image013.png"
+      src="Team/progress/progress3pics/image015.png"
       alt="Diagram&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal><img width=153 height=330
-      src="Team/progress/progress3pics/image014.jpg" align=left hspace=12
+      src="Team/progress/progress3pics/image016.jpg" align=left hspace=12
       alt="A picture containing text, indoor, monitor, computer&#10;&#10;Description automatically generated">I
       also focused on several team tasks such as team discussions and the development
       of a top-level system flowchart with Kahaan.  This allowed us to rethink our
@@ -557,8 +652,8 @@ contact course staff.
       <p class=MsoNormal>Throughout this week, I established a fail-faster attitude
       among our group. I learned that the key to move forward is to rapidly prototype
       and learn from the results. There are several technical topics where I had to
-      revisit material from previous classes, such as op-amps for the microphone filter,
-      Fourier transformation for signal processing, and creating an aux-in
+      revisit material from previous classes, such as op-amps for the microphone
+      filter, Fourier transformation for signal processing, and creating an aux-in
       connection. I believe the key takeaway for me was to collaborate with my
       teammates to quickly learn and prototype. I hope to begin development of the
       final schematic and get started with the PCB design by Week 4.</p>
@@ -570,22 +665,6 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal>&nbsp;</p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
-
-      <p class=MsoNormal><span style='font-size:13.5pt;color:black'>&nbsp;</span></p>
 
 
     </div>
