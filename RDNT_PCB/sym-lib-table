@@ -1,4 +1,5 @@
 (sym_lib_table
   (lib (name "RDNT_PCB-altium-import")(type "KiCad")(uri "${KIPRJMOD}/RDNT_PCB-altium-import.kicad_sym")(options "")(descr ""))
   (lib (name "RDNT_PCB-eagle-import")(type "KiCad")(uri "${KIPRJMOD}/RDNT_PCB-eagle-import.kicad_sym")(options "")(descr ""))
+  (lib (name "TMUX")(type "Legacy")(uri "C:/Users/pcadm/Downloads/ul_PTMUX1308QDYYRQ1/KiCAD/2023-03-07_17-15-41/2023-03-07_17-15-41.lib")(options "")(descr ""))
 )
