@@ -54,6 +54,28 @@ contact course staff.
 		<div id="content">
             <h2>Progress Report for Kahaan Patel</h2>
 
+			<h4>Week 9 and Week 10:</h4>
+            <b>Date:</b> 03/24/2023<br>
+            <b>Total hours:</b>8<br>
+            <b>Description of project design efforts:</b><br>
+
+			For the following week I have completed the basics of the Android app that communicates with an ESP32 device using Bluetooth Low Energy (BLE). 
+			The app, as it stands, includes basic functionality for connecting to the ESP32 device, sending messages, and opening a dancing visualizer fragment.
+			<br>
+			I have implemented an instance of the ESP32BLE class, which provides methods for scanning for BLE devices, connecting to a device, sending messages, and disconnecting. The class also includes a BluetoothConnectionStatus enum to keep track of the current connection status. Additionally, I have included code to check whether Bluetooth is enabled and request the user's permission to access the device's location, which is required to perform BLE scanning.
+			The UI of the app includes three buttons: a connect/disconnect button, a button to send a message to the ESP32 device, and a button to open a dancing visualizer fragment. When the user clicks the connect/disconnect button, the app will either connect to or disconnect from the ESP32 device, depending on the current connection status. The button's text will change to reflect the current state of the connection. When the user clicks the button to send a message to the ESP32 device, the app will send a message containing the text "Hello from Android" to the connected device, if there is one. If there is no device connected, the app will display a message prompting the user to connect first. When the user clicks the button to open the dancing visualizer fragment, the app will replace the current UI with the dancing visualizer fragment.
+			<br>
+			Moving forward, I am introducing new pages to the app for user customization. This will allow users to customize the app's behavior and appearance to better suit their needs. I plan to include options for changing the color scheme, selecting different animations for the dancing visualizer, and setting up custom commands for the ESP32 device.
+			<br>
+			Moreover I will try to convert the arduino code to espesriff idf , implement new features in the app . And work on the code for the final project.
+			
+			<br>
+			<video width="320" height="240" controls>
+			<source src="Team/progress/resources4/bluetooth.mp4" type="video/mp4">
+		    </video>
+			<br>
+
+
 			<p><br></p>
 			<h4>Week 8 and Week 9:</h4>
             <b>Date:</b> 03/10/2023<br>
