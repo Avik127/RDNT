@@ -52,6 +52,39 @@ contact course staff.
 			and include things such as a file lister (for listing out homework assignments or tutorials)
 		-->
 		<div id="content">
+			<h4>Weeks 11:</h4>
+            <b>Date:</b> 3/31/23 <br>
+            <b>Total hours:</b> 8<br>
+            <b>Description of project design efforts:</b><br>
+			<p>
+				This week I started working on the software again. My first goal was to create a program that we can use to check the MCU's functionality when it is soldered on the board. So quickly, I whipped up a program using the 
+				Arduino framework that flashes the Case LEDs. Then I began to remake the program in the Espressif-IDF that we will use in our final design. I was attempting to not use any 3rd party libraries or drivers and control everything
+				with the LEDC API provided in Espressif-IDF.
+				<br>
+				
+				I had used the FastLED library when I was prototyping with the Arduino Framework so I know that is possible to only use one GPIO pin to drive the LED strips. My first plan was to create PWM signals using APIs in the Espressif-IDF.
+				I achieved two succeses: I was able to light up the LEDs with full white and then blink them on a timer. I then tried and failed to the get the system working with different colors or with some of the LEDs lighting up, not the full strip.
+				I came to the realization that the API I was using (LEDC) does not have enough control over the PWM signal to be able to use it for our final project. I do not consider this a complete failure however,
+				as prior to the failure, I had archetyped a general system for controlling each bit to be used in our message sender. My problem is now to find a timer system that can give me this precise bit control where I require it.
+				I began looking at RMT which many LED drivers use. I will also look at the FastLED implementation to see if I can find a good API that I have been missing out on.
+				<br>
+
+				I also did more research on FreeRTOS and tried to understand tasks more deeply. This is because our final code will require FreeRTOS to balance the many tasks thats will be completed.
+				<br>
+
+				When I was in the lab with Graeme, I did a little bit more practice soldering. I soldered some of the 3-pin connector on one of our boards. However, he had realized it was uneven so he had to desolder it.
+				Nonetheless, it was good practice.
+				<br>
+				Documents:<br>
+				<img src="Team/progress/progress1pics/desmoscalc.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/whitelights.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/pwm.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/blinking.gif" style="width:200px;height:200px;">
+				
+			</p>
+				
+			</p>
+
 			<h4>Weeks Spring Break-10:</h4>
             <b>Date:</b> 3/24/23 <br>
             <b>Total hours:</b> 15<br>
