@@ -19,6 +19,6 @@
 # copy file to server using sshpass
 # chnage the source path /mnt/c/Users/kahaa/Documents/Github/RDNT/website/* according to your soruce file path
 
-#sshpass -f ../../pass.txt scp -r /mnt/c/Users/kahaa/Documents/Github/RDNT/website/* 477grp18@shay.ecn.purdue.edu:~/web/
+sshpass -f ../../pass.txt scp -r /mnt/c/Users/kahaa/Documents/Github/RDNT/website/* 477grp18@shay.ecn.purdue.edu:~/web/
 
-sshpass -f ../../pass.txt scp -r /Users/avikwadhwa/Desktop/Work/Purdue/Academics/Year 4/Spring 2023/SDESIGN/RDNT/website/* 477grp18@shay.ecn.purdue.edu:~/web/
+#sshpass -f ../../pass.txt scp -r /Users/avikwadhwa/Desktop/Work/Purdue/Academics/Year 4/Spring 2023/SDESIGN/RDNT/website/* 477grp18@shay.ecn.purdue.edu:~/web/
