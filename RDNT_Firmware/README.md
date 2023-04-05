@@ -10,7 +10,7 @@ This program requires FastLED library and runs in the Arduino framework. It blin
 ### TestMCU_CaseLEDNoLibraries.c
 This program requies no libraries and implements the same functions as above by manually controlling the PWM signals. This program uses Espressif-IDF framework and is closer to the final implementation.
 
-## TestMCU_ModeButton.c
+### TestMCU_ModeButton.c
 This program is used to test that the mode button has been implemented correctly. It is lacking state reflection on the case LED, that will be implemented in the next file.
 
 
