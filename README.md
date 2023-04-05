@@ -7,4 +7,4 @@ To create patterns we will send PWM signals to the data pin of the LED strips, t
 
 See our website for more information: https://engineering.purdue.edu/477grp18/
 
-Current Stage: Prototyping Software and Building PCB Layout
+Current Stage: Soldering components onto our PCB, working on final software, and creating device packaging
