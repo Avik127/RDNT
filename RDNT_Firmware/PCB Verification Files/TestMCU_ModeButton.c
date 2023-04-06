@@ -10,7 +10,7 @@
 // This program is the fastest way to confirm the mode switch button is operating
 // Currently lacking: change the Case LED based on state
 
-#define GPIO_MODE_INPUT 22
+#define GPIO_MODE_INPUT 27
 #define GPIO_INPUT_PIN_SEL ((1ULL << GPIO_MODE_INPUT))
 #define ESP_INTR_FLAG_DEFAULT 0
 

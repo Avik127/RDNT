@@ -12,12 +12,12 @@
 // This program confirms the mode switch button is operating by changing the color of the case LED
 // Might be slightly buggy, didnt get to test it completely
 
-#define GPIO_MODE_INPUT 22
+#define GPIO_MODE_INPUT 27
 #define GPIO_INPUT_PIN_SEL ((1ULL << GPIO_MODE_INPUT))
 #define ESP_INTR_FLAG_DEFAULT 0
 
 #define RMT_LED_STRIP_RESOLUTION_HZ 10000000 // 10MHz resolution, 1 tick = 0.1us (led strip needs a high resolution)
-#define RMT_LED_STRIP_GPIO_NUM 27
+#define RMT_LED_STRIP_GPIO_NUM 22
 
 #define LED_NUMBERS 4
 #define CHASE_SPEED_MS 100
@@ -52,8 +52,8 @@ static void mode_switch(void *arg)
             printf("GPIO[%" PRIu32 "] intr, val: %d\n", io_num, gpio_get_level(io_num));
             state = (state * 2) % 7;
             green = (state & 0b001) * 255;
-            red = (state & 0b010) * 255;
-            blue = (state & 0b100) * 255;
+            red = ((state & 0b010) * 255) >> 1;
+            blue = ((state & 0b100) * 255) >> 2;
         }
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
