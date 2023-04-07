@@ -53,6 +53,41 @@ contact course staff.
 		-->
 		<div id="content">
 			<h2>Progress Report for Graeme Usman</h2>
+			<h4>Week 12:</h4>
+            <b>Date:</b> 7 April 2023 <br>
+            <b>Total hours:</b> 10 <br>
+            <b>Description of project design efforts:</b><br>
+			Another week where my main progress is made by soldering the PCB. After leaving the PCB powered on overnight last Friday with no real issues, we were hopeful that the circuit
+			was functional. On Tuesday, Avik and I spent a good portion verifying each connection of the power circuit, since I was worried that the 5V was not being converted down to 3.3.
+			After some testing, we figured out that it was the inductor that was not making a full connection, and Joe was able to fix that issue for me quickly. 
+			Once that was sorted out, Anurag and I focused on trying to load his newly written code onto our second PCB that has just a CPU and two buttons to boot and load code. I quickly
+			soldered a wire to the VCC trace closest to the MCU on the decoupling capacitor so we could power the MCU directly, as there is no power circuit to power it yet. 
+			<div id=""> 
+				<img src="Team/progress/progress2pics/PCB_code_testing.jpg" width=50% height=auto></img>
+			</div>
+			After this was done we were able to successfully load Anurag's testing code to the MCU through our ECE362 USB UART connector on a separate breadboard that we wired to power the PCB
+			and LED strip. 
+			<div id="">
+				<img src="Team/progress/progress2pics/PCB_UART.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/PCB_UART_LED.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/PCB_UART_LED_on.jpg" width=50% height=auto></img>
+			</div>
+			Once our testing board was able to load code, I spent the rest of my time focusing on finishing the production board with our power circuit on it. I was able to solder pretty
+			much everything without issue, minus the microphone, as I am not entirely sure if the soldering iron is too hot for it or not. According to the datasheet you cannot touch anything
+			hotter than 270°C for more than 2 seconds on its leads. Thankfully, we have three more microphones we can solder, and it's not difficult to put on and off of the PCB if it comes down
+			to it. I was finally able to go off on my own to finish soldering the whole board throughout the week, since we have been at the mercy of the United State Postal System for the past 
+			2 weeks as some required parts come trickling in, package by package. 
+			<div id="">
+				<img src="Team/progress/progress2pics/PCB_completed_pt2.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/microphone_soldered" width=50% height=auto></img>
+			</div>
+			Anurag also found an issue while working on the mode switching code on the other PCB, where our signal for the third button (which we have also been waiting for for a week), does not 
+			go into our MCU, due to some outdated names we had from our previous PCB/schematic version. This required us to flywire directly onto the pin of the MCU, which is the green wire
+			you can see in the pictures that cross over the MCU. 
+			For next week, we have to test and verify that the rest of the circuits work, as well as get back on track to finish the final production housing and LED display.
+
+		<div id="content">
+			<h2>Progress Report for Graeme Usman</h2>
 			<h4>Week 11:</h4>
             <b>Date:</b> 31 March 2023 <br>
             <b>Total hours:</b> 8 <br>
@@ -64,15 +99,15 @@ contact course staff.
 			PCB, which asks to test our power circuit for a full day before even touching the MCU, but we are just limited by the U.S. Postal Service if we do so. So we thought that making two boards
 			would be a good idea, since we can test the MCU separately before the power circuit is fully complete. 
 			<div id=""> 
-				<img src="Team/progress/progress2pics/PCB_CPU.jpg" width="500" height="500"></img>
-				<img src="Team/progress/progress2pics/PCB_CPU_closeup.jpg" width="500" height="500"></img>
-				<img src="Team/progress/progress2pics/PCB_CPU_buttons.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/PCB_CPU.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/PCB_CPU_closeup.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/PCB_CPU_buttons.jpg" width=50% height=auto></img>
 			</div>
 
 			The parts that we needed to complete our power circuit finally came in late Thursday afternoon, so I was able to quickly finish up that circuit as well. I attached the last tiny
 			capacitor and inductor that we needed, as well as the power connector. From there, me and Anurag set it up to run overnight on 5V power, as per the recommended verification process.
 			<div id=""> 
-				<img src="Team/progress/progress2pics/PCB_power_circuit_complete.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/PCB_power_circuit_complete.jpg" width=50% height=auto></img>
 			</div>
 
 			I also completed the required Bechtel saftey quizzes needed to use the facility, but we are still working to get the needed hardware from Home Depot, but that is something
@@ -104,8 +139,8 @@ contact course staff.
 			have to do again.
 		
 			<div id=""> 
-				<img src="Team/progress/progress2pics/PCB_full.jpg" width="500" height="500"></img>
-				<img src="Team/progress/progress2pics/PCB_power_circuit.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/PCB_full.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/PCB_power_circuit.jpg" width=50% height=auto></img>
 			</div>
 
 		<div id="content">
@@ -122,18 +157,18 @@ contact course staff.
 			by sending in an analog signal from the AD2, a song through our AUX jack, and the third input was just grounded (but this is where the Bluetooth-DAC output will be going through). 
 			By sending a high voltage through the select lines in different combinations, I was able to see that the inputs were changing depending on what select lines where high or low. 
 			<div id=""> 
-				<img src="Team/progress/progress2pics/TMUX_circuit.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/TMUX_circuit.jpg" width=50% height=auto></img>
 			</div>
 			On Monday, the team decided that the multiple iterations of our op amp circuit was too cumbersome to keep changing layouts and resistor/capacitor values, so we decided to (try to) use 
 			LTSpice to try and simulate what is best. On Tuesday, Anurag and I began prototyping a new microphone circuit, testing it with our MUX, and I kept updating our scehmatic. I wired together a
 			debouced button circuit we could use for our input mode select, and added a JTAG Programming header to our schematic. 
 			<div id="main_div"> 
 				<div id="that's the power of the home depot">
-					<img src="Team/progress/progress2pics/anu_work.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/button_debounced.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/aux_in_out.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/aux_into_mux.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/voltage_divider.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/anu_work.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/button_debounced.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/aux_in_out.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/aux_into_mux.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/voltage_divider.jpg" width=25% height=auto></img>
 				</div>
 			</div>
 			On Thursday, Anurag had finished building a microphone circuit, and when I came in we verified the circuit and the equations he used to find values. He and I then went and 
@@ -141,10 +176,10 @@ contact course staff.
 			finally decided on and tested, we added it to our schematic, as well as some more needed changes. 
 			<div id="main_div"> 
 				<div id="that's the power of the home depot">
-					<img src="Team/progress/progress2pics/mic_final.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/mic_output.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/mic_output2.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/thursday_schem.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/mic_final.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/mic_output.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/mic_output2.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/thursday_schem.jpg" width=25% height=auto></img>
 				</div>
 			</div>
 			On Friday, I came in just as another voice in order to make some final checks and input on the final schematic and PCB design decisions. 
@@ -174,13 +209,13 @@ contact course staff.
 			a prototype of our final design.
 			<div id="main_div"> 
 				<div id="that's the power of the home depot">
-					<img src="Team/progress/progress2pics/acrylic_frosted.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/epoxy.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/lotsa_wood.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/polypolypoly.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/stain_preview.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/stain.jpg" width="200" height="200"></img>
-					<img src="Team/progress/progress2pics/wood_gloo.jpg" width="200" height="200"></img>
+					<img src="Team/progress/progress2pics/acrylic_frosted.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/epoxy.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/lotsa_wood.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/polypolypoly.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/stain_preview.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/stain.jpg" width=25% height=auto></img>
+					<img src="Team/progress/progress2pics/wood_gloo.jpg" width=25% height=auto></img>
 				</div>
 			</div>
 
@@ -198,13 +233,13 @@ contact course staff.
 			on this problem in arduino, which we all agreed could be a major issue, we decided to move on to learning how to code in the espressif framework. The documentation available is thorough, but
 			difficult to parse and really make sense of, so we are making progress, slowly but surely.
 			<div id="Oh boy, I can't wait to learn Espressif"> 
-				<img src="Team/progress/progress2pics/esp_time.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/esp_time.jpg" width=50% height=auto></img>
 			</div>
 			As the weeks start to pass, we began to realize our project required a lot more design detail to be ironed out. Today, me and Anurag spent some time putting the physical design of the entire
 			project on to paper, metaphorically speaking; we actually put it all on our blackboard. We updated our PSSC's and Project Overview Description on the Team Website, as well as made plans
 			to build a small scale version of our final design to see if we like the way it looks. 
 			<div id="Big if true"> 
-				<img src="Team/progress/progress2pics/LED_fixture_design.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/LED_fixture_design.jpg" width=50% height=auto></img>
 			</div>
 			I unfortunately did not have the foresight to take many pictures this week, as I spent most of it wading through documentation and forum posts that were loosely related to the issues that 
 			we were running into, but to no avail. I hope that next week we can at least get ADC sampling working in the ESP-IDF, if not the entire FFT algorithm, as I did come across some information
@@ -219,21 +254,21 @@ contact course staff.
 			This week's efforts was effectively a continuation from last week, which consisted of me solely working on our FFT function which was behaving strangely. I figured out the seemingly
 			random behavior of the peak frequency output was actually consistently incorrect, which just means it is correct, but with an asterisk.
 			<div id="correct* frequencies"> 
-				<img src="Team/progress/progress2pics/weird_freqs.png" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/weird_freqs.png" width=50% height=auto></img>
 			</div>
 			By sending a sine wave from the AD2 with a known frequency, I saw that the values returned were off by a factor of about 3.26. This was fine if it stay consistently incorrect, because 
 			we know that is doing what it is supposed to, however, it does effectively reduce our usable frequency range down by about a third. This is unfortunate, but workable. I spent a good
 			amount of time trying to figure out where this seemingly arbitrary 3.26 value came from, but to no avail.
 			<div id="pepe silvia"> 
-				<img src="Team/progress/progress2pics/pepe_silvia.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/pepe_silvia.jpg" width=50% height=auto></img>
 			</div> 
 			With a small change to my code, I was able to put together a rudimentary frequency beat detector. This is the basis for putting together the FFT proccess with the reactive LED process,
 			but that is for another day.
 			<div id="3.263.263.263.263.263.263.263.26"> 
-				<img src="Team/progress/progress2pics/code_3.26.png" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/code_3.26.png" width=50% height=auto></img>
 			</div> 
 			<div id="beat_detector.mp4"> 
-				<img src="Team/progress/progress2pics/beat_detect.png" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/beat_detect.png" width=50% height=auto></img>
 			</div> 
 			Frustrated with this 3.26 fiasco, I decided to try and implement a different FFT library, citing the original arduinoFFT library as its motivation. This new library was built on 
 			another library originally coded for the ESP-IDF and modified for arduino, so my thought process was "learn this one and transition easily into the ESP-IDF". I am currently in the midst
@@ -251,7 +286,7 @@ contact course staff.
 			was admittedly a bit ambitious; I tried to get an analog input from music playing through the 3.5 mm AUX and trying to perform FFT's on that signal. This obviously did not go smoothly,
 			but the issues that I ran into forced me to take a step back and try to figure out each moving part in a more methodical manner, building up from what I know (or thought I knew). 
 			<div id="what is the dog ACTUALLY doing"> 
-				<img src="Team/progress/progress2pics/freq_association.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/freq_association.jpg" width=50% height=auto></img>
 			</div>
 			My first challenge was trying to interpret what the FFT was actually doing under the hood, so with some example code that had a working implementation of the library, 
 			and the .cpp file of the library itself, I tried to associate different frequency with the indices of the array that my audio was being sampled into. However, the values were still
@@ -259,10 +294,10 @@ contact course staff.
 			I sent in a 1kHz singal into the ADC, and attempted to make sense of the values that was being outputted. Me and Avik spent a good portion of the day trying to understand why the FFT was
 			returning a peak value at a frequency that was nowhere close to the frequency of the AD2's wave. 
 			<div id="wave_gen"> 
-				<img src="Team/progress/progress2pics/AD2_wavegen.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/AD2_wavegen.jpg" width=50% height=auto></img>
 			</div>
 			<div id="wave_to_ADC"> 
-				<img src="Team/progress/progress2pics/AD2_wavegen.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/AD2_wavegen.jpg" width=50% height=auto></img>
 			</div>
 			My current attempt is sending in a wave that is offset by 1.15V, to avoid the ESP32's ADC pins' limitation of being able to read voltage values of 150mV-2450mV, as well as 
 		    getting negative values all together. I feel like I am on the right track, but the only real way to confirm my understanding is to just keep on trying.
@@ -281,7 +316,7 @@ contact course staff.
 			an analog input to the circuit, which we then sent an wave generator output from an AD2 into the microcontroller. We built an amplifier circuit that would allow us to get 
 			visible values from an electret microphone, which we also were able to wire into the ADC pin of our microcontroller and read values the same way we read the AD2 wave gen. 
 			<div id="microphone circuit"> 
-				<img src="Team/progress/progress2pics/mic_circuit.jpg" width="500" height="500"></img>
+				<img src="Team/progress/progress2pics/mic_circuit.jpg" width=50% height=auto></img>
 			</div>
 		</br>
         </div>
