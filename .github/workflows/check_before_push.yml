@@ -1,0 +1,31 @@
+name: Check Before Push
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Check if local branch is behind
+      run: |
+        git fetch origin
+        LOCAL_COMMIT=$(git rev-parse HEAD)
+        REMOTE_COMMIT=$(git rev-parse origin/${{ github.ref }})
+        if [ "$LOCAL_COMMIT" != "$REMOTE_COMMIT" ]; then
+          echo "error: Your local branch is behind the remote branch."
+          echo "Please use the following commands to resolve this issue:"
+          echo "1. git stash (if you have uncommitted changes)"
+          echo "2. git pull origin ${{ github.ref }}"
+          echo "3. git stash apply (if you stashed changes)"
+          echo "4. Resolve any merge conflicts and commit your changes"
+          exit 1
+        fi
