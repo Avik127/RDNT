@@ -54,18 +54,29 @@ contact course staff.
 		<div id="content">
 			<h4>Week 12:</h4>
             <b>Date:</b> 4/7/23 <br>
-            <b>Total hours:</b> 5<br>
+            <b>Total hours:</b> 10<br>
             <b>Description of project design efforts:</b><br>
 			<p>
-				After lab on Tuesday, Graeme and I got the MCU to load code that I had written. This was the program I have placed in our repository to blink the case LED. 
+				After lab on Tuesday, Graeme and I got the MCU to load code that I had written. This test was the file TestMCU_CaseLED.c located in our firmware repository.
 				This was a good test as it proved that we could power the MCU with the progamming header from the USB connection, proved that the boot/reset buttons worked, and proved 
-				that we could use PlatformIO for all programming.
+				that we could use PlatformIO for all programming. It is the first photo attached below.
 				<br>
 				I came back in after class to work on the LED "message" sending again. I decided to use an RMT library provided by Espressif and it worked perfectly. I packaged the example program into tasks that we can 
-				use with FreeRTOS. This program is available in the source code repository as RDNT_Firmware/ProtoTyping Tools/ESP_RMT_LEDs. Now that that component has been tested and proved working,
-				the final step outside of bluetooth connection (that Kahaan is working) is to package everything into one program. I realized that I wanted to spend the time to really review RTOS before I made 
-				stupid mistakes, so I spent 2 hours going through DigiKey's youtube tutorials on RTOS for ESP32 systems. On Wednesday, I will start on this program. 
+				use with FreeRTOS. This program is available in the source code repository as RDNT_Firmware/ProtoTyping Tools/ESP_RMT_LEDs. I have attached a gif of the results of 
+				this test (red flashing gif). Now that that component has been tested and proved working, the final step outside of bluetooth connection (that Kahaan is working on) 
+				is to package everything into one program. I realized that I wanted to spend the time to really review RTOS before I made stupid mistakes, so I spent 2 hours going through DigiKey's youtube tutorials on RTOS for ESP32 systems.
+				
 				<br>
+				On Wednesday and Thursday, I integrated the case LED functionality with the mode button interrupts. This required design choices and I chose to start making this device a state machine
+				for the three different modes. Then the mode button is used to transition between the multiple modes. I realized that then, there must be logic for transitions (which peripherals will be disabled/enabled).
+				The file I was working on is listed as TestMCU_ModeCaseLED.c in our firmware repository. I had some trouble and realized I would need to control our button clicks to make buttons signal not force extra mode switches.
+				That is missing from the file as I was still experimenting with differnt block task state durations. I have uploaded the results of this test as the 3rd picture, notice that it shows 3 differnt colors.
+				This is not the expected behavior, and will be fixed.
+
+				Documents:<br>
+				<img src="Team/progress/progress1pics/pcb_white.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/red_flashing.gif" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/multi_color.jpg" style="width:200px;height:200px;">
 				
 			</p>
 
@@ -100,7 +111,6 @@ contact course staff.
 				
 			</p>
 				
-			</p>
 
 			<h4>Weeks Spring Break-10:</h4>
             <b>Date:</b> 3/24/23 <br>
