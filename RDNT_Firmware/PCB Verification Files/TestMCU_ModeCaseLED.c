@@ -10,10 +10,16 @@
 // Dependencies: led_strip_encoder.h and led_strip_encoder.c from https://github.com/espressif/esp-idf/blob/v5.0.1/examples/peripherals/rmt/led_strip/main/
 
 // This program confirms the mode switch button is operating by changing the color of the case LED
+// It also changes the gpio outputs for the multiplexxer, corresponding to current mode
 // Fixed most debouncing problems (very long presses = 2 presses is only issue left)
 
 #define GPIO_INPUT_27 GPIO_NUM_27
 #define GPIO_INPUT_PIN_SEL (1ULL << GPIO_INPUT_27)
+
+#define GPIO_OUTPUT_18 GPIO_NUM_18
+#define GPIO_OUTPUT_19 GPIO_NUM_19
+#define GPIO_OUTPUT_PIN_SEL (1ULL << GPIO_OUTPUT_18 | 1ULL << GPIO_OUTPUT_19)
+
 #define ESP_INTR_FLAG_DEFAULT 0
 #define DEBOUNCE_TIME_MS 250
 
@@ -43,7 +49,6 @@ static void IRAM_ATTR gpio_isr_handler(void *arg)
     if (interrupt_time - last_interrupt_time > DEBOUNCE_TIME_MS)
     {
         transition = true;
-        state = (state * 2) % 7;
         last_interrupt_time = interrupt_time;
     }
 }
@@ -52,10 +57,17 @@ static void mode_switch(void *arg)
 {
     for (;;)
     {
-        printf("transition: %i, state: %i\n", transition, state);
+        printf("transition: %i, state: %i \n", transition, state);
+
         if (transition)
         {
             transition = false;
+            state = (state * 2) % 7;
+            ESP_ERROR_CHECK(gpio_set_level(19, (state & 0b100) >> 2)); // sel2 = A1
+            // printf("a1= %i\n", (state & 0b100) >> 2);
+            ESP_ERROR_CHECK(gpio_set_level(18, (state & 0b010) >> 1)); // sel1 = A0
+            // printf("a0= %i\n", (state & 0b010) >> 1);
+
             green = (state & 0b001) * 255;
             red = ((state & 0b010) >> 1) * 255;
             blue = ((state & 0b100) >> 2) * 255;
@@ -114,6 +126,23 @@ void app_main(void)
 
     // zero-initialize the config structure.
     gpio_config_t io_conf = {};
+    // disable interrupt
+    io_conf.intr_type = GPIO_INTR_DISABLE;
+    // set as output mode
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    // bit mask of the pins that you want to set, GPIO18/19
+    io_conf.pin_bit_mask = GPIO_OUTPUT_PIN_SEL;
+    // disable pull-down mode
+    io_conf.pull_down_en = 0;
+    // disable pull-up mode
+    io_conf.pull_up_en = 0;
+    // configure GPIO with the given settings
+    ESP_ERROR_CHECK(gpio_config(&io_conf));
+
+    gpio_set_level(GPIO_OUTPUT_19, 0); // sel2 = A1
+    gpio_set_level(GPIO_OUTPUT_18, 0); // sel1 = A0
+
+    printf("starting sels:%i%i \n", gpio_get_level(GPIO_OUTPUT_19), gpio_get_level(GPIO_OUTPUT_18));
 
     // bit mask of the pins, use GPIO27 here
     io_conf.pin_bit_mask = GPIO_INPUT_PIN_SEL;
