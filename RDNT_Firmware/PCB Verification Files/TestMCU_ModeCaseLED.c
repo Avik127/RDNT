@@ -10,21 +10,22 @@
 // Dependencies: led_strip_encoder.h and led_strip_encoder.c from https://github.com/espressif/esp-idf/blob/v5.0.1/examples/peripherals/rmt/led_strip/main/
 
 // This program confirms the mode switch button is operating by changing the color of the case LED
-// Might be slightly buggy, didnt get to test it completely
+// Fixed most debouncing problems (very long presses = 2 presses is only issue left)
 
 #define GPIO_INPUT_27 GPIO_NUM_27
+#define GPIO_INPUT_PIN_SEL (1ULL << GPIO_INPUT_27)
 #define ESP_INTR_FLAG_DEFAULT 0
+#define DEBOUNCE_TIME_MS 250
 
 #define RMT_LED_STRIP_RESOLUTION_HZ 10000000 // 10MHz resolution, 1 tick = 0.1us (led strip needs a high resolution)
 #define RMT_LED_STRIP_GPIO_NUM 22
 
 #define LED_NUMBERS 4
-#define CHASE_SPEED_MS 100
 
-volatile int state = 1; // 001 = Microphone, 010 = Aux, 100 = Bluetooth
-volatile int green = 255;
-volatile int red = 0;
-volatile int blue = 0;
+volatile int state; // 001 = Microphone, 010 = Aux, 100 = Bluetooth
+volatile int green;
+volatile int red;
+volatile int blue;
 volatile bool transition = false;
 
 static const char *TAG = "example";
@@ -34,24 +35,31 @@ static uint8_t led_strip_pixels[LED_NUMBERS * 3];
 rmt_channel_handle_t led_chan = NULL;
 rmt_encoder_handle_t led_encoder = NULL;
 
+static uint32_t last_interrupt_time = 0;
+
 static void IRAM_ATTR gpio_isr_handler(void *arg)
 {
-    transition = true;
+    uint32_t interrupt_time = xTaskGetTickCountFromISR();
+    if (interrupt_time - last_interrupt_time > DEBOUNCE_TIME_MS)
+    {
+        transition = true;
+        state = (state * 2) % 7;
+        last_interrupt_time = interrupt_time;
+    }
 }
 
 static void mode_switch(void *arg)
 {
     for (;;)
     {
+        printf("transition: %i, state: %i\n", transition, state);
         if (transition)
         {
-            state = (state * 2) % 7;
-            printf("%i\n", state);
             transition = false;
             green = (state & 0b001) * 255;
             red = ((state & 0b010) >> 1) * 255;
             blue = ((state & 0b100) >> 2) * 255;
-            for (int j = 0; j < LED_NUMBERS * 3; j++)
+            for (int j = 0; j < LED_NUMBERS; j++)
             {
                 led_strip_pixels[j * 3 + 0] = green; // green
                 led_strip_pixels[j * 3 + 1] = red;   // red
@@ -82,6 +90,18 @@ void app_main(void)
     };
     ESP_ERROR_CHECK(rmt_new_led_strip_encoder(&encoder_config, &led_encoder));
 
+    state = 1; // 001 = Microphone, 010 = Aux, 100 = Bluetooth
+    green = 255;
+    red = 0;
+    blue = 0;
+
+    for (int j = 0; j < LED_NUMBERS; j++)
+    {
+        led_strip_pixels[j * 3 + 0] = green; // green
+        led_strip_pixels[j * 3 + 1] = red;   // red
+        led_strip_pixels[j * 3 + 2] = blue;  // blue
+    }
+
     ESP_LOGI(TAG, "Enable RMT TX channel");
     ESP_ERROR_CHECK(rmt_enable(led_chan));
 
@@ -90,23 +110,18 @@ void app_main(void)
         .loop_count = 0, // no transfer loop
     };
 
-    for (int j = 0; j < LED_NUMBERS * 3; j++)
-    {
-        led_strip_pixels[j * 3 + 0] = green; // green
-        led_strip_pixels[j * 3 + 1] = red;   // red
-        led_strip_pixels[j * 3 + 2] = blue;  // blue
-    }
+    ESP_ERROR_CHECK(rmt_transmit(led_chan, led_encoder, led_strip_pixels, sizeof(led_strip_pixels), &tx_config));
 
     // zero-initialize the config structure.
     gpio_config_t io_conf = {};
 
     // bit mask of the pins, use GPIO27 here
-    io_conf.pin_bit_mask = (1ULL << GPIO_INPUT_27);
+    io_conf.pin_bit_mask = GPIO_INPUT_PIN_SEL;
     // set as input mode
     io_conf.mode = GPIO_MODE_INPUT;
     // disable pull-down mode
     io_conf.pull_down_en = 0;
-    // disable pull-up mode
+    // enable pull-up mode
     io_conf.pull_up_en = 1;
     // interrupt of rising edge
     io_conf.intr_type = GPIO_INTR_POSEDGE;
@@ -126,6 +141,6 @@ void app_main(void)
     while (1)
     {
         ESP_ERROR_CHECK(rmt_transmit(led_chan, led_encoder, led_strip_pixels, sizeof(led_strip_pixels), &tx_config));
-        vTaskDelay(2000 / portTICK_PERIOD_MS);
+        vTaskDelay(200 / portTICK_PERIOD_MS);
     }
 }
