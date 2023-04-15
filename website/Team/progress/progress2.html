@@ -53,6 +53,57 @@ contact course staff.
 		-->
 		<div id="content">
 			<h2>Progress Report for Graeme Usman</h2>
+			<h4>Week 13:</h4>
+            <b>Date:</b> 14 April 2023 <br>
+            <b>Total hours:</b> 15 <br>
+            <b>Description of project design efforts:</b><br>
+			After our smoking circuit scare last Friday, we spent the next few days attempting to figure out the source of the problem. We reconvened early Saturday afternoon, with the 
+			plan to remove the power circuit's IC and capacitor, as well as our 1 ohm resistor that connects our analog and digital grounds together. When I went to remove the capacitor, the
+			solder pad came off with it, and due to its size, this made it virtually impossible to resolder. We were stuck in a difficult spot; we weren't entirely sure what the issue was at first,
+			as from Avik's initial assessment and talk with Joe they both thought it was the power circuit that was the issue, which is why we deconstructed the power circuit in the first place.
+			However, we knew that with no real evidence, it would be a waste of time and components to commit to making another power circuit with no real reason to believe it would work again, so
+			instead we decided to wait until Monday to ask someone who might be able to diagnose our problem better. To make use of our time on Saturday, we instead resoldered a new 1 ohm resistor,
+			and removed any component in the power circuit that connected 5V and 3.3V together, with the plan to try each voltage level individually to see which one the problem part was on.
+			<div id=""> 
+				<img src="Team/progress/progress2pics/PCB_separate_power_test.jpg" width=50% height=auto></img>
+			</div>
+			With this a wire coming off where the inductor used to be, we could use the power supply to power either 5V or 3.3V individually to see what was burning up. However, upon testing each
+			source individually, nothing seemed to be giving us an issue, but when we powered up both, that is when the 1 ohm resistor went up in smoke. Now we knew that we could not power both at
+			the same time, but each worked individually. We were afraid to cause anymore damage to our board before we had any real answer as to why, and so we made plans to come early Monday after 
+			class to ask some questions. 
+			<div> 
+			</div>
+			On Sunday, Anurag and I went to the Home Depot in Lafayette to pick up some materials that we would be using to create our final housing and LED display. We will deal with the reimbursement
+			process later. 
+			<div> 
+			</div>
+			On Monday morning I was able to get an idea of what the issue was from Joe, which was that there was short between 5V and 3.3V somewhere, but after testing it with a multimeter, we were not
+			able to locate the problem. In order to rule out something, Kahaan and I attempted to talk to the ESP-32 on our board. We quickly learned that the MCU was most likely burnt out after we blew
+			through a few more 1 ohm resistors. I left a bit after Joe removed our dead MCU, leaving Kahaan and Avik, who showed up a little later, to resolder the chip to the board.
+			Tuesday was the day where we were able to locate the issue after some more discussion with Joe and Kahaan. We were running into an issue where something connected to 5V was causing the power
+			supply to not send a full 5V through, and after some assistance from Joe we found it was our TMUX that I soldered upside down, causing the GND pin and 5V pins to be in the opposite positions.
+			This was the source of our short between 3.3V and 5V! After salvaging another TMUX from our prototyping breadboard, we resoldered the TMUX correctly, and we were finally able to send 5V and 3.3V
+			without something smoking, as well as load code to the new ESP-32. 
+			<div id="">
+				<img src="Team/progress/progress2pics/PCB_2powers.jpg" width=50% height=auto></img>
+			</div>
+			With the PCB no longer a danger, I set my sights on finishing the final LED display on Thursday. With some help from the ECE Machine Shop downstairs, I got my planks cut down to size and planned
+			out how everything would be put together. I needed to figure out the dimensions of the display so I know what dimensions are needed when we get our acrylic laser cut at Bechtel. 
+			<div id="">
+				<img src="Team/progress/progress2pics/wood_1.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/wood_2.jpg" width=50% height=auto></img>
+			</div>
+			I came in on Friday for a little bit to assist Anurag and Kahaan; I set up the board so we could successfully amplify our microphone's signal, as well as send in an AUX audio input. The rest 
+			of the sampling needed by the MCU, as well as switching between inputs on the TMUX are now in their hands while I continue to finish the final display.
+			<div id="">
+				<img src="Team/progress/progress2pics/testing_analog_signals.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/PCB_aux_output.jpg" width=50% height=auto></img>
+				<img src="Team/progress/progress2pics/PCB_aux_outputs_2.jpg" width=50% height=auto></img>
+			</div>
+
+
+		<div id="content">
+			<h2>Progress Report for Graeme Usman</h2>
 			<h4>Week 12:</h4>
             <b>Date:</b> 7 April 2023 <br>
             <b>Total hours:</b> 10 <br>
