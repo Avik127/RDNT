@@ -54,6 +54,30 @@ contact course staff.
 		<div id="content">
             <h2>Progress Report for Kahaan Patel</h2>
 
+
+			<h5>Week 13:</h5>
+			<b>Date: </b> 04/14/2023<br>
+			<b>Total Hours:</b>12<br>
+			<b>Description of project Design Effort: </b><br>
+
+			The following week the intial days were spent on debuging our circuit. We had a short in our circuit and were unable to move ahead with 
+			software implemenation. Hence on Monday , Avik and I spent time on soldering a new ESP32 on the board and removing the parts for the Power Circuit.On Tuesday
+			we were still facing the same issue on brute force insepction we found out that our Audio Multiplexer was soldered upside down. Hence the power was
+			connected to ground and , ground to power. This caused trouble , then after making sure the TMUX soldered correctly with Graeme , we tested if we are able to communicate
+			with the ESP32 and we even tried supplying 5v and 3v seperately that intitially caused the short. Finally after thorough inspection , using the codebase made by Anurag , 
+			I compiled the code for ADC , Mode_switch and LED , there were slight modification to make them work in unison , additionally I added the code for 
+			bluetooth functionality , specially implementing a Gatt Server to connect with the android application.
+			<br>
+			Moreover this week I created the code for the android app to accomodate the search bar and list bar for choosing music and turn on / turn off features as separate
+			buttons.
+			<br>
+			Here is the link to the code I merged , the new android application UI.
+			<br>
+			<a href="https://github.com/Avik127/RDNT/blob/main/RDNT_Firmware/Prototyping%20Tools/ESP_ITER1.c">ESP32 Codebase</a>
+			<br>
+			<img src="Team/progress/resources4/androidnewApp.png" alt="App Design" width="500" height="500"><br>
+			<br>
+
 			<h5>Week 12:</h5>
 			<b>Date: </b> 04/7/2023<br>
 			<b>Total hours:</b>6<br>
