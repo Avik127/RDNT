@@ -52,11 +52,6 @@
 #define READ_LEN 512
 float amplitudes[LED_QTY];
 
-volatile int green;
-volatile int red;
-volatile int blue;
-volatile bool transition = false;
-
 static const char *TAG = "example";
 
 static uint8_t led_strip_pixels[LED_QTY * 3];
@@ -133,9 +128,10 @@ void LightShow() // 1-dimensional LightShow
     }
     // turns fft result into array of LED_QTY length
 
+    int slicer = READ_LEN / LED_QTY;
     for (int i = 0; i < READ_LEN; i++)
     {
-        int slicer = READ_LEN / LED_QTY;
+
         amplitudes[i / slicer] += y1_cf[i];
     }
 
@@ -236,15 +232,11 @@ void app_main(void)
     };
     ESP_ERROR_CHECK(rmt_new_led_strip_encoder(&encoder_config, &led_encoder));
 
-    green = 0;
-    red = 0;
-    blue = 0;
-
     for (int j = 0; j < LED_QTY; j++)
     {
-        led_strip_pixels[j * 3 + 0] = green; // green
-        led_strip_pixels[j * 3 + 1] = red;   // red
-        led_strip_pixels[j * 3 + 2] = blue;  // blue
+        led_strip_pixels[j * 3 + 0] = 0; // green
+        led_strip_pixels[j * 3 + 1] = 0; // red
+        led_strip_pixels[j * 3 + 2] = 0; // blue
     }
 
     ESP_LOGI(TAG, "Enable RMT TX channel");
