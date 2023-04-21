@@ -39,7 +39,6 @@
 #include "esp_bt_main.h"
 #include "esp_gatt_common_api.h"
 
-
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 // U NEED TO SET THE BLUETOOTH CORE TO 1 IN YOUR CONFIGURATION SETTINGS OR THE LEDS WILL FLICKER
 
@@ -73,19 +72,14 @@ double true_result[READ_LEN / 2] = {0};  // this is result that has been convert
 double smoothedReal[READ_LEN / 2] = {0}; // zeroes values as we will add in noiseReduce()
 
 #define FFT_SIZE 256
-__attribute__((aligned(16)))
-float x1[FFT_SIZE];
+__attribute__((aligned(16))) float x1[FFT_SIZE];
 // Window coefficients
-__attribute__((aligned(16)))
-float wind[FFT_SIZE];
+__attribute__((aligned(16))) float wind[FFT_SIZE];
 // working complex array
-__attribute__((aligned(16)))
-float y_cf[FFT_SIZE*2];
+__attribute__((aligned(16))) float y_cf[FFT_SIZE * 2];
 // Pointers to result arrays
-float* y1_cf = &y_cf[0];
-float* y2_cf = &y_cf[FFT_SIZE];
-
-
+float *y1_cf = &y_cf[0];
+float *y2_cf = &y_cf[FFT_SIZE];
 
 static uint32_t last_interrupt_time = 0;
 
@@ -658,22 +652,6 @@ static bool check_valid_data(const adc_digi_output_data_t *data)
     return true;
 }
 
-void LightTask(void *arg)
-{
-    for (;;)
-    {
-        memset(led_strip_pixels, 0, sizeof(led_strip_pixels));
-        for (int led = 0; led < LED_QTY; led++)
-        {
-            led_strip_pixels[led * 3 + 0] = 255 * led_status * colors[0]; // green
-            led_strip_pixels[led * 3 + 1] = 255 * led_status * colors[1]; // red
-            led_strip_pixels[led * 3 + 2] = 255 * led_status * colors[2]; // blue
-        }
-        ESP_ERROR_CHECK(rmt_transmit(led_chan, led_encoder, led_strip_pixels, sizeof(led_strip_pixels), &tx_config));
-        vTaskDelay(100 / portTICK_PERIOD_MS);
-    }
-}
-
 void buildGaussianFilter()
 {
     double left, right;
@@ -707,21 +685,21 @@ void process_and_show()
     dsps_wind_hann_f32(wind, FFT_SIZE);
     float FFTresults[FFT_SIZE] = {0};
     // Convert two input vectors to one complex vector
-    for (int i=0 ; i < FFT_SIZE ; i++)
+    for (int i = 0; i < FFT_SIZE; i++)
     {
-        y_cf[i*2 + 0] = smoothedReal[i] * wind[i]; // Real part is your signal multiply with window
-        y_cf[i*2 + 1] = 0 * wind[i];
-        FFTresults[i] = y_cf[i*2];
+        y_cf[i * 2 + 0] = smoothedReal[i] * wind[i]; // Real part is your signal multiply with window
+        y_cf[i * 2 + 1] = 0 * wind[i];
+        FFTresults[i] = y_cf[i * 2];
     }
-    //printf("---------------------\n");
+    // printf("---------------------\n");
     dsps_fft2r_fc32(y_cf, FFT_SIZE);
-    //Bit reverse 
+    // Bit reverse
     dsps_bit_rev_fc32(y_cf, FFT_SIZE);
     // Convert one complex vector to two complex vectors
     dsps_cplx2reC_fc32(y_cf, FFT_SIZE);
-    
-    //y1_cf - is your result in log scale
-    //y2_cf - magnitude of your signal in linear scale
+
+    // y1_cf - is your result in log scale
+    // y2_cf - magnitude of your signal in linear scale
 
     // for (int i = 0 ; i < FFT_SIZE ; i++) {
     //    printf("%f\n",y2_cf[i]);
@@ -735,11 +713,14 @@ void process_and_show()
     // Find the minimum and maximum values in the FFT array
     float min_value = FLT_MAX;
     float max_value = FLT_MIN;
-    for (int i = 0; i < 256; i++) {
-        if (FFTresults[i] < min_value) {
+    for (int i = 0; i < 256; i++)
+    {
+        if (FFTresults[i] < min_value)
+        {
             min_value = FFTresults[i];
         }
-        if (FFTresults[i] > max_value) {
+        if (FFTresults[i] > max_value)
+        {
             max_value = FFTresults[i];
         }
     }
@@ -748,20 +729,28 @@ void process_and_show()
     float bin_width = (max_value - min_value) / 6;
 
     // Count the frequency of values in each bin, and add values outside the range to the underflow and overflow bins
-    for (int i = 0; i < 256; i++) {
+    for (int i = 0; i < 256; i++)
+    {
         int bin_index = (int)((FFTresults[i] - min_value) / bin_width);
-        if (bin_index < 0) {
+        if (bin_index < 0)
+        {
             histogram[0]++; // Underflow bin
-        } else if (bin_index >= 6) {
+        }
+        else if (bin_index >= 6)
+        {
             histogram[7]++; // Overflow bin
-        } else {
+        }
+        else
+        {
             histogram[bin_index + 1]++;
         }
     }
 
     // Find the bin with the maximum frequency
-    for (int i = 0; i < 8; i++) {
-        if (histogram[i] > max_frequency) {
+    for (int i = 0; i < 8; i++)
+    {
+        if (histogram[i] > max_frequency)
+        {
             max_frequency = histogram[i];
             max_frequency_index = i;
         }
@@ -769,19 +758,21 @@ void process_and_show()
 
     float postNorm[6] = {0};
 
-    for (int i = 1; i < 7; i ++) //normalize to values from 0 - 15
+    for (int i = 1; i < 7; i++) // normalize to values from 0 - 15
     {
-        //printf("histo pre norm: %i\n",histogram[i]);
-        postNorm[i-1] = ((float) histogram[i]/ histogram[max_frequency_index]) * 15;
-        //printf("histo post norm: %f\n",postNorm[i-1]);
+        // printf("histo pre norm: %i\n",histogram[i]);
+        postNorm[i - 1] = ((float)histogram[i] / histogram[max_frequency_index]) * 15;
+        // printf("histo post norm: %f\n",postNorm[i-1]);
     }
-    
+
     // Pattern 1 - PURE COLORS
     memset(led_strip_pixels, 0, sizeof(led_strip_pixels));
-    for (int block = 0; block < 6; block++) {
+    for (int block = 0; block < 6; block++)
+    {
         int fraction = postNorm[block];
 
-        for (int led = 0; led < fraction; led++) {
+        for (int led = 0; led < fraction; led++)
+        {
             int led_position = block % 2 == 0 ? led : 15 - led;
 
             led_strip_pixels[block * 3 * 16 + led_position * 3 + 0] = 255 * led_status * colors[0];
@@ -791,17 +782,17 @@ void process_and_show()
     }
 
     ESP_ERROR_CHECK(rmt_transmit(led_chan, led_encoder, led_strip_pixels, sizeof(led_strip_pixels), &tx_config));
-    
 }
-
 
 void lightBt()
 {
     memset(led_strip_pixels, 0, sizeof(led_strip_pixels));
-    for (int block = 0; block < 6; block++) {
+    for (int block = 0; block < 6; block++)
+    {
         int fraction = 15;
 
-        for (int led = 0; led < fraction; led++) {
+        for (int led = 0; led < fraction; led++)
+        {
             int led_position = block % 2 == 0 ? led : 15 - led;
 
             led_strip_pixels[block * 3 * 16 + led_position * 3 + 0] = 255 * led_status * colors[0];
@@ -811,7 +802,6 @@ void lightBt()
     }
 
     ESP_ERROR_CHECK(rmt_transmit(led_chan, led_encoder, led_strip_pixels, sizeof(led_strip_pixels), &tx_config));
-    
 }
 
 // algorithms that we can look into.
@@ -889,8 +879,6 @@ void app_main(void)
 
     ble_init();
 
-    //xTaskCreatePinnedToCore(LightTask, "LED", 4096, NULL, 10, NULL, 0);
-
     // zero-initialize the config structure.
     gpio_config_t io_conf = {};
     // disable interrupt
@@ -967,8 +955,8 @@ void app_main(void)
                     if (check_valid_data(p))
                     {
                         // ESP_LOGI(TAG, "Unit: %d, Channel: %d, Value: %u", 1, p->type1.channel, result[i]);
-                        true_result[i / 2] = (p->type1.data); //* 3.7 / 4096;
-                        // printf("%lf\n", (p->type1.data) * 3.7 / 4096);
+                        true_result[i / 2] = (p->type1.data) * 3.7 / 4096;
+                        // printf("%lf\n", true_result[i / 2]);
                     }
                     else // TODO what should happen on invalid data?
                     {
@@ -982,8 +970,7 @@ void app_main(void)
                  * usually you don't need this delay (as this task will block for a while).
                  */
 
-                
-                if(state == 2)
+                if (state == 2)
                 {
                     lightBt();
                 }
@@ -995,12 +982,13 @@ void app_main(void)
                 // PSSC 1 - Gaussian Smooth could be displayed via Excel
 
                 // printf("Post Smoothed:\n");
-                //  for (int i = 0; i < (READ_LEN / 2); i++)
-                //  {
-                //      printf("%lf\n", smoothedReal[i]);
-                //  }
-                vTaskDelay(100/portTICK_PERIOD_MS);
-                //not sure if this needs a vTaskDelay here even when not printing
+                // for (int i = 0; i < (READ_LEN / 2); i++)
+                // {
+                //     printf("%lf\n", smoothedReal[i]);
+                // }
+                // vTaskDelay(5000 / portTICK_PERIOD_MS);
+
+                vTaskDelay(100 / portTICK_PERIOD_MS);
             }
             else if (ret == ESP_ERR_TIMEOUT)
             {
