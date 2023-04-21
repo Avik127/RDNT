@@ -52,6 +52,56 @@ contact course staff.
 			and include things such as a file lister (for listing out homework assignments or tutorials)
 		-->
 		<div id="content">
+			<h4>Week 14:</h4>
+            <b>Date:</b> 4/21/23 <br>
+            <b>Total hours:</b> 50<br>
+            <b>Description of project design efforts:</b><br>
+			<p>
+				On Saturday and Sunday, I came into lab and tested code that I had written to complete PSSC5 and PSSC3. This meant essentially building a mini program that takes ADC inputs and 
+				accordingly changes the LEDs. I have provided the program in RDNT_Firmware/PCB Verification Files/PSSC5_3_COMPLETED.c There were some issues with sending data to the 
+				LEDs and it took a lot of time to troubleshoot through the process.
+				<br> 
+				When I came in on Monday I kept working on the program and developed a system that could be shown on just 2 LED strips. I did the soldering required for this as well. I was only
+				able to get it checked off on Tuesday. Over the two days, Graeme and I worked greatly on the display, with he doing the construction and myself devising the wiring and soldering the 
+				connections. I also tested the PCB with the power adaptor to get to the goal of using only 1 input, the adaptor alone. At the time, we were using two seperate powers from 
+				the power supply, which is unacceptable for the final design. The power adapter was found suitable but still missing the stepdown 3.3V for the MCU and other components. It took lots of calculations
+				and planning to figure out the wiring from the power adaptor to the LED display and the PCB but I took advice from Joe and ECE shop staff and found the correct gauge wire for every part and a good way to split the input to the output 
+				connections. I have included my sketch in the first photo.
+				<br>
+				On Wednesday, I started immediately on getting the LDO working and soldered onto a smaller circuit board. It took a substantial amount of time because I had to be absolutely sure that the output would not 
+				damage our MCU. I first built the connection on a breadboard and went through multiple soldering iterations to confirm its ability to deliver 3.3V. After it was completed, I asked Graeme to hot glue it onto 
+				the pcb. This achieved the goal of being able to power EVERYTHING from the 5V power adaptor from the wall.
+				<br>
+				Wednesday night, Kahaan and I started working together to integrate all the different programs and components. We combined our mode switching and bluetooth programs and got it to work such that bluetooth connections 
+				could be made and messages could be sent in any mode. These messages would turn on/off the LEDs or change their color. This was fully acceptable for the PSSC3. He got it checked off in the morning, though I was not there.
+				<br>
+				Thursday morning I got to lab late from staying until late night on Wednesday. Graeme had finished the display so I finished all the wiring as well. I asked for Graeme's help on the common nodes for Voltage and GND and he 
+				did the soldering required for those points. After he had left the lab, I assembled the LEDs and the wires into the display, which was a tedious process to make sure no wires were pinched, connections destroyed, or display damaged.
+				Afterwards, I tested all the power together and it worked perfectly. The second and third photos are the result of this. I then added the reflective tape to complete the effect of the LEDs in the assembly. The third photo is this.
+				Graeme would go on to add more tape and hide the wiring on Friday. After the assembly was completed to an acceptable degree, Kahaan and I began to notice a flickering the LEDs. We knew this would be indicative of a larger issue so we began trying 
+				to diagnose it. We saw people online suffering from the same issue and were able to fix it by changing the CPU core that the Bluetooth tasks run on. We worked together to port over my old Gaussian filtering code to our program 
+				used for PSSC3. We saved this program as RDNT_Firmware/PCB Verification Files/ITER2.c Then our code was only missing two components: FFT and LightShow. We stayed late in the night with Avik and worked on FFT. At 3am, I 
+				gave up on FFT and built an amplitude based LightShow. 
+
+				Friday morning, I came in and realized Kahaan had been working all night until morning. He had completed the required FFT portions but was struggling to create meaningful patterns to display. I was well rested so I took the 
+				relevant sections from my amplitude based Lightshow and we were successful in integrating them. Thus all portions were completed except that some of our blocks were upside down. We made some small changes and we were done.
+				I have included this mostly final code as RDNT_Firmware/PCB Verification Files/ITER2.c . Kahaan and I want to come in on Sunday and make some small changes (including color selection through the app) and testing with a 
+				aux splitter and a wall powered speaker, but the project is complete with all requirements as of now. I have attached one final photo of our team after our very succesful PSSC checkoff :) 
+
+				I thoroughly enjoyed working on this project and am satisfied with the vast amount of learning I was forced to do to complete the project.
+
+				Documents:<br>
+				<img src="Team/progress/progress1pics/wire_awg.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/no_tape.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/display_no_tape.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/display_tape.jpg" style="width:200px;height:200px;">
+				<img src="Team/progress/progress1pics/team_done.jpg" style="width:200px;height:200px;">
+
+
+
+				
+			</p>
+
 			<h4>Week 13:</h4>
             <b>Date:</b> 4/14/23 <br>
             <b>Total hours:</b> 8<br>
