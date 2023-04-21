@@ -1,378 +1,460 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-This is an example weekly progress report document that team members can use to report their individual progress 
-of their ECE477 senior design projects. Weekly progress reports are expected to follow the general guidelines
-presented in the "Progress Report Policy" document, posted on Brightspace.  
-
-Please create 4 copies of this example, renaming each copy to <PurdueID>.html, where <PurdueID> corresponds to
-the Purdue ITAP Career Account ID given by Purdue to each individual team member. If you have any questions,
-contact course staff.
--->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <!--Reconfigurable base tag; used to modify the site root location for root-relative links-->
+      <!--<base href="https://engineering.purdue.edu/ece477/StudentWebTemplate/" />-->
+      <base href="https://engineering.purdue.edu/477grp18/" />
+      <!-- Replace the N with your team number-->
+      <!--Content-->
+      <title>ECE477 Course Documents</title>
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="George Hadley">
+      <meta name = "format-detection" content = "telephone=no" />
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <!--CSS-->
+      <link rel="stylesheet" href="css/default.css" type="text/css" media="all" />
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" href="css/styles.css">
+      <link rel="stylesheet" href="css/content.css">
+      <!--[if IE 6]>
+      <link href="default_ie6.css" rel="stylesheet" type="text/css" />
+      <![endif]-->
+   </head>
+   <body>
+      <div id="wrapper_site">
+         <div id="wrapper_page">
+            <!-- Instantiate global site header.-->
+            <div id="header"></div>
+            <!-- Instantiate site global navigation bar.-->
+            <div id="menu"></div>
+            <!-- Instantiate a page banner image. Page banner images should be 1100x350px and should be located within the local
+               img folder located at this directory level. -->
+            <div id="banner">
+               <img src="Files/img/BannerImgExample.jpg">
+            </div>
+            <!-- Instantiate "tools" needed for a page. Tools are premade functional blocks that can be used to build a page,
+               and include things such as a file lister (for listing out homework assignments or tutorials)
+               -->
+            <div id="content">
+               <h2>Progress Report for Kahaan Patel</h2>
+               <h5>Week 14: </h5>
+               <b>Data: </b> 04/21/2023 <br>
+               <b>Total Hours : 40 </b>
+               <b> Description of project Design Effot:</b>
+               The following week was divided into multiple tasks:
+               <li>Packaging - For PCB</li>
+               <li>Code Intergation</li>
+               <li>Developing FFT and Light Pattern</li>
+               <li>Debugging and Mitgiating Errors</li>
+               <br>
+               <ol>
+                  <li>
+                     <h4>Packaging -For PCB </h4>
+                     As indicated in the previous progress report , the plan was to generate 3D printed designs. 
+                     The first design was a box like structure to hold the pcb. The box like structure involved ensuring the following :
+                     <ol>
+                        <li>Creating a box structure for PCB.</li>
+                        <li>Creating a hollow area in the middle of the box structure to place the PCB.</li>
+                        <li>Measuring and approximately setting open structure by defining holes in the desing for power circuit , button and aux input/output accesibility.
+                     </ol>
+                     <br>
+                     The second desing was the lid for the box:
+                     <ol>
+                        <li>Enusring same dimensions of the box with the plan of fitting the lid to box via screws or glue.</li>
+                        <li>Making the lid hollow from few area for button access and ensuring space for the power circuit</li>
+                     </ol>
+                     The following task was succesfully completed using TinckerCad free software , the TinckerCad affected the iterations harshly due to its poort 
+                     functionality. The first iteration was small for the PCB to fit , after tremendous filing efforts and using other techniques to remove the area affecting the right fight for PCB, I was finally able to slid the PCB in the 
+                     box structure. Additionally we figured out that placement for the button inputs on the lid was missing and the gap for ESP32 reciever was almost negligble.
+                     The second intergation considered of a wider and longer design with consideration of the underestimation of the lid design of the previous design. The second iteration was better then before , although when we tried implementing the screwss
+                     we realized due to 20% infill it was really hard to drill through the lid and box. Drilling caused damage to the structual integrity leading to in expanisona and structual break for the lid.Hence we pivoted from the idea from screw to glue , although for the 
+                     review we considerd rubber bands. If the printers are avaliable will try to get a better design by Tuesday.
+                  </li>
+                  <li>
+                     <h4>Code Intergation</h4>
+                     During the previous week Anuraag and I had generated a code base for the final project , I focused on the Bluetooth and Anurag and Audio , Lights and Mode Switch. Anuraag solely managed the Audio functions such as creating task for ADC , genearting Gaussian window for smoothing the input values.
+                     Additionally the code was the RMT with basic functionality was implemented by Anu. I had developed the Bluetooth Code , this involved initilizations of Bluetooth to implement a Gatt Server for the following I had taken the follwoing route:
+                     <ol>
+                        <li>Needed initilizations for bluetooth</li>
+                        <li>Generated the GaTT Server</li>
+                        <li>Generated the GAP Profile</li>
+                        <li>Configured the Gatt and gap event handler with the generated Gatt Server and Gap Profile</li>
+                        <li>Implemented Gatt events such as Connect , Disconnect , Discovery , Advertising , Write Event on connection to detect data sent by Android</li>
+                     </ol>
+                     The goal was to combine the code hence I was able to generate the first iteration named ITER1. The code consisted of mode switch , Bluetooth , and ADC.
+                     This involved the a working mode_switch in the interrupt handler instead of a xTaskCreate().
+                     <br><a href="https://github.com/Avik127/RDNT/blob/main/RDNT_Firmware/Prototyping%20Tools/ESP_ITER3.c">First Final Code iteration</a><br>
+                     For the following iteation added Mode switch with help of Avik , added a working mode_switch and comprehended the ADC code by Anurag,
+                     identifying the importance of <code><b>p->type1.data</b></code>.
+                     The second iteration added by Anurag involved Gaussian filtering and noise reduction.
+                  </li>
+                  <li>
+                     <h4>Developing FFT and Light Pattern</h4>
+                     The following task involved thorough understanding of the ESP-DSP library and specially the example of FFT managed by the libarary developers.The code avaliable for the following integration was 
+                     <a href="https://github.com/espressif/esp-dsp/blob/master/examples/fft"><i>master/examples/fftc</i></a>. The code was importatnt to understand the metholdogy of implemenating FFT , based on this I implemented a Hann Window and a FFt after it , additionally I added the code 
+                     implement a feature of generating histogram of the fft values similar to one possible on Microsoft Excel. The approach was to find the maximum and the minimum values , finding the bin width , calculating the frequency of the bins.
+                     Using this histogram for generation led patters as a visualizer , did the LED patterns with Anurag due to his prior experience.
+                     <pre><code style="font-size: smaller;">int histogram[8] = {0}; // 6 bins for the equal intervals, 1 underflow bin, 1 overflow bin
+int max_frequency = 0;
+int max_frequency_index = 0;
+// Find the minimum and maximum values in the FFT array
+float min_value = FLT_MAX;
+float max_value = FLT_MIN;
+for (int i = 0; i &lt; 256; i++)
+{
+	if (FFTresults[i] &lt; min_value)
+	{
+		min_value = FFTresults[i];
+	}
+	if (FFTresults[i] &gt; max_value)
+	{
+		max_value = FFTresults[i];
+	}
+}
+// Calculate bin width based on the range
+float bin_width = (max_value - min_value) / 6;
 
-<!--Reconfigurable base tag; used to modify the site root location for root-relative links-->
-<!--<base href="https://engineering.purdue.edu/ece477/StudentWebTemplate/" />-->
-<base href="https://engineering.purdue.edu/477grp18/" /> <!-- Replace the N with your team number-->
+// Count the frequency of values in each bin, and add values outside the range to the underflow and overflow bins
+for (int i = 0; i &lt; 256; i++)
+{
+	int bin_index = (int)((FFTresults[i] - min_value) / bin_width);
+	if (bin_index &lt; 0)
+	{
+		histogram[0]++; // Underflow bin
+	}
+	else if (bin_index &gt;= 6)
+	{
+		histogram[7]++; // Overflow bin
+	}
+	else
+	{
+		histogram[bin_index + 1]++;
+	}
+}
 
-<!--Content-->
-<title>ECE477 Course Documents</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta name="author" content="George Hadley">
-<meta name = "format-detection" content = "telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+// Find the bin with the maximum frequency
+for (int i = 0; i &lt; 8; i++)
+{
+	if (histogram[i] &gt; max_frequency)
+	{
+		max_frequency = histogram[i];
+		max_frequency_index = i;
+	}
+}
 
-<!--CSS-->
-<link rel="stylesheet" href="css/default.css" type="text/css" media="all" />
-<link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/content.css">
-<!--[if IE 6]>
-<link href="default_ie6.css" rel="stylesheet" type="text/css" />
-<![endif]-->
+float postNorm[6] = {0};
 
-</head>
-<body>
-<div id="wrapper_site">
-    <div id="wrapper_page">
-	<!-- Instantiate global site header.-->
-	<div id="header"></div>
-		<!-- Instantiate site global navigation bar.-->
-		<div id="menu"></div>
-	
-		<!-- Instantiate a page banner image. Page banner images should be 1100x350px and should be located within the local
-			img folder located at this directory level. -->
-		<div id="banner">
-			<img src="Files/img/BannerImgExample.jpg"></img>
-		</div>
-	
-		<!-- Instantiate "tools" needed for a page. Tools are premade functional blocks that can be used to build a page,
-			and include things such as a file lister (for listing out homework assignments or tutorials)
-		-->
-		<div id="content">
-            <h2>Progress Report for Kahaan Patel</h2>
-
-
-			<h5>Week 13:</h5>
-			<b>Date: </b> 04/14/2023<br>
-			<b>Total Hours:</b>12<br>
-			<b>Description of project Design Effort: </b><br>
-
-			During the first few days of the week, we spent time debugging our circuit due to a short circuit issue. To resolve the issue,
-			we replaced the ESP32 on the board and removed parts of the power circuit. However, we continued to face issues until we discovered
-			that the audio multiplexer was soldered upside down, causing power and ground connections to be reversed. After fixing the soldering
-			issue, we tested the communication with the ESP32 and made slight modifications to the code provided by Anurag to ensure that the ADC, mode switch, LED, and Bluetooth functionalities worked together seamlessly. Additionally, I developed an Android app that includes a search bar and a list bar for selecting music, as well as separate buttons for turning on and off features. The merged code and the updated app UI can be found in the links below.
-			<br>
-			ESP32 Codebase Merged File:
-			<br>
-			<a href="https://github.com/Avik127/RDNT/blob/main/RDNT_Firmware/Prototyping%20Tools/ESP_ITER1.c">ESP32 Codebase</a>
-			<br>
-			Android app design: 
-			<br>	
-			<img src="Team/progress/resources4/androidnewApp.png" alt="App Design" width="350" height="600"><br>
-			<br>
-
-			<h5>Week 12:</h5>
-			<b>Date: </b> 04/7/2023<br>
-			<b>Total hours:</b>6<br>
-
-			<b>Description of project Design efforts: </b><br>
-
-			The following week I worked on the functionality of letting user play music from app , this music playing functionality will allow the 
-			the data to be sent from the app to the esp32 during the bluetooth mode at realtime. The next feature is making sure of making all the other 
-			features work in sync and send bits as discussed earlier. Except this I worked on the RTOS for the embedded code , specially the bluetooth functionality
-			for the esp32.
-			<br>
-			Additionally worked on the desing for the 3D model of the packaging for the ESP32. I have attached desings for app and desings for packaging.
-			<br>
-			<img src="Team/progress/resources4/design01.jpeg" alt="Design for ESP32" width="500" height="500"><br>
-			<img src="Team/progress/resources4/design02.jpeg" alt="Design for ESP32" width="500" height="500"><br>
-			<img src="Team/progress/resources4/codeLogic.jpeg" alt="Code Logic" width="500" height="500"><br>
-			<img src="Team/progress/resources4/androidApp.png" alt="App Design" width="350" height="600"><br>
-
-			<h4>Week 11:</h4>
-            <b>Date:</b> 03/31/2023<br>
-            <b>Total hours:</b>1<br>
-            <b>Description of project design efforts:</b><br>
-				The following week was pretty breif , Graeme was working on completing soldering for the PCB and Anurag was working on the software code
-				about the PWM Cycle. I wasn't able to contribute a lot as we are still awaiting for components for our printed circuit board to complete. 
-				Although during this time I was figuring out additionall integration for the app and was able to create a new android fragement window , thats
-				accesible on clicking on the customization button , the only goal now is to retain the information from the new page and send frequent update to
-				the ESP32 as mentioned in last weeks report. As there isnt a lot of documentation on the following , I am currently playing with Android Studio for 
-				being able to complete the task.
-			<h4>Week 9 and Week 10:</h4>
-            <b>Date:</b> 03/24/2023<br>
-            <b>Total hours:</b>8<br>
-            <b>Description of project design efforts:</b><br>
-
-			For the following week I have completed the basics of the Android app that communicates with an ESP32 device using Bluetooth Low Energy (BLE). 
-			The app, as it stands, includes basic functionality for connecting to the ESP32 device, sending messages, and opening a dancing visualizer fragment.
-			<br>
-			I have implemented an instance of the ESP32BLE class, which provides methods for scanning for BLE devices, connecting to a device, sending messages, and disconnecting. The class also includes a BluetoothConnectionStatus enum to keep track of the current connection status. Additionally, I have included code to check whether Bluetooth is enabled and request the user's permission to access the device's location, which is required to perform BLE scanning.
-			The UI of the app includes three buttons: a connect/disconnect button, a button to send a message to the ESP32 device, and a button to open a dancing visualizer fragment. When the user clicks the connect/disconnect button, the app will either connect to or disconnect from the ESP32 device, depending on the current connection status. The button's text will change to reflect the current state of the connection. When the user clicks the button to send a message to the ESP32 device, the app will send a message containing the text "Hello from Android" to the connected device, if there is one. If there is no device connected, the app will display a message prompting the user to connect first. When the user clicks the button to open the dancing visualizer fragment, the app will replace the current UI with the dancing visualizer fragment.
-			<br>
-			Moving forward, I am introducing new pages to the app for user customization. This will allow users to customize the app's behavior and appearance to better suit their needs. I plan to include options for changing the color scheme, selecting different animations for the dancing visualizer, and setting up custom commands for the ESP32 device.
-			<br>
-			Moreover I will try to convert the arduino code to espesriff idf , implement new features in the app . And work on the code for the final project.
-			
-			<br>
-			<video width="320" height="240" controls>
-			<source src="Team/progress/resources4/bluetooth.mp4" type="video/mp4">
-		    </video>
-			<br>
-
-
-			<p><br></p>
-			<h4>Week 8 and Week 9:</h4>
-            <b>Date:</b> 03/10/2023<br>
-            <b>Total hours:</b>40<br>
-            <b>Description of project design efforts:</b><br>
-
-			The following two weeks I had focues on the following set of tasks:- 
-			<ol style="list-style-type: decimal;">
-				<li>Midterm Presentation</li>
-				<li>Inverting OP-AMP reffered from Texas Instruments</li>
-				<li>Non-Inverting OP AMP </li>
-				<li>Blueetooth implemenation</li>
-			</ol>
-			<br>
-			
-			<h5>Midterm Presentation</h5>
-			For the midterm week , the focues was on developing the Midterm Presentation, I had to complete the major components slide section and the software 
-			slide for the app development. Additionally for the project timeline , developed the initial gantt chart which Anurag later on changed as per need.
-			During making this presentation , got an opportunity to review our designs and prototyping progress , post presentation , we decided we need immediate
-			work for our amplifier circuit on the Microphone.
-
-			<h6>Inverting OP-AMP reffered from Texas Instruments</h6>
-
-			The next step as mentioned was focusing on the microphone amplifer circuit , we initially started with Inverting OP AMP circuit using 
-			LM324. The design was inspired from Texas Instruments design for <a href="https://www.ti.com/lit/ug/tidu765/tidu765.pdf?ts=1677731739021">Singel Supply , Electret Microphone Pre-Amplifierf Reference Desing</a>
-			Using the following desing template I was able to calculate the respected values and fine tune for simulating a similar design with LM324 on LTspice with the following circuit design :- 
-			<br>
-			<img src="Team/progress/resources4/SimulationLM324.png" alt="App Design" width="500" height="500"><br>
-			Due to a Inverting signal , I needed to shift the signal , made use of the voltage divider at the output point for being able to shift the signal at the origing range of 1.65V
-			<br>
-			The output signal for the following circuit looks like following :- 
-			<br>
-			<img src="Team/progress/resources4/InvertingLM324.png" alt="App Design" width="500" height="500"><br>
-			After simulating the following , worked on implementing the following circuit on the circuit , we were able to get the audio signal amplified although there 
-			was a potential issue of the audio signal clipping , althought the achieved a high clarity sound output after the amplification when tested using a TRRS jack to headphone out.Althought the voltage 
-			difference achieved between the signals wasn't upto mark.
-			
-			<h6>Non-Inverting OP AMP</h6>
-
-			After not getting the results needed the team went ahead with implementing a Non-inverting OP AMP , for this attempt we used a basic RC circuit with high pass and low pass implemented on input and output 
-			respectively. The result we achieved with the following had issues with sound clarity but had good amplification. Although Anurag and Graeme pulled a clutch on the following desing and fine tuned modded 
-			the desing to perfection for our project.
-
-			<h6>Bluetooth implemenation</h6>
-			The bluetooth functionalities have issues on different sdk version of android , additionally the BLE and Classic Bluetooth implemenation have changed with the newwer android version 
-			although the past sdk have depreceated function. Found multiple resources that will be utilized this moment onwards for bluetooth implementation. We are done with other 
-			functionalities of the app and will be done when done implemenating bluetooth after navigating from poor docuementation of bluetooth for low energy on android's guide.
-			The resources identifed are :
-			<li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-2-47a3cdaade07">Medium Android BLE Part 1</a></li>
-			<li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-2-47a3cdaade07">Medium Android BLE Part 2</a></li>
-			<li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-3-117d3a8aee23">Medium Android BLE Part 3</a></li>
-			<li><a href="https://devzone.nordicsemi.com/cfs-file/__key/communityserver-blogs-components-weblogfiles/00-00-00-00-04-DZ-1046/2604.BLE_5F00_on_5F00_Android_5F00_v1.0.1.pdf">Nordic Semi BLE</a></li>
-			<br><br>
-
-
-
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Week 7: PCB Design and App design</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Date: 2/24/2023</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Total hours: - 3</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>This week was mainly spent towards discussing the and verifying the PCB design for both midterm review and team progress. The second one was working on the android application.</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>The first task at hand was PCB design , we made sure that we have all the parts on hand that were part of our PCB design. Avik and I went over the footprints for each of the parts and verified if we have the correct parts and their footprints. Additionally , we gathered all the documentation regards to those parts such as their datasheets. Moreover, for developing the PCB on the weekend we went through some resources. Those are:</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-<ol style="list-style-type: decimal;">
-    <li><a href="https://www.kicad.org/discover/pcb-design/">https://www.kicad.org/discover/pcb-design/</a></li>
-    <li><a href="https://www.youtube.com/watch?v=-_nZZLuwYd0&ab_channel=ElektorTV">https://www.youtube.com/watch?v=-_nZZLuwYd0&amp;ab_channel=ElektorTV</a></li>
-    <li>https://www.youtube.com/watch?v=l9b_6WLemmg&amp;ab_channel=BuildElectronicCircuitsbyOhmify</li>
-    <li><a href="https://www.youtube.com/watch?v=5Be7XOMmPQE&ab_channel=shabaz">https://www.youtube.com/watch?v=5Be7XOMmPQE&amp;ab_channel=shabaz</a></li>
-</ol>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>The second task that I completed solely was app development , I was able to write code that onClick , makes the button connect to a device named ESP32 if discovered based on UUID. It allows the device to scan for active ESP32 devices and ask the user to choose either one of the device in the list.</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>I have made use of the following libraries to achieve my results :-</p>
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-<ol style="list-style-type: decimal;">
-    <li>Android Bluetooth Gatt Callback</li>
-    <li>Android Bluetooth Gatt Characteristics</li>
-    <li>Android Bluetooth Fatt Service</li>
-    <li>Android Bluetooth Device</li>
-    <li>Android Bluetooth Manager</li>
-</ol>
-<br>
-<img src="Team/progress/resources4/app.png" alt="App Design" width="500" height="500"><br>
-
-<img src="">
-<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.5in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<h4>Week 6:</h4>
-            <b>Date:</b> 02/17/2023<br>
-            <b>Total hours:</b>8<br>
-            <b>Description of project design efforts:</b><br>
-
-			The following week was dedicated towards making sure our project has all the hardware requirnments and start working on android studio.<br>
-
-			For ensuring the Hardware requirements and procuring the needful parts , first we verified all the desings and thne articulates the ones that need replacement.
-			There were two components of the entire project that needed to be changed. The first and foremost was the powering capabiliteis for ESP32 , we need to redo our calculations and work 
-			according to the need of the project. We identified from the datasheet of <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">ws2812b</a> that each color pixel requires approximately 20 mA current. Hence for one single Led that value of current
-			comes upto 60 mA. So when we have 2 strips of 12 on each plank of wood, we are using 144 leds , that roughly appoximates to 9A. Hence we will be going for adapter thats able to convert wall supply
-			to 5V with atleast 9A. This over esimtation is to consider other current draw in the system. Then we moved ahead and Avik and I , worked on choosing the ICs required for power conversion of 5V , 9A to 3.3V,0.5A . To power
-			the ESP32. For doing this we utilized the TI workbench and came up with the following design. <a
-			href="https://www.ti.com/design-resources/design-tools-simulation/webench-power-designer.html?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=app-null-null-58700006320820903_webenchhtml5-cpc-pp-google-wwe&amp;utm_content=TI_Webench&amp;ds_k=ti+webench&amp;DCM=yes&amp;gclid=Cj0KCQiA6LyfBhC3ARIsAG4gkF8M3Y3uZtUszYcQ7rAoGKO9LfFryGWbG3NkEEvzY0SKZ41GqCg1au4aAvXEEALw_wcB&amp;gclsrc=aw.ds">TI
-			Webench</a><br>
-			
-			Then we made the BOM and added the footprints and created the following desing on our KiCAD.<br>
-
-
-			<img src="Team/progress/resources4/image002.png" alt="LM1117 Circuit Diagram" width="500" height="500"><br>
-
-
-			The second component that we identified was the audio multiplexer that needed a little change. We are currently choosing the following component <a href="https://www.analog.com/en/products/adg3257.html#product-overview">ADG3257</a>.
-			The following could change during team dicussion over the weekedn.
-
-			Other then the power requirnments for the module I started working on the code for both android and esp that focuses on the Blueetooth Connectivity feature to idenify protocls needed I came 
-			across bluetooth GaTT profile. <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGatt">bluetooth Documentation for Android Studio. </a> For ESP32 points I figured 
-			the following useuful docuementation by espressif : <a href="https://github.com/espressif/esp-idf/tree/045163a2ec/examples/bluetooth/bluedroid/ble/gatt_client">ESP 32 bluetooth</a>
-
-			The goal for the coming week would be to start implementing the bluetooth functionality and able to communicate and on the other hand prototype the hardware for power. Finalize the audio mux and 
-			prototype it for 3 chanels of input.
-
-
-			<h4>Week 5:</h4>
-            <b>Date:</b> 02/10/2023<br>
-            <b>Total hours:</b>8<br>
-            <b>Description of project design efforts:</b><br>
-				The folloiwng week was utilized in creating a basic UML Diagram for the application used with our final prototype. Spend some additional time on 
-				understanding Beat Tracking mechanism and curating a plan for pattern generation based on sound profile.
-				<br>
-				The program requried minimal knowledge about android , hence I completed few basic tutorials . That involves the first Unit 1 to Unit 3 which convers
-				android studio , building a basic layout , Kotlin fundamentals , Adding Button , Interacting with UI , some advacned Kotlin fundamental. The further focus was to 
-				find resources and libraries that would be useful for the app , one such example is the color picker tool that we would offer our users to pick color for the LEDs.
-				<a href="https://www.geeksforgeeks.org/how-to-create-a-color-picker-tool-in-android-using-color-wheel-and-slider/">Color Picker</a>
-				<br>
-				The basic design for the app :-
-				<img src="Team/progress/resources4/AppDesign.drawio.png" alt="App Design Diagram" width="300" height="300">
-
-				<br>
-				The team is currently utilizing FFT to generate a better sound profile of the current playable audio delivered to the device. Although other 
-				then FFT , would be using conecpts of machine learning recurrent neural networks and then joining outputs using Bayesian network. The reason to pursue using machine
-				learning is for having an alternate concept to FFT , thats a four step process involving 1) Preprocessing Audio Signals 2) Training and fine tuning RNN model
-				3) Model of best fit 4) Applying Dynamic Bayesian Network. 
-				<a href="https://www.youtube.com/watch?v=lecy8kEjC3Q&ab_channel=MachineLearningTV">Resource to understand Dynamic Bayesian</a>
-				<a href="https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/">Audio Data Analysis</a>
-				Post getting the sound profile , its important to generate thr right visual output , hence I spent sometime figuring at what sound frequency or profile , 
-				which kind of light pattern should be generated. I wasn't able to find a lot out of it and will probably give some more time towards this next week.
-
-
-
-			<h4>Week 4:</h4>
-            <b>Date:</b> 02/03/2023<br>
-            <b>Total hours:</b>4<br>
-            <b>Description of project design efforts:</b><br>
-				The following week I made progress on app development and working with the LEDs.
-				<br>
-				So I spent most of my time learning App development in Android Studio as its a new concept. I have followed the labs on the android Studio
-				devloper course. The course was referred in previous weeks progress report. Moreover , I went through a current project that uses Bluetooth Low Energy (BLE) 
-				on esp32 and an adroid application for it's control.<a href="https://github.com/kakopappa/bluetooth_android_esp32_example">ESP32 Arduino Android BLE Example</a>
-				<br>
-				I spent most of my time in the lab working on multiple parts for setting up LEDs. Firstly , we needed to cut the strips in the group of 5s and 
-				as we wanted to test them in small batch , we spent few moments soldering the LEDs. I developed code for multiple LED functions for LED Bounce , LED Flashing Change.
-				After setting up the LEDs , I spent some time setting up the schematics of KiCad with Avik . Developing the schematics for voltage circuit on KiCad and for the coming week I would be
-				focusing on working with Avik for PCB Design and starting the implemenation for the App.
-
-				I havent doucmented pictures as , previous progress reports displayed the preliminary parts used for this weeks work Will have a more conclusive update next week wit more documentation.
-
-
-
-
-			<h4>Week 3:</h4>
-            <b>Date:</b> 01/27/2023<br>
-            <b>Total hours:</b>8<br>
-            <b>Description of project design efforts:</b><br>
-			The following week was to think about the code structure and working on the hardware requirements for the voltage regulator circuit as mentioned in the earlier report.
-			<br>
-			For the voltage regulator circuit , I created an LTspice model for our team to verify the desing in mind and the capacitor and inductors needed to create the circuit.
-			For the following LTspice circuit , I utilized the datasheet for LM1117 from TI.
-			<a href="https://www.ti.com/lit/ds/symlink/lm1117.pdf?ts=1674541953770&ref_url=https%253A%252F%252Fwww.google.com%252F">LM1117 DataSheet</a>
-			The circuit for the voltage regulator:-
-			<br>
-			<img src="Team/progress/resources4/LTspiceLM117.png" alt="LM1117 Circuit Diagram" width="500" height="500">
-			<br>
-			Avik and I were even able to develop the following circuit. As of now the design seems to satisfy the requirements for conversion when tested for 12v Input voltage
-			and it was able to output to 5.05V , the coming week focuses on fine tuning the entire circuit with all the required components.
-			<br>
-			This week , I even finished a logistical task for the team , that was to develop the send.sh script which is able to make git commit , pulls and transfer of files from local to the webserver.
-			<br>
-			Additionally , discussing the coding efforts for this week . Our team has decided to work in C/C++ for developing the code for our entire project to being able to contribute towards the following
-			I started reffering to the documentation for esp-idf github repo. <a href="https://github.com/espressif/vscode-esp-idf-extension">esp-idf</a> Additionally I went through coding resources avaliable on
-			platformIo examples section. <a href="https://github.com/platformio/platform-espressif32/tree/master/examples">Platform IO github examples</a> This process gave me a basic idea about the code structure of our project , for the
-			coming week I would start contributing towards the code for our esp32. Finally as mentioned in the previous report about creating an app for the project , I have enrolled myself to <a href="https://developer.android.com/courses">android course</a>
-			<br>
-			Finally , Avik and I were able to prototype the LEDs , we cut the LEDs in strip of 5 and then soldered the required pins. Then we connected 
-			the LEDs to ESP32 and ran a code to represent bounce and static colors.
-			<br>
-
-			<video width="320" height="240" controls>
-  			<source src="Team/progress/resources4/led.mp4" type="video/mp4">
-			<source src="Team/progress/resources4/led.ogg" type="video/ogg">
-  			Your browser does not support the video tag.
-			</video>
-
-            
-            <h4>Weeks 1-2: Brainstorming for High Voltage DC-DC Converter Circuit and Bluetooth</h4>
-            <b>Date: 1/20/2023 </b> <br>
-            <b>Total hours: 8 </b> <br>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Description: This week was a brainstorming week. I spend time reading about voltage regulator circuit and thinking about ICs that could be used for making the following circuit for the project. I spent time going through the BluetoothSerial.h for the ESP32. This basically involved going through the current functions available for the code that can be utilized for setting a Bluetooth connection with an app. Additionally, figured the use cases for Classic Bluetooth vs Bluetooth Low Energy. Finally, was able to develop a flowchart on Lucid Chart to put the project possibilities on a piece of paper.</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>During this process I learned about Voltage Regulator, Dividers and Buck Converters. The use cases and applications and hence was able to conclude that a regulator is a better use case for our project. In the coming week, I will be devoting time on development of hardware circuit for voltage regulator by ordering the correct components needed. Additionally, I will be performing power calculations with the team based on power requirements based on our sub modules. For Bluetooth connections, I figured that a classic mechanism is higher preferable use case as our device is powered through Wall Plug, Moreover BLE on ESP has tend shown issues with disconnecting with androids. The goal for the coming week is to get hand off Android Studio and start app development, for current prototyping I utilized the MIT app Inventor to get the basic idea. It was achieved using block with the end goal of have a rough estimate over the Bluetooth functionality between android and embedded systems. Finally working on the flowchart gave me well rounded idea about the next few potential places to work on and especially a rough estimate about the time we have to achieve these functionalities.</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Voltage regulator: I went through multiple resources online and had a discussion with the team about it , finally the goal set was to read more about creating a step-down voltage regulator for our circuit, as we are planning to utilize this for converting 10V/12V to 5V for our ESP32 and even 10V/12V to 5V for our programmable Led. We are currently keeping them on two different power lines, so the ESP32 is operatable even when the user chooses the turn off the LEDs analogous. I took the liberty of researching and pitching of choosing a voltage regulator instead of a divider because, using voltage divider will involve using large value resistors and is 80% less efficient under load. We are not considering a buck converter because we are planning on choosing a wall plug that converts ac to dc.</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf">https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf</a></p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.youtube.com/watch?v=giGRrODKJSE&ab_channel=ElectronFun.com">https://www.youtube.com/watch?v=giGRrODKJSE&amp;ab_channel=ElectronFun.com</a></p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="shorturl.at/aT058"></p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Potential ICs: LM2678 ,LM7805</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Bluetooth Functionality: So, for the following we will be utilizing references module below to check if we were able to connect to the device using android mobile and control the led device. We had a success with this, we made a basic code that sends 6-bit message from mobile to the esp32 and we used modulus of 10 to separate the 6-bit group to 2 bits where each group corresponds to three buttons on the app. The basic app Interface had three buttons on it and ability to connect and disconnect with the ESP32 and finally the status. We used MIT app inventor for the prototype now we will start coding with Android Studio as our app was operable and able to communicate with the device.</p>
-			<ol style="list-style-type: circle;">
-				<li><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h">https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h</a></li>
-				<li><a href="http://ai2.appinventor.mit.edu/#6307288898732032">http://ai2.appinventor.mit.edu/#6307288898732032</a></li>
-			</ol>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.5in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Lucid Chart : For getting a better perspective of the design process &nbsp;of the entire project. Avik and I took the liberty of making a flow chart that displays the possible routes we can take with the project. This workflow gives us a better understanding of the project and comprehend the requirements. We have added the Finally, to get started with the voltage regulator circuit I had designed a small layout that I would be want to test the following week. &nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
-			<p><br></p>
-			<img src="Team/progress/resources4/appWorking.jpg" alt="App prototype" width="400" height="500">
-			<br>
-			<img src="Team/progress/resources4/RDNT - DC_DC Regulator.jpg" alt="Lucid DC-DC" width="400" height="500">
-			<br>
-			<img src="Team/progress/resources4/RDNT - Full Diagram.jpg" alt="Lucid RDNT" width="400" height="500">
-            <br>
-
-                      
-        </div>
-	
-		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
-		<div id="footer"></div>
-    </div>
-</div>
-
-<!--JS-->
-<script src="js/jquery.js"></script>
-<script src="js/jquery-migrate-1.1.1.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $("#header").load("header.html");
-	$("#menu").load("navbar.html");
-	$("#footer").load("footer.html");
-});
-</script>
-</body>
+for (int i = 1; i &lt; 7; i++) // normalize to values from 0 - 15
+{
+	// printf("histo pre norm: %i\n",histogram[i]);
+	postNorm[i - 1] = ((float)histogram[i] / histogram[max_frequency_index]) * 15;
+	// printf("histo post norm: %f\n",postNorm[i-1]);
+}</code></pre>
+                  </li>
+                  <li>
+                     <h4>Debugging and Mitgiating Errors</h4>
+                     The lights were flickering during this I came acorss the documentation and forums indicating the Bluetooth affects the
+                     flow of the code despite of xTaskCreate() hence its best practice to implement it on the CPU_APP core. This involved 
+                     running <code>idf.py run menuconfig</code> and setting the Bluetooth to run on the second core. This mitigated the 
+                     flickering LEDs. Came acorss loadprohibited error when the FFT was trying to access values not present and close 
+                     to memory address of 0x00000800. Mitgated this by making necessary initilizations and checking incorrect access of
+                     arrays. Finally encorunted watchDog timers reffered lectures and documentation for esp32. Addtionally used Waveform on 
+                     the ESP32 DevBoard to simulate ADC values and create the right piece of code to work with out implemetation of ADC.
+                     <ol>
+                        <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html#id4">Fatal Errors</a></li>
+                        <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html#loadprohibited-storeprohibited">LoadProhibited</a></li>
+                        <li><a href="https://www.esp32.com/viewtopic.php?t=2118">Bluetooth Core</a></li>
+                        <li><a href="https://github.com/espressif/esp-dsp/issues/4">FFT Explanation</a></li>
+                     </ol>
+                  </li>
+               </ol>
+               <br>
+               The 3D desing for the PCB:<br>
+               <img src="Team/progress/resources4/packagingIter2.jpg" alt="3D Print Second Iteration" width="350" height="600"><br>
+               <br>
+               Combinging all the work the semester comes to end and here is the team behind it and the final demo of the product.
+               <br>
+               <img src="Team/progress/resources4/teamPhoto.jpg" alt="Team Photo" width="350" height="600"><br>
+               <br>
+               <br>
+               <video width="320" height="240" controls>
+                  <source src="Team/progress/resources4/demo.mov" type="video/mp4">
+               </video>
+               <br>
+               <h5>Week 13:</h5>
+               <b>Date: </b> 04/14/2023<br>
+               <b>Total Hours:</b>12<br>
+               <b>Description of project Design Effort: </b><br>
+               During the first few days of the week, we spent time debugging our circuit due to a short circuit issue. To resolve the issue,
+               we replaced the ESP32 on the board and removed parts of the power circuit. However, we continued to face issues until we discovered
+               that the audio multiplexer was soldered upside down, causing power and ground connections to be reversed. After fixing the soldering
+               issue, we tested the communication with the ESP32 and made slight modifications to the code provided by Anurag to ensure that the ADC, mode switch, LED, and Bluetooth functionalities worked together seamlessly. Additionally, I developed an Android app that includes a search bar and a list bar for selecting music, as well as separate buttons for turning on and off features. The merged code and the updated app UI can be found in the links below.
+               <br>
+               ESP32 Codebase Merged File:
+               <br>
+               <a href="https://github.com/Avik127/RDNT/blob/main/RDNT_Firmware/Prototyping%20Tools/ESP_ITER1.c">ESP32 Codebase</a>
+               <br>
+               Android app design: 
+               <br>	
+               <img src="Team/progress/resources4/androidnewApp.png" alt="App Design" width="350" height="600"><br>
+               <br>
+               <h5>Week 12:</h5>
+               <b>Date: </b> 04/7/2023<br>
+               <b>Total hours:</b>6<br>
+               <b>Description of project Design efforts: </b><br>
+               The following week I worked on the functionality of letting user play music from app , this music playing functionality will allow the 
+               the data to be sent from the app to the esp32 during the bluetooth mode at realtime. The next feature is making sure of making all the other 
+               features work in sync and send bits as discussed earlier. Except this I worked on the RTOS for the embedded code , specially the bluetooth functionality
+               for the esp32.
+               <br>
+               Additionally worked on the desing for the 3D model of the packaging for the ESP32. I have attached desings for app and desings for packaging.
+               <br>
+               <img src="Team/progress/resources4/design01.jpeg" alt="Design for ESP32" width="500" height="500"><br>
+               <img src="Team/progress/resources4/design02.jpeg" alt="Design for ESP32" width="500" height="500"><br>
+               <img src="Team/progress/resources4/codeLogic.jpeg" alt="Code Logic" width="500" height="500"><br>
+               <img src="Team/progress/resources4/androidApp.png" alt="App Design" width="350" height="600"><br>
+               <h4>Week 11:</h4>
+               <b>Date:</b> 03/31/2023<br>
+               <b>Total hours:</b>1<br>
+               <b>Description of project design efforts:</b><br>
+               The following week was pretty breif , Graeme was working on completing soldering for the PCB and Anurag was working on the software code
+               about the PWM Cycle. I wasn't able to contribute a lot as we are still awaiting for components for our printed circuit board to complete. 
+               Although during this time I was figuring out additionall integration for the app and was able to create a new android fragement window , thats
+               accesible on clicking on the customization button , the only goal now is to retain the information from the new page and send frequent update to
+               the ESP32 as mentioned in last weeks report. As there isnt a lot of documentation on the following , I am currently playing with Android Studio for 
+               being able to complete the task.
+               <h4>Week 9 and Week 10:</h4>
+               <b>Date:</b> 03/24/2023<br>
+               <b>Total hours:</b>8<br>
+               <b>Description of project design efforts:</b><br>
+               For the following week I have completed the basics of the Android app that communicates with an ESP32 device using Bluetooth Low Energy (BLE). 
+               The app, as it stands, includes basic functionality for connecting to the ESP32 device, sending messages, and opening a dancing visualizer fragment.
+               <br>
+               I have implemented an instance of the ESP32BLE class, which provides methods for scanning for BLE devices, connecting to a device, sending messages, and disconnecting. The class also includes a BluetoothConnectionStatus enum to keep track of the current connection status. Additionally, I have included code to check whether Bluetooth is enabled and request the user's permission to access the device's location, which is required to perform BLE scanning.
+               The UI of the app includes three buttons: a connect/disconnect button, a button to send a message to the ESP32 device, and a button to open a dancing visualizer fragment. When the user clicks the connect/disconnect button, the app will either connect to or disconnect from the ESP32 device, depending on the current connection status. The button's text will change to reflect the current state of the connection. When the user clicks the button to send a message to the ESP32 device, the app will send a message containing the text "Hello from Android" to the connected device, if there is one. If there is no device connected, the app will display a message prompting the user to connect first. When the user clicks the button to open the dancing visualizer fragment, the app will replace the current UI with the dancing visualizer fragment.
+               <br>
+               Moving forward, I am introducing new pages to the app for user customization. This will allow users to customize the app's behavior and appearance to better suit their needs. I plan to include options for changing the color scheme, selecting different animations for the dancing visualizer, and setting up custom commands for the ESP32 device.
+               <br>
+               Moreover I will try to convert the arduino code to espesriff idf , implement new features in the app . And work on the code for the final project.
+               <br>
+               <video width="320" height="240" controls>
+                  <source src="Team/progress/resources4/bluetooth.mp4" type="video/mp4">
+               </video>
+               <br>
+               <p><br></p>
+               <h4>Week 8 and Week 9:</h4>
+               <b>Date:</b> 03/10/2023<br>
+               <b>Total hours:</b>40<br>
+               <b>Description of project design efforts:</b><br>
+               The following two weeks I had focues on the following set of tasks:- 
+               <ol style="list-style-type: decimal;">
+                  <li>Midterm Presentation</li>
+                  <li>Inverting OP-AMP reffered from Texas Instruments</li>
+                  <li>Non-Inverting OP AMP </li>
+                  <li>Blueetooth implemenation</li>
+               </ol>
+               <br>
+               <h5>Midterm Presentation</h5>
+               For the midterm week , the focues was on developing the Midterm Presentation, I had to complete the major components slide section and the software 
+               slide for the app development. Additionally for the project timeline , developed the initial gantt chart which Anurag later on changed as per need.
+               During making this presentation , got an opportunity to review our designs and prototyping progress , post presentation , we decided we need immediate
+               work for our amplifier circuit on the Microphone.
+               <h6>Inverting OP-AMP reffered from Texas Instruments</h6>
+               The next step as mentioned was focusing on the microphone amplifer circuit , we initially started with Inverting OP AMP circuit using 
+               LM324. The design was inspired from Texas Instruments design for <a href="https://www.ti.com/lit/ug/tidu765/tidu765.pdf?ts=1677731739021">Singel Supply , Electret Microphone Pre-Amplifierf Reference Desing</a>
+               Using the following desing template I was able to calculate the respected values and fine tune for simulating a similar design with LM324 on LTspice with the following circuit design :- 
+               <br>
+               <img src="Team/progress/resources4/SimulationLM324.png" alt="App Design" width="500" height="500"><br>
+               Due to a Inverting signal , I needed to shift the signal , made use of the voltage divider at the output point for being able to shift the signal at the origing range of 1.65V
+               <br>
+               The output signal for the following circuit looks like following :- 
+               <br>
+               <img src="Team/progress/resources4/InvertingLM324.png" alt="App Design" width="500" height="500"><br>
+               After simulating the following , worked on implementing the following circuit on the circuit , we were able to get the audio signal amplified although there 
+               was a potential issue of the audio signal clipping , althought the achieved a high clarity sound output after the amplification when tested using a TRRS jack to headphone out.Althought the voltage 
+               difference achieved between the signals wasn't upto mark.
+               <h6>Non-Inverting OP AMP</h6>
+               After not getting the results needed the team went ahead with implementing a Non-inverting OP AMP , for this attempt we used a basic RC circuit with high pass and low pass implemented on input and output 
+               respectively. The result we achieved with the following had issues with sound clarity but had good amplification. Although Anurag and Graeme pulled a clutch on the following desing and fine tuned modded 
+               the desing to perfection for our project.
+               <h6>Bluetooth implemenation</h6>
+               The bluetooth functionalities have issues on different sdk version of android , additionally the BLE and Classic Bluetooth implemenation have changed with the newwer android version 
+               although the past sdk have depreceated function. Found multiple resources that will be utilized this moment onwards for bluetooth implementation. We are done with other 
+               functionalities of the app and will be done when done implemenating bluetooth after navigating from poor docuementation of bluetooth for low energy on android's guide.
+               The resources identifed are :
+               <li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-2-47a3cdaade07">Medium Android BLE Part 1</a></li>
+               <li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-2-47a3cdaade07">Medium Android BLE Part 2</a></li>
+               <li><a href="https://medium.com/@martijn.van.welie/making-android-ble-work-part-3-117d3a8aee23">Medium Android BLE Part 3</a></li>
+               <li><a href="https://devzone.nordicsemi.com/cfs-file/__key/communityserver-blogs-components-weblogfiles/00-00-00-00-04-DZ-1046/2604.BLE_5F00_on_5F00_Android_5F00_v1.0.1.pdf">Nordic Semi BLE</a></li>
+               <br><br>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Week 7: PCB Design and App design</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Date: 2/24/2023</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Total hours: - 3</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>This week was mainly spent towards discussing the and verifying the PCB design for both midterm review and team progress. The second one was working on the android application.</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>The first task at hand was PCB design , we made sure that we have all the parts on hand that were part of our PCB design. Avik and I went over the footprints for each of the parts and verified if we have the correct parts and their footprints. Additionally , we gathered all the documentation regards to those parts such as their datasheets. Moreover, for developing the PCB on the weekend we went through some resources. Those are:</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <ol style="list-style-type: decimal;">
+                  <li><a href="https://www.kicad.org/discover/pcb-design/">https://www.kicad.org/discover/pcb-design/</a></li>
+                  <li><a href="https://www.youtube.com/watch?v=-_nZZLuwYd0&ab_channel=ElektorTV">https://www.youtube.com/watch?v=-_nZZLuwYd0&amp;ab_channel=ElektorTV</a></li>
+                  <li>https://www.youtube.com/watch?v=l9b_6WLemmg&amp;ab_channel=BuildElectronicCircuitsbyOhmify</li>
+                  <li><a href="https://www.youtube.com/watch?v=5Be7XOMmPQE&ab_channel=shabaz">https://www.youtube.com/watch?v=5Be7XOMmPQE&amp;ab_channel=shabaz</a></li>
+               </ol>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>The second task that I completed solely was app development , I was able to write code that onClick , makes the button connect to a device named ESP32 if discovered based on UUID. It allows the device to scan for active ESP32 devices and ask the user to choose either one of the device in the list.</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>I have made use of the following libraries to achieve my results :-</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <ol style="list-style-type: decimal;">
+                  <li>Android Bluetooth Gatt Callback</li>
+                  <li>Android Bluetooth Gatt Characteristics</li>
+                  <li>Android Bluetooth Fatt Service</li>
+                  <li>Android Bluetooth Device</li>
+                  <li>Android Bluetooth Manager</li>
+               </ol>
+               <br>
+               <img src="Team/progress/resources4/app.png" alt="App Design" width="500" height="500"><br>
+               <img src="">
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.5in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <h4>Week 6:</h4>
+               <b>Date:</b> 02/17/2023<br>
+               <b>Total hours:</b>8<br>
+               <b>Description of project design efforts:</b><br>
+               The following week was dedicated towards making sure our project has all the hardware requirnments and start working on android studio.<br>
+               For ensuring the Hardware requirements and procuring the needful parts , first we verified all the desings and thne articulates the ones that need replacement.
+               There were two components of the entire project that needed to be changed. The first and foremost was the powering capabiliteis for ESP32 , we need to redo our calculations and work 
+               according to the need of the project. We identified from the datasheet of <a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">ws2812b</a> that each color pixel requires approximately 20 mA current. Hence for one single Led that value of current
+               comes upto 60 mA. So when we have 2 strips of 12 on each plank of wood, we are using 144 leds , that roughly appoximates to 9A. Hence we will be going for adapter thats able to convert wall supply
+               to 5V with atleast 9A. This over esimtation is to consider other current draw in the system. Then we moved ahead and Avik and I , worked on choosing the ICs required for power conversion of 5V , 9A to 3.3V,0.5A . To power
+               the ESP32. For doing this we utilized the TI workbench and came up with the following design. <a
+                  href="https://www.ti.com/design-resources/design-tools-simulation/webench-power-designer.html?utm_source=google&amp;utm_medium=cpc&amp;utm_campaign=app-null-null-58700006320820903_webenchhtml5-cpc-pp-google-wwe&amp;utm_content=TI_Webench&amp;ds_k=ti+webench&amp;DCM=yes&amp;gclid=Cj0KCQiA6LyfBhC3ARIsAG4gkF8M3Y3uZtUszYcQ7rAoGKO9LfFryGWbG3NkEEvzY0SKZ41GqCg1au4aAvXEEALw_wcB&amp;gclsrc=aw.ds">TI
+               Webench</a><br>
+               Then we made the BOM and added the footprints and created the following desing on our KiCAD.<br>
+               <img src="Team/progress/resources4/image002.png" alt="LM1117 Circuit Diagram" width="500" height="500"><br>
+               The second component that we identified was the audio multiplexer that needed a little change. We are currently choosing the following component <a href="https://www.analog.com/en/products/adg3257.html#product-overview">ADG3257</a>.
+               The following could change during team dicussion over the weekedn.
+               Other then the power requirnments for the module I started working on the code for both android and esp that focuses on the Blueetooth Connectivity feature to idenify protocls needed I came 
+               across bluetooth GaTT profile. <a href="https://developer.android.com/reference/android/bluetooth/BluetoothGatt">bluetooth Documentation for Android Studio. </a> For ESP32 points I figured 
+               the following useuful docuementation by espressif : <a href="https://github.com/espressif/esp-idf/tree/045163a2ec/examples/bluetooth/bluedroid/ble/gatt_client">ESP 32 bluetooth</a>
+               The goal for the coming week would be to start implementing the bluetooth functionality and able to communicate and on the other hand prototype the hardware for power. Finalize the audio mux and 
+               prototype it for 3 chanels of input.
+               <h4>Week 5:</h4>
+               <b>Date:</b> 02/10/2023<br>
+               <b>Total hours:</b>8<br>
+               <b>Description of project design efforts:</b><br>
+               The folloiwng week was utilized in creating a basic UML Diagram for the application used with our final prototype. Spend some additional time on 
+               understanding Beat Tracking mechanism and curating a plan for pattern generation based on sound profile.
+               <br>
+               The program requried minimal knowledge about android , hence I completed few basic tutorials . That involves the first Unit 1 to Unit 3 which convers
+               android studio , building a basic layout , Kotlin fundamentals , Adding Button , Interacting with UI , some advacned Kotlin fundamental. The further focus was to 
+               find resources and libraries that would be useful for the app , one such example is the color picker tool that we would offer our users to pick color for the LEDs.
+               <a href="https://www.geeksforgeeks.org/how-to-create-a-color-picker-tool-in-android-using-color-wheel-and-slider/">Color Picker</a>
+               <br>
+               The basic design for the app :-
+               <img src="Team/progress/resources4/AppDesign.drawio.png" alt="App Design Diagram" width="300" height="300">
+               <br>
+               The team is currently utilizing FFT to generate a better sound profile of the current playable audio delivered to the device. Although other 
+               then FFT , would be using conecpts of machine learning recurrent neural networks and then joining outputs using Bayesian network. The reason to pursue using machine
+               learning is for having an alternate concept to FFT , thats a four step process involving 1) Preprocessing Audio Signals 2) Training and fine tuning RNN model
+               3) Model of best fit 4) Applying Dynamic Bayesian Network. 
+               <a href="https://www.youtube.com/watch?v=lecy8kEjC3Q&ab_channel=MachineLearningTV">Resource to understand Dynamic Bayesian</a>
+               <a href="https://www.analyticsvidhya.com/blog/2017/08/audio-voice-processing-deep-learning/">Audio Data Analysis</a>
+               Post getting the sound profile , its important to generate thr right visual output , hence I spent sometime figuring at what sound frequency or profile , 
+               which kind of light pattern should be generated. I wasn't able to find a lot out of it and will probably give some more time towards this next week.
+               <h4>Week 4:</h4>
+               <b>Date:</b> 02/03/2023<br>
+               <b>Total hours:</b>4<br>
+               <b>Description of project design efforts:</b><br>
+               The following week I made progress on app development and working with the LEDs.
+               <br>
+               So I spent most of my time learning App development in Android Studio as its a new concept. I have followed the labs on the android Studio
+               devloper course. The course was referred in previous weeks progress report. Moreover , I went through a current project that uses Bluetooth Low Energy (BLE) 
+               on esp32 and an adroid application for it's control.<a href="https://github.com/kakopappa/bluetooth_android_esp32_example">ESP32 Arduino Android BLE Example</a>
+               <br>
+               I spent most of my time in the lab working on multiple parts for setting up LEDs. Firstly , we needed to cut the strips in the group of 5s and 
+               as we wanted to test them in small batch , we spent few moments soldering the LEDs. I developed code for multiple LED functions for LED Bounce , LED Flashing Change.
+               After setting up the LEDs , I spent some time setting up the schematics of KiCad with Avik . Developing the schematics for voltage circuit on KiCad and for the coming week I would be
+               focusing on working with Avik for PCB Design and starting the implemenation for the App.
+               I havent doucmented pictures as , previous progress reports displayed the preliminary parts used for this weeks work Will have a more conclusive update next week wit more documentation.
+               <h4>Week 3:</h4>
+               <b>Date:</b> 01/27/2023<br>
+               <b>Total hours:</b>8<br>
+               <b>Description of project design efforts:</b><br>
+               The following week was to think about the code structure and working on the hardware requirements for the voltage regulator circuit as mentioned in the earlier report.
+               <br>
+               For the voltage regulator circuit , I created an LTspice model for our team to verify the desing in mind and the capacitor and inductors needed to create the circuit.
+               For the following LTspice circuit , I utilized the datasheet for LM1117 from TI.
+               <a href="https://www.ti.com/lit/ds/symlink/lm1117.pdf?ts=1674541953770&ref_url=https%253A%252F%252Fwww.google.com%252F">LM1117 DataSheet</a>
+               The circuit for the voltage regulator:-
+               <br>
+               <img src="Team/progress/resources4/LTspiceLM117.png" alt="LM1117 Circuit Diagram" width="500" height="500">
+               <br>
+               Avik and I were even able to develop the following circuit. As of now the design seems to satisfy the requirements for conversion when tested for 12v Input voltage
+               and it was able to output to 5.05V , the coming week focuses on fine tuning the entire circuit with all the required components.
+               <br>
+               This week , I even finished a logistical task for the team , that was to develop the send.sh script which is able to make git commit , pulls and transfer of files from local to the webserver.
+               <br>
+               Additionally , discussing the coding efforts for this week . Our team has decided to work in C/C++ for developing the code for our entire project to being able to contribute towards the following
+               I started reffering to the documentation for esp-idf github repo. <a href="https://github.com/espressif/vscode-esp-idf-extension">esp-idf</a> Additionally I went through coding resources avaliable on
+               platformIo examples section. <a href="https://github.com/platformio/platform-espressif32/tree/master/examples">Platform IO github examples</a> This process gave me a basic idea about the code structure of our project , for the
+               coming week I would start contributing towards the code for our esp32. Finally as mentioned in the previous report about creating an app for the project , I have enrolled myself to <a href="https://developer.android.com/courses">android course</a>
+               <br>
+               Finally , Avik and I were able to prototype the LEDs , we cut the LEDs in strip of 5 and then soldered the required pins. Then we connected 
+               the LEDs to ESP32 and ran a code to represent bounce and static colors.
+               <br>
+               <video width="320" height="240" controls>
+                  <source src="Team/progress/resources4/led.mp4" type="video/mp4">
+                  <source src="Team/progress/resources4/led.ogg" type="video/ogg">
+                  Your browser does not support the video tag.
+               </video>
+               <h4>Weeks 1-2: Brainstorming for High Voltage DC-DC Converter Circuit and Bluetooth</h4>
+               <b>Date: 1/20/2023 </b> <br>
+               <b>Total hours: 8 </b> <br>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Description: This week was a brainstorming week. I spend time reading about voltage regulator circuit and thinking about ICs that could be used for making the following circuit for the project. I spent time going through the BluetoothSerial.h for the ESP32. This basically involved going through the current functions available for the code that can be utilized for setting a Bluetooth connection with an app. Additionally, figured the use cases for Classic Bluetooth vs Bluetooth Low Energy. Finally, was able to develop a flowchart on Lucid Chart to put the project possibilities on a piece of paper.</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>During this process I learned about Voltage Regulator, Dividers and Buck Converters. The use cases and applications and hence was able to conclude that a regulator is a better use case for our project. In the coming week, I will be devoting time on development of hardware circuit for voltage regulator by ordering the correct components needed. Additionally, I will be performing power calculations with the team based on power requirements based on our sub modules. For Bluetooth connections, I figured that a classic mechanism is higher preferable use case as our device is powered through Wall Plug, Moreover BLE on ESP has tend shown issues with disconnecting with androids. The goal for the coming week is to get hand off Android Studio and start app development, for current prototyping I utilized the MIT app Inventor to get the basic idea. It was achieved using block with the end goal of have a rough estimate over the Bluetooth functionality between android and embedded systems. Finally working on the flowchart gave me well rounded idea about the next few potential places to work on and especially a rough estimate about the time we have to achieve these functionalities.</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Voltage regulator: I went through multiple resources online and had a discussion with the team about it , finally the goal set was to read more about creating a step-down voltage regulator for our circuit, as we are planning to utilize this for converting 10V/12V to 5V for our ESP32 and even 10V/12V to 5V for our programmable Led. We are currently keeping them on two different power lines, so the ESP32 is operatable even when the user chooses the turn off the LEDs analogous. I took the liberty of researching and pitching of choosing a voltage regulator instead of a divider because, using voltage divider will involve using large value resistors and is 80% less efficient under load. We are not considering a buck converter because we are planning on choosing a wall plug that converts ac to dc.</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf">https://www.egr.msu.edu/classes/ece480/capstone/fall14/group08/Documents/BrentonSirowatkaDC-DCConverterApplicationNote.pdf</a></p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'><a href="https://www.youtube.com/watch?v=giGRrODKJSE&ab_channel=ElectronFun.com">https://www.youtube.com/watch?v=giGRrODKJSE&amp;ab_channel=ElectronFun.com</a></p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:1.0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>
+                  <a href="shorturl.at/aT058">
+               </p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Potential ICs: LM2678 ,LM7805</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Bluetooth Functionality: So, for the following we will be utilizing references module below to check if we were able to connect to the device using android mobile and control the led device. We had a success with this, we made a basic code that sends 6-bit message from mobile to the esp32 and we used modulus of 10 to separate the 6-bit group to 2 bits where each group corresponds to three buttons on the app. The basic app Interface had three buttons on it and ability to connect and disconnect with the ESP32 and finally the status. We used MIT app inventor for the prototype now we will start coding with Android Studio as our app was operable and able to communicate with the device.</p>
+               <ol style="list-style-type: circle;">
+               <li><a href="https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h">https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/src/BluetoothSerial.h</a></li>
+               <li><a href="http://ai2.appinventor.mit.edu/#6307288898732032">http://ai2.appinventor.mit.edu/#6307288898732032</a></li>
+               </ol>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.5in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>Lucid Chart : For getting a better perspective of the design process &nbsp;of the entire project. Avik and I took the liberty of making a flow chart that displays the possible routes we can take with the project. This workflow gives us a better understanding of the project and comprehend the requirements. We have added the Finally, to get started with the voltage regulator circuit I had designed a small layout that I would be want to test the following week. &nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:.75in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p style='margin-top:0in;margin-right:0in;margin-bottom:8.0pt;margin-left:0in;line-height:107%;font-size:15px;font-family:"Calibri",sans-serif;'>&nbsp;</p>
+               <p><br></p>
+               <img src="Team/progress/resources4/appWorking.jpg" alt="App prototype" width="400" height="500">
+               <br>
+               <img src="Team/progress/resources4/RDNT - DC_DC Regulator.jpg" alt="Lucid DC-DC" width="400" height="500">
+               <br>
+               <img src="Team/progress/resources4/RDNT - Full Diagram.jpg" alt="Lucid RDNT" width="400" height="500">
+               <br>
+            </div>
+            <!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
+            <div id="footer"></div>
+         </div>
+      </div>
+      <!--JS-->
+      <script src="js/jquery.js"></script>
+      <script src="js/jquery-migrate-1.1.1.js"></script>
+      <script type="text/javascript">
+         $(document).ready(function() {
+             $("#header").load("header.html");
+         	$("#menu").load("navbar.html");
+         	$("#footer").load("footer.html");
+         });
+      </script>
+   </body>
 </html>
