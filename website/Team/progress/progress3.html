@@ -52,6 +52,74 @@ contact course staff.
 			and include things such as a file lister (for listing out homework assignments or tutorials)
 		-->
 		<div id="content">
+      <p class=MsoNormal>WEEK 15:</p>
+
+      <p class=MsoNormal>Date: 03/31/2023</p>
+
+      <p class=MsoNormal>Total Hours: 16</p>
+
+      <p class=MsoNormal>Description of Design Efforts:</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>This week, our whole team put in a lot of work. On the project.
+      We developed the entire codebase and integrated it together, and focused on
+      getting the fixture up and running. My personal contributions to the work this
+      week were focused on the embedded software for mode select control, FFT, and some
+      integration of code. I also contributed to building the box packaging for our
+      PCB.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>The entirety of a work is a little difficult to put into
+      words, as we all contributed at different stages, but I will be as clear and succinct
+      as possible. Kahaan and I began by working on the integration of Bluetooth,
+      mode select, and LED out, which worked without a hitch. We found that the work
+      done on obtaining ADC samples was not working so far. Therefore, we worked
+      together on getting the ADC samples. It took me a few hours to fully understand
+      the continuous_adc library, and I learned a lot about the documentation method
+      of ESP software. We were finally able to identify that our code was functional
+      if there was no connection in the AUX-out port. Therefore, we decided to remove
+      the AUX-out port as a peripheral altogether. </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Thereon, I worked on creating and printing of the box for
+      our PCB with Kahaan. I am already well familiar with more advanced CAD
+      software, but through this I learned how to use TinkerCAD. We made two prototypes
+      and I learned to use a dremmel to get some of the incorrect dimensions to the right
+      ones. </p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Finally, Anurag and I developed a histogram-based algorithm
+      to display the FFT results, which Kahaan later implemented to perfection. I
+      believe that this was a great idea as it allows us to continue programming the
+      LEDs with different patterns and color configurations. Moreover, it allows us to
+      add more LEDs into the structure. I used my knowledge from previous courses
+      such as ECE368 to develop this visualization.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>Overall, it was a fun and productive week. Attached pictures
+      below.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal><img width=226 height=302 id="Picture 24"
+      src="Team/progress/progress3pics/image001.jpg"
+      alt="A picture containing cable, electrical wiring, red&#10;&#10;Description automatically generated"><img
+      width=213 height=304 id="Picture 26" src="Team/progress/progress3pics/image002.png"
+      alt="A person holding a phone&#10;&#10;Description automatically generated with low confidence"><img
+      width=295 height=221 id="Picture 25" src="Team/progress/progress3pics/image003.jpg"
+      alt="A group of people posing for a photo&#10;&#10;Description automatically generated with medium confidence"></p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
+      <p class=MsoNormal>&nbsp;</p>
+
       <p class=MsoNormal>WEEK 14:</p>
 
       <p class=MsoNormal>Date: 03/31/2023</p>
@@ -65,35 +133,35 @@ contact course staff.
       <p class=MsoNormal>We are still working toward our critical path of getting
       PSSCs checked off, and we have made significant progress with debugging. Beyond
       that, we are making continuous progress with software and creating a mechanical
-      fixture. We are also working towards creating a poster for Spark Challenge. Within
-      these tasks, this past week I was working on debugging our circuit, working on
-      parts of software, and creating a design for our poster.</p>
+      fixture. We are also working towards creating a poster for Spark Challenge.
+      Within these tasks, this past week I was working on debugging our circuit,
+      working on parts of software, and creating a design for our poster.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal>To start off the week, I explored the problems that we were facing
-      on our PCB, where several parts of our PCB were blowing up with 5V input. I
-      contacted Joe about this and he suggested that there was a short somewhere. We
-      figured that we would try and program the ESP32 and provide 3.3V to figure out
-      where the short was occurring. Therefore, I worked with Joe on getting parts of
-      the PCB soldered and also examined options for soldering jumpers for our Tx-Rx
-      pins for a sturdy hardware design as we move toward programming our PCB. We
-      focused on giving 5V and 3.3V directly, since we understood that the short
-      might be in the power circuit. Once these tasks were done on Monday, I planned
-      to test the programming of our ESP32, with the expectation that our circuitry
-      would work without the power circuit. Since the power circuit is our stretch
-      goal, we planned to work on it separately, once the other PSSCs were checked
-      off.</p>
+      <p class=MsoNormal>To start off the week, I explored the problems that we were
+      facing on our PCB, where several parts of our PCB were blowing up with 5V
+      input. I contacted Joe about this and he suggested that there was a short
+      somewhere. We figured that we would try and program the ESP32 and provide 3.3V
+      to figure out where the short was occurring. Therefore, I worked with Joe on
+      getting parts of the PCB soldered and also examined options for soldering
+      jumpers for our Tx-Rx pins for a sturdy hardware design as we move toward
+      programming our PCB. We focused on giving 5V and 3.3V directly, since we
+      understood that the short might be in the power circuit. Once these tasks were
+      done on Monday, I planned to test the programming of our ESP32, with the
+      expectation that our circuitry would work without the power circuit. Since the
+      power circuit is our stretch goal, we planned to work on it separately, once
+      the other PSSCs were checked off.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal>Unfortunately, on Tuesday, I sprained my ankle in the morning
-      and was not able to make it to the lab. However, I was notified later that the
-      circuitry had a short in the TMUX1308, which was found after the TMUX1308 blew up
-      when the ESP was powered. We order replacement parts for our PCB in case we
-      would need them and found that the TMUX1308 was attached the wrong way around,
-      switching the ground and power pins. Upon correcting this error, the PCB functions
-      correctly. </p>
+      <p class=MsoNormal>Unfortunately, on Tuesday, I sprained my ankle in the
+      morning and was not able to make it to the lab. However, I was notified later
+      that the circuitry had a short in the TMUX1308, which was found after the
+      TMUX1308 blew up when the ESP was powered. We order replacement parts for our
+      PCB in case we would need them and found that the TMUX1308 was attached the
+      wrong way around, switching the ground and power pins. Upon correcting this
+      error, the PCB functions correctly. </p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -114,7 +182,7 @@ contact course staff.
       Spark Challenge poster. The initial plan is presented in the diagram below.</p>
 
       <p class=MsoNormal><img border=0 width=315 height=297 id="Picture 23"
-      src="Team/progress/progress3pics/image001.jpg"
+      src="Team/progress/progress3pics/image004.jpg"
       alt="A white paper with writing on it&#10;&#10;Description automatically generated with low confidence"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -122,20 +190,20 @@ contact course staff.
       <p class=MsoNormal>Currently, only Kahaan and I are planning to conduct the
       presentation because Anurag and Graeme are not fully interested in it. I have
       planned to divide the poster into 4 sections, although I do not plan to have
-      actual division markers to maintain fluidity. However, I plan to focus more onthe
-      end product and go-to-market strategy than the process of creating the product.
-      I believe that the differentiating factor in our presentation will be the demo of
-      our fixture, with music that attracts attention, and an efficient business plan
-      with information of the possible markets and product differentiation strategy.
-      I plan on finishing the poster and starting on the demo video next week,
-      assuming that our product will be mostly complete by next weekend.</p>
+      actual division markers to maintain fluidity. However, I plan to focus more on
+      the end product and go-to-market strategy than the process of creating the
+      product. I believe that the differentiating factor in our presentation will be
+      the demo of our fixture, with music that attracts attention, and an efficient
+      business plan with information of the possible markets and product
+      differentiation strategy. I plan on finishing the poster and starting on the
+      demo video next week, assuming that our product will be mostly complete by next
+      weekend.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal>&nbsp;</p>
-      
 
       <p class=MsoNormal>WEEK 13:</p>
 
@@ -155,7 +223,7 @@ contact course staff.
       </p>
 
       <p class=MsoNormal><img border=0 width=411 height=308 id="Picture 22"
-      src="Team/progress/progress3pics/image002.jpg"
+      src="Team/progress/progress3pics/image005.jpg"
       alt="A picture containing electronics, circuit&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -189,7 +257,7 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=268 height=201 id="Picture 21"
-      src="Team/progress/progress3pics/image003.jpg"
+      src="Team/progress/progress3pics/image006.jpg"
       alt="A close-up of a circuit board&#10;&#10;Description automatically generated with low confidence"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -237,8 +305,8 @@ contact course staff.
       Since my remaining midterms occur next week, I plan to focus on one of the 3
       tasks mentioned and make significant progress of it in the second half of next
       week. I hope to redirect my attention toward debugging and building a reliable
-      end product during these last weeks, as well as getting the PSSCs checked off as
-      Graeme solders the components.</p>
+      end product during these last weeks, as well as getting the PSSCs checked off
+      as Graeme solders the components.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -258,8 +326,8 @@ contact course staff.
       checking for errors throughout the process. </p>
 
       <p class=MsoNormal><img border=0 width=354 height=250 id="Picture 17"
-      src="Team/progress/progress3pics/image004.png"><img border=0 width=246 height=222
-      id="Picture 19" src="Team/progress/progress3pics/image005.jpg"
+      src="Team/progress/progress3pics/image007.png"><img border=0 width=246 height=222
+      id="Picture 19" src="Team/progress/progress3pics/image008.jpg"
       alt="A screenshot of a computer&#10;&#10;Description automatically generated with medium confidence"></p>
 
       <p class=MsoNormal>As seen in the picture above, I was very careful about the
@@ -303,10 +371,10 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=195 height=194 id="Picture 18"
-      src="Team/progress/progress3pics/image006.png"
+      src="Team/progress/progress3pics/image009.png"
       alt="A picture containing text, person, electronics&#10;&#10;Description automatically generated"><img
       border=0 width=151 height=152 id="Picture 20"
-      src="Team/progress/progress3pics/image007.png"
+      src="Team/progress/progress3pics/image010.png"
       alt="A picture containing person, hand, indoor, holding&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -384,10 +452,10 @@ contact course staff.
       They helped us design an initial circuit that I prototyped on LTSpice. </p>
 
       <p class=MsoNormal><img border=0 width=244 height=153 id="Picture 15"
-      src="Team/progress/progress3pics/image008.png"
+      src="Team/progress/progress3pics/image011.png"
       alt="Chart, histogram&#10;&#10;Description automatically generated"><img
       border=0 width=217 height=165 id="Picture 16"
-      src="Team/progress/progress3pics/image009.png"
+      src="Team/progress/progress3pics/image012.png"
       alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -472,8 +540,8 @@ contact course staff.
       their time between those tasks and helping me with PCB design. Graeme worked
       toward soldering a TMUX device that was made available to us through the lab
       instructors. While this device may not need to be tested because we have
-      received the shipment of our parts, I believe he attained good soldering
-      practice, so I am glad that he got a chance to solder the device.</p>
+      received the shipment of our parts, I believe he attained good soldering practice,
+      so I am glad that he got a chance to solder the device.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -543,7 +611,7 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=468 height=322 id="Picture 13"
-      src="Team/progress/progress3pics/image010.png"
+      src="Team/progress/progress3pics/image013.png"
       alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal><br>
@@ -568,7 +636,7 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=297 height=131 id="Picture 14"
-      src="Team/progress/progress3pics/image011.png"
+      src="Team/progress/progress3pics/image014.png"
       alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -604,8 +672,8 @@ contact course staff.
       final prototype. Finally, I worked on creating footprints to progress from
       schematic to PCB layout on KiCAD.</p>
 
-      <p class=MsoNormal><img width=171 height=228
-      src="Team/progress/progress3pics/image012.jpg" align=left hspace=12
+      <p class=MsoNormal><img width=171 height=227
+      src="Team/progress/progress3pics/image015.jpg" align=left hspace=12
       alt="A white board with writing on it&#10;&#10;Description automatically generated with low confidence"></p>
 
       <p class=MsoNormal>To begin, we discussed the design of our final prototype.
@@ -637,7 +705,7 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img width=149 height=132
-      src="Team/progress/progress3pics/image013.png" align=left hspace=12
+      src="Team/progress/progress3pics/image016.png" align=left hspace=12
       alt="Text, whiteboard&#10;&#10;Description automatically generated">I also
       discussed the conversion of our test code into software for our final
       prototype. The code structure that we have followed so far is too slow for
@@ -785,13 +853,13 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=128 height=122 id="Picture 7"
-      src="Team/progress/progress3pics/image014.png"
+      src="Team/progress/progress3pics/image017.png"
       alt="A picture containing text, indoor, electronics, computer&#10;&#10;Description automatically generated"><img
       border=0 width=173 height=122 id="Picture 8"
-      src="Team/progress/progress3pics/image015.png"
+      src="Team/progress/progress3pics/image018.png"
       alt="A picture containing text, indoor&#10;&#10;Description automatically generated"><img
       border=0 width=162 height=121 id="Picture 9"
-      src="Team/progress/progress3pics/image016.jpg"
+      src="Team/progress/progress3pics/image019.jpg"
       alt="A picture containing text, electronics, circuit&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -809,10 +877,10 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=192 height=144 id="Picture 10"
-      src="Team/progress/progress3pics/image017.jpg"
+      src="Team/progress/progress3pics/image020.jpg"
       alt="A close-up of a circuit board&#10;&#10;Description automatically generated with low confidence"><img
       border=0 width=268 height=144 id="Picture 6"
-      src="Team/progress/progress3pics/image018.png"
+      src="Team/progress/progress3pics/image021.png"
       alt="Diagram, schematic&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -864,10 +932,10 @@ contact course staff.
 
       <p class=MsoNormal>&nbsp;</p>
 
-      <p class=MsoNormal>This week, I worked on several initial functions for the project.
-      This includes setting up the hardware interface, generating ideas for the
-      functional specifications, prototyping these ideas, and starting the initial
-      discussion of the final design concept.</p>
+      <p class=MsoNormal>This week, I worked on several initial functions for the
+      project. This includes setting up the hardware interface, generating ideas for
+      the functional specifications, prototyping these ideas, and starting the
+      initial discussion of the final design concept.</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
@@ -887,11 +955,11 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=157 height=251 id="Picture 5"
-      src="Team/progress/progress3pics/image019.png"><img border=0 width=155 height=251
-      id="Picture 4" src="Team/progress/progress3pics/image020.png"
+      src="Team/progress/progress3pics/image022.png"><img border=0 width=155 height=251
+      id="Picture 4" src="Team/progress/progress3pics/image023.png"
       alt="A picture containing text, indoor, display&#10;&#10;Description automatically generated"><img
       border=0 width=153 height=251 id="Picture 3"
-      src="Team/progress/progress3pics/image021.png"></p>
+      src="Team/progress/progress3pics/image024.png"></p>
 
       <p class=MsoNormal>I contributed to building and testing the first prototype of
       our microphone circuitry with Graeme. This was a big success as it maps out to
@@ -914,11 +982,11 @@ contact course staff.
       <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal><img border=0 width=376 height=286 id="Picture 1"
-      src="Team/progress/progress3pics/image022.png"
+      src="Team/progress/progress3pics/image025.png"
       alt="Diagram&#10;&#10;Description automatically generated"></p>
 
       <p class=MsoNormal><img width=153 height=330
-      src="Team/progress/progress3pics/image023.jpg" align=left hspace=12
+      src="Team/progress/progress3pics/image026.jpg" align=left hspace=12
       alt="A picture containing text, indoor, monitor, computer&#10;&#10;Description automatically generated">I
       also focused on several team tasks such as team discussions and the development
       of a top-level system flowchart with Kahaan.  This allowed us to rethink our
@@ -929,8 +997,8 @@ contact course staff.
       would distinguish our device from similar product which can be developed in the
       timeframe of our project. Kahaan and I also worked on prototyping bluetooth
       connection between our microcontroller and a phone app. Secifically, I helped
-      him establish a connection with the microcontroller through PlatformIO. While
-      this is just a basic test, we will attempt to send data packets for our next
+      him establish a connection with the microcontroller through PlatformIO. While this
+      is just a basic test, we will attempt to send data packets for our next
       prototype.</p>
 
       <p class=MsoNormal>&nbsp;</p>
@@ -943,6 +1011,8 @@ contact course staff.
       connection. I believe the key takeaway for me was to collaborate with my
       teammates to quickly learn and prototype. I hope to begin development of the
       final schematic and get started with the PCB design by Week 4.</p>
+
+      <p class=MsoNormal>&nbsp;</p>
 
       <p class=MsoNormal>&nbsp;</p>
 
