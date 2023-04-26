@@ -1,5 +1,10 @@
 # RDNT_Firmware
 
+
+## ESP32.zip
+
+This is the final code shipped for the project.
+
 ## PCB Verification Files
 
 These files are used for testing the project as we solder on components. They are described below:
